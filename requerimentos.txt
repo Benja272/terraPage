@@ -1,0 +1,20 @@
+
+flota: (nombre, marca, patente, nro chasis, nro motor, op a cargo , caracteristicas )
+7 camionetas
+4 retroescabadoras (tienen distintos filtros)
+3 tanques de combustibles 
+carretones (se unen al camion)
+camiones
+
+Panel de identificacion con codigos identificatorios.
+
+persona a cargo de operarios que usa camioneta
+operarios, cada uno maneja una camioneta y una retroescabadora
+
+estado con 3 colores. verde: estado perfecto, amarillo: operando pero necesita accion.
+                        rojo: no esta en produccion.
+
+mantenimiento (flota, fecha, kilometraje de flota, especificacion ,nro factura, costo)
+lo mismo para reparaciones. 
+
+oficina en cordoba  | operarios en interior.
