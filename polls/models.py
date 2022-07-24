@@ -14,19 +14,19 @@ class Flote(models.Model):
     code = models.CharField(primary_key=True, max_length=30)
     brand = models.CharField(max_length=30)
     patent = models.CharField(max_length=20)
-    engine_n = models.IntegerField()
-    chassis_n = models.IntegerField()
-    production_year = models.DateField()
-    status = models.IntegerField()
-    justifyStatus = models.CharField(max_length=300)
-    operator = models.ForeignKey(Operator, default="", on_delete=models.PROTECT)
+    engine_n = models.IntegerField(null=True, blank=True)
+    chassis_n = models.IntegerField(null=True, blank=True)
+    production_year = models.DateField(null=True, blank=True)
+    status = models.IntegerField(default=1)
+    justifyStatus = models.CharField(max_length=300, blank=True, default="")
+    operator = models.ManyToManyField(Operator, default="", blank=True)
 
     def __str__(self):
         return "%s %s" % (self.name, self.code)
 
 
 class Repair(models.Model):
-    is_mantenance = models.BooleanField()
+    type = models.IntegerField()
     date = models.DateField()
     mileage = models.IntegerField() #kilometraje
     description = models.CharField(max_length=300)
