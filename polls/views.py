@@ -11,7 +11,7 @@ from .models import Operator, Flote
 
 import logging
 logger = logging.getLogger(__name__)
-#Flote.objects.create(name="camioneta", code="2121", brand="renault", patent="212adc", status=1)
+#Flote.objects.create(name="camionee", code="2131", brand="renault", patent="212adc", status=1)
 
 def get_flote_by_name_view(request, name):
     flote = get_flote_by_name(name)
