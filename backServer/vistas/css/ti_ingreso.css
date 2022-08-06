@@ -1,5 +1,5 @@
 body {
-	background: #47476b;
+	background: wheat;
 }
 
 .flex-container {
@@ -63,3 +63,4 @@ body {
 .form-img img{
 	margin: auto;
 	width: 90%;
+}
