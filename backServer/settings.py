@@ -57,7 +57,7 @@ ROOT_URLCONF = 'backServer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,"backServer/vistas/html/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,3 +151,9 @@ LOGGING = {
         },
     },
 }
+
+STATIC_URL = 'vistas/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"backServer/vistas")
+]

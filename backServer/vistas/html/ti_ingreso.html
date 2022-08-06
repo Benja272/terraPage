@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Terra Ingenieria</title>
-	<link rel="stylesheet" type="text/css" href="../css/ti_ingreso.css">
-	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
-	<link rel="icon" href="../logo.ico">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href={% static 'css/ti_ingreso.css' %}>
+	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}>
 </head>
-
 <body>
 	<div class="flex-container">
 		<div class="form-img">
 			<div class="img-container">
 				<div>
-					<img src="../logo.jpg">
+					<img src={% static 'logo.jpg' %}>
 				</div>
 			</div>
 		</div>
@@ -33,5 +31,4 @@
 	</div>
 
 </body>
-
 </html>

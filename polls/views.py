@@ -1,13 +1,8 @@
-from distutils.command.build_scripts import first_line_re
-import json
-from django.core import serializers
+# Create your views here.
+from django.http import JsonResponse, HttpRequest
 from django.shortcuts import render
 
-# Create your views here.
-from django.http import HttpResponse, JsonResponse
-
 from polls.sevices import get_flotes, get_flote_by_name
-from .models import Operator, Flote
 
 import logging
 logger = logging.getLogger(__name__)
@@ -22,3 +17,8 @@ def get_flotes_view(request):
     flotes = get_flotes()
     return JsonResponse(flotes, safe=False)
 
+def get_home_page(request):
+    return render(request, 'ti_ingreso.html')
+
+def get_flotes_page(request):
+    return render(request, 'ti_vista-flota.html')
