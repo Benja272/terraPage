@@ -1,8 +1,9 @@
 from platform import mac_ver
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class Operator(models.Model):
+class Operator(User):
     name = models.CharField(primary_key=True, default="",max_length=60)
 
     def __str__(self):

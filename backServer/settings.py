@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'backServer.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'terradb',
-        'USER': 'benja',
-        'PASSWORD': 'maximiliano',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'terraDB',
+        'USER': 'benja272',
+        'PASSWORD': 'Benjand090!',
+        'HOST': 'terradbinstance.cbcm92tfnz2a.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
         'ENFORCE_SCHEMA': False
     }
 }
