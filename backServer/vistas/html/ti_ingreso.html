@@ -20,15 +20,16 @@
 				</div>
 			</div>
 		</div>
-		<form class="form">
+		<form class="form" action="{% url 'login' %}" method=POST>
+			{% csrf_token %}
 			<div class="form__section">
-				<input type="email name" required class="form__input" placeholder="Introduzca su Email o Usuario">
+				<input name="username" type="email name" required class="form__input" placeholder="Introduzca su Email o Usuario">
 			</div>
 			<div class="form__section">
-				<input type="password" required class="form__input" placeholder="Introduzca su Contraseña">
+				<input name="password" type="password" required class="form__input" placeholder="Introduzca su Contraseña">
 			</div>
 			<div class="form__section">
-				<input type="button" value="Ingresar" class="form__input">
+				<input type="submit" value="Ingresar" class="form__input">
 			</div>
 		</form>
 	</div>

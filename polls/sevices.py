@@ -5,14 +5,14 @@ from .models import *
 import logging
 logger = logging.getLogger(__name__)
 
-def get_flotes():
+def flotes():
     flotes = Flote.objects.all()
     flotes = serializers.serialize('json', flotes)
     flotes = json.loads(flotes)
     logger.error(flotes)
     return flotes
 
-def get_flote_by_name(name):
+def flote_by_name(name):
     flotes = Flote.objects.filter(name=name)
     flotes = serializers.serialize('json', flotes)
     flotes = json.loads(flotes)
