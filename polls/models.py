@@ -18,10 +18,10 @@ class Flote(models.Model):
     production_year = models.DateField(null=True, blank=True)
     engine_number = models.IntegerField(null=True, blank=True)
     chassis_number = models.IntegerField(null=True, blank=True)
-    status = models.CharField(choices=STATES)
+    status = models.CharField(choices=STATES, max_length=30)
     justifyStatus = models.CharField(max_length=600, blank=True, default="")
-    operators = ArrayField(models.CharField(max_length=50, blank=True), default=[])
-    views = ArrayField(models.ImageField(), blank=True, default=[])
+    operators = ArrayField(models.CharField(max_length=50, blank=True), default=list)
+    views = ArrayField(models.ImageField(), blank=True, default=list)
 
     def __str__(self):
         return "%s %s" % (self.name, self.code, self.status)
@@ -31,7 +31,7 @@ MAINTENANCE_TYPES = [
     ('MAN', 'MAINTENANCE')
 ]
 class Maintenance(models.Model):
-    type = models.CharField(choices=MAINTENANCE_TYPES)
+    type = models.CharField(choices=MAINTENANCE_TYPES, max_length=30)
     date = models.DateField()
     mileage = models.IntegerField() #kilometraje
     description = models.CharField(max_length=600)
