@@ -1,5 +1,5 @@
 body {
-	background: wheat;
+	background: #47476b;
 }
 
 .flex-container {
@@ -12,7 +12,7 @@ body {
 	margin: 50px auto;
 	max-width: 600px;
 	max-height: 600px;
-	border: 3px solid #7575a3;
+	border: 3px solid #a9a3b9;
 }
 
 .form {
@@ -21,20 +21,20 @@ body {
 
 .form__section {
 	color: #fff;
-	}
+}
 
 .form__input {
 	width: 102%;
 	padding: 6px;
 	margin: 5px 0;
 	border: none;
-	border-bottom: 3px solid #b3b3cc;
+	border-bottom: 3px solid #a9a3b9;
 	background: transparent;
 	color: #000;
 }
 
 .form__input:focus {
-	background: linear-gradient(to bottom, transparent,#b3b3cc);
+	background: linear-gradient(to bottom, transparent, #b3b3cc);
 	outline: none;
 	border-bottom: 3px solid #7575a3;
 }
@@ -60,7 +60,7 @@ body {
 	padding: 30px;
 }
 
-.form-img img{
+.form-img img {
 	margin: auto;
 	width: 90%;
 }
