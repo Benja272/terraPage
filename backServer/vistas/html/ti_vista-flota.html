@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
 
 <head>
 	<meta charset="utf-8">
@@ -9,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 	<link rel="icon" href="../logo.ico">-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_vista-flota.css' %}?{% now "U" %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
 	<link rel="icon" href={% static 'logo.ico' %}>
@@ -38,6 +38,11 @@
 				</path>
 			</svg>
 		</div>
+		<div>
+			{% for flote in flotes %}
+			<p>flote</p>
+			{% endfor %}
+		</div>
 	</header>
 </body>
 
@@ -45,5 +50,4 @@
 		Primer avance de la parte estetica.<br>
 		Saludos.
 </p>
-
-</html>
+{% endblock %}

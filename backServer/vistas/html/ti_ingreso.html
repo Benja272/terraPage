@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
 
 <head>
 	<meta charset="utf-8">
@@ -8,7 +9,6 @@
 	<!--<link rel="stylesheet" type="text/css" href="../css/ti_ingreso.css">
 	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
 	<link rel="icon" href="../logo.ico">-->
-	{% load static %}
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_ingreso.css' %}?{% now "U" %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
 	<link rel="icon" href={% static 'logo.ico' %}>
@@ -39,5 +39,4 @@
 	</div>
 
 </body>
-
-</html>
+{% endblock %}

@@ -18,48 +18,50 @@ def get_flote_by_name(request, name):
     #return HttpResponse(f"<h1>Hello and welcome to my first <u>{name}</u> project!</h1>")
 
 def get_flotes(request):
-    flotes = flotes()
+    json_flotes = flotes()
     return JsonResponse(flotes, safe=False)
 
 def get_home_page(request):
     return render(request, 'ti_ingreso.html')
 
 def get_flotes_page(request):
-    return render(request, 'ti_vista-flota.html')
+    json_flotes = flotes()
+    return render(request, 'ti_vista-flota.html', {'flotes': json_flotes})
 
 
 # auth
+def login_service(request, username, password):
+    user = authenticate(request, username=username, password=password)
+    redirect_url = 'home/flotes'
+    if user:
+        login(request, user)
+    else:
+        messages.success(request, "Usuario o Contraseña erroneos, por favor intente de nuevo.")
+        redirect_url = 'home/'
+    return redirect_url
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            return redirect('ti_vista-flota.html')
-        else:
-            messages.success(request, "Usuario o Contraseña erroneos, por favor intente de nuevo.")
-            return redirect('ti_ingreso.html')
+        redirect_url = login_service(request, username, password)
+        return redirect(redirect_url)
 
 def logout_user(request):
     logout(request)
     messages.success(request, ("Sesion cerrada."))
-    return redirect('ti_ingreso.html')
+    return redirect('home/')
 
 def register_user(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        username = ""
+        password1 = ""
+        password2 = ""
+        form = UserCreationForm(username, password1, password2)
+        redirect_url = 'home/'
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            login(request, user)
             messages.success(request, "El usuario se registro exitosamente.")
-            return redirect('ti_vista-flota.html')
-    else:
-        form = UserCreationForm()
+            redirect_url = login_service(request, username, password1)
 
-        return render(request, 'ti_ingreso.html', {
-            'form':form,
-        })
+        return redirect(redirect_url)
