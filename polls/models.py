@@ -13,7 +13,7 @@ class Flote(models.Model):
     code = models.CharField(primary_key=True, max_length=50)
     brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
-    characteristics = models.CharField(max_length=600)
+    characteristics = models.CharField(max_length=600, blank=True)
     patent = models.CharField(max_length=20)
     production_year = models.DateField(null=True, blank=True)
     engine_number = models.IntegerField(null=True, blank=True)

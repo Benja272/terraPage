@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 
 from polls.sevices import flotes, flote_by_name
 from polls.decorators import unauthenticated_user
+from polls.models import Flote
 
 import logging
 logger = logging.getLogger(__name__)
@@ -29,6 +30,7 @@ def get_home_page(request):
 @login_required(redirect_field_name='home')
 def get_flotes_page(request):
     json_flotes = flotes()
+    logger.info(json_flotes)
     return render(request, 'ti_vista-flota.html', {'flotes': json_flotes})
 
 
