@@ -1,12 +1,13 @@
 # Create your views here.
 from django.http import JsonResponse, HttpRequest
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
 from polls.sevices import flotes, flote_by_name
+from polls.decorators import unauthenticated_user
 
 import logging
 logger = logging.getLogger(__name__)
@@ -21,9 +22,11 @@ def get_flotes(request):
     json_flotes = flotes()
     return JsonResponse(flotes, safe=False)
 
+@unauthenticated_user
 def get_home_page(request):
     return render(request, 'ti_ingreso.html')
 
+@login_required(redirect_field_name='home')
 def get_flotes_page(request):
     json_flotes = flotes()
     return render(request, 'ti_vista-flota.html', {'flotes': json_flotes})
@@ -41,6 +44,7 @@ def login_service(request, username, password):
     return redirect_url
 
 def login_user(request):
+    logger.info(request)
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
