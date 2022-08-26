@@ -1,15 +1,20 @@
-
 {% load static %}
 
 <!DOCTYPE html>
 <html>
+    <!--<link href="https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=documentosantiguos#incluir">
+    
+    {.% url logout_named_view %}-->
+    
+
     <div class="container">
         {% for message in messages %}
-            <p id="messages">{{message}}</p>
+        <p id="messages">{{message}}</p>
         {% endfor %}
-
-        
+    
+    
     </div>
-    {% block content %}
-    {% endblock %}
+
+    {% block content %} {% endblock %}
+
 </html>

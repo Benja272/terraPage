@@ -1,15 +1,11 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Flota - Terra Ingenieria</title>
-	<!--<link rel="stylesheet" type="text/css" href="../css/ti_vista-flota.css">
-	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-	<link rel="icon" href="../logo.ico">-->
+	<title>Terra Ingenieria</title>
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_vista-flota.css' %}?{% now "U" %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
 	<link rel="icon" href={% static 'logo.ico' %}>
@@ -20,12 +16,12 @@
 	<nav class="nav">
 		<div class="nav-container">
 			<div class="nav-desktop left">
-				<h2>Flota</h2>
+				<h2>Terra</h2>
 			</div>
 			<div class="nav-desktop right">
 				<a href="#">Inicio</a>
 				<a href="#">Flota</a>
-				<a href="#">Operarios</a>
+				<a href="/logout">Cerrar sesión</a> <!--No se como carajo deslogear :) -->
 			</div>
 		</div>
 	</nav>
@@ -39,15 +35,35 @@
 			</svg>
 		</div>
 		<div>
+		</div>
+		<!--<div> 			<--- hay que llamar a este div de alguna forma desde el css
 			{% for flote in flotes %}
 			<p>{{ flote }}</p>
 			{% endfor %}
-		</div>
+		</div>-->
 	</header>
+	<div class="flex">
+		<div class="flex__container">
+			<div class="flex-container-img-equipo">
+				<img src={% static 'ret01.png' %}>
+			</div>
+			<div class="flex-container-img-equipo">
+				<img src={% static 'cam01.png' %}>
+			</div>
+			<div class="flex-container-img-equipo">
+				<img src={% static 'car01.png' %}>
+			</div>
+		</div>
+	</div>
+
+	<!--<div class="flex-container">
+		<div class="form-img">
+			<div class="img-container">
+				<div>
+					<img src={% static 'retro1.png' %}>
+				</div>
+			</div>
+		</div>-->
 </body>
 
-<p>		
-		Primer avance de la parte estetica.<br>
-		Saludos.
-</p>
 {% endblock %}

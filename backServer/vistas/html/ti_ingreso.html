@@ -1,4 +1,4 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -6,9 +6,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Terra Ingenieria</title>
-	<!--<link rel="stylesheet" type="text/css" href="../css/ti_ingreso.css">
-	<link rel="stylesheet" type="text/css" href="../css/normalize.css">
-	<link rel="icon" href="../logo.ico">-->
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_ingreso.css' %}?{% now "U" %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
 	<link rel="icon" href={% static 'logo.ico' %}>
@@ -19,7 +16,6 @@
 		<div class="form-img">
 			<div class="img-container">
 				<div>
-					<!--<img src="../logo.jpg">-->
 					<img src={% static 'logo.jpg' %}>
 				</div>
 			</div>
@@ -27,10 +23,11 @@
 		<form class="form" action="{% url 'login' %}" method=POST>
 			{% csrf_token %}
 			<div class="form__section">
-				<input name="username" type="email name" required class="form__input" placeholder="Introduzca su Email o Usuario">
+				<input id="name" name="username" type="email name" required class="form__input" placeholder=" ">
+				<label for="name" class="form__label">Usuario:</label>
 			</div>
 			<div class="form__section">
-				<input name="password" type="password" required class="form__input" placeholder="Introduzca su Contraseña">
+				<input name="password" type="password" required class="form__input" placeholder="Contraseña:">
 			</div>
 			<div class="form__section">
 				<input type="submit" value="Ingresar" class="form__input">
