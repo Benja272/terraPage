@@ -17,7 +17,6 @@ logger = logging.getLogger(__name__)
 def get_flote_by_name(request, name):
     flote = flote_by_name(name)
     return JsonResponse(flote)
-    #return HttpResponse(f"<h1>Hello and welcome to my first <u>{name}</u> project!</h1>")
 
 def get_flotes(request):
     json_flotes = flotes()
@@ -27,7 +26,7 @@ def get_flotes(request):
 def get_home_page(request):
     return render(request, 'ti_ingreso.html')
 
-@login_required(redirect_field_name='home')
+@login_required(login_url='/home/')
 def get_flotes_page(request):
     json_flotes = flotes()
     logger.info(json_flotes)
@@ -37,12 +36,12 @@ def get_flotes_page(request):
 # auth
 def login_service(request, username, password):
     user = authenticate(request, username=username, password=password)
-    redirect_url = 'home/flotes'
+    redirect_url = '/home/flotes'
     if user:
         login(request, user)
     else:
         messages.success(request, "Usuario o Contraseña erroneos, por favor intente de nuevo.")
-        redirect_url = 'home/'
+        redirect_url = '/home/'
     return redirect_url
 
 def login_user(request):
@@ -53,10 +52,11 @@ def login_user(request):
         redirect_url = login_service(request, username, password)
         return redirect(redirect_url)
 
+@login_required(login_url='/home/')
 def logout_user(request):
     logout(request)
     messages.success(request, ("Sesion cerrada."))
-    return redirect('home/')
+    return redirect('/home/')
 
 def register_user(request):
     if request.method == "POST":
@@ -64,7 +64,7 @@ def register_user(request):
         password1 = ""
         password2 = ""
         form = UserCreationForm(username, password1, password2)
-        redirect_url = 'home/'
+        redirect_url = '/home/'
         if form.is_valid():
             form.save()
             messages.success(request, "El usuario se registro exitosamente.")
