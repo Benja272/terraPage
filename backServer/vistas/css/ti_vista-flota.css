@@ -95,11 +95,7 @@ nav {
 }
 
 .flex__container {
-	display: flex;
-
-	-webkit-box-align: center;
-	align-items: center;
-
+	display: inline-flex;
 }
 
 .flex-container-img-equipo {
