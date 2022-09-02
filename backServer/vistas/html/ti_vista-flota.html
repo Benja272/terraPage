@@ -19,8 +19,8 @@
 				<h2>Terra</h2>
 			</div>
 			<div class="nav-desktop right">
-				<a href="#">Inicio</a>
-				<a href="#">Flota</a>
+				<!--<a href="#">Inicio</a>
+				<a href="#">Flota</a>-->
 				<a href="/logout">Cerrar sesión</a>
 			</div>
 		</div>
@@ -34,27 +34,27 @@
 				</path>
 			</svg>
 		</div>
-		<div>
-		</div>
+
 		<!--<div> 			<--- hay que llamar a este div de alguna forma desde el css
 			{% for flote in flotes %}
 			<p>{{ flote }}</p>
 			{% endfor %}
 		</div>-->
 	</header>
-	<div class="flex">
-		<div class="flex__container">
-			<div class="flex-container-img-equipo">
+	<main>
+		<section class="conteiner-flotas">
+			<h2 class="titulo">Flotas</h2>
+			<div class="conteiner-flotas-img">
 				<img src={% static 'ret01.png' %}>
 			</div>
-			<div class="flex-container-img-equipo">
+			<div class="conteiner-flotas-img">
 				<img src={% static 'cam01.png' %}>
 			</div>
-			<div class="flex-container-img-equipo">
+			<div class="conteiner-flotas-img">
 				<img src={% static 'car01.png' %}>
 			</div>
-		</div>
-	</div>
+		</section>
+	</main>
 
 	<!--<div class="flex-container">
 		<div class="form-img">
