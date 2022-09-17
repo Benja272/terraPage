@@ -1,3 +1,5 @@
+from email.mime import image
+from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
@@ -21,7 +23,6 @@ class Flote(models.Model):
     status = models.CharField(choices=STATES, max_length=30)
     justifyStatus = models.CharField(max_length=600, blank=True, default="")
     operators = ArrayField(models.CharField(max_length=50, blank=True), default=list)
-    views = ArrayField(models.ImageField(upload_to='images/'), blank=True, default=list)
 
     def __str__(self):
         return "%s %s" % (self.name, self.code, self.status)
@@ -44,3 +45,8 @@ class Maintenance(models.Model):
 
     def __str__(self):
         return "%s %s" % (self.type, self.date, self.flote.__str__())
+
+
+class Image(models.Model):
+    flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
