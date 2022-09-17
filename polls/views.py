@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm
 from polls.sevices import flotes, flote_by_name, flote_create, login_service
 from polls.decorators import unauthenticated_user, allowed_users
-from polls.models import Image
+from polls.models import Image, Flote
 
 import logging
 logger = logging.getLogger(__name__)
@@ -41,7 +41,6 @@ def create_flote(request):
 
 # auth
 
-
 @unauthenticated_user
 def login_user(request):
     logger.info(request)
@@ -66,8 +65,9 @@ def add_flote(request):
         files = request.FILES.getlist("image")
         if form.is_valid():
             form.save()
+            flote = Flote.objects.get(code=request.POST["code"])
             for image in files:
-                Image.objects.create(flote=form, image=image)
+                Image.objects.create(flote=flote, image=image)
             # Getting the current instance object to display in the template
             img_object = form.instance
             messages.success(request, "Flota Agregada!")

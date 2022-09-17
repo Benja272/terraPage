@@ -1,20 +1,32 @@
 {% extends 'base.html' %}  
-  
-{% block content %}  
-    <form method="post" enctype="multipart/form-data">  
-        {% csrf_token %}  
-        {% for hidden in form.hidden_fields %}  
-            {{hidden}}
-        {% endfor %}
-        {% for field in form %}
-            {{field.name}}
-            {{field}} <br />
-        {% endfor %}
-        {{ imageform.management_form}}
-        {% for form in imageform %}
-            {{ form }}
-        {% endfor %}
-        <button type="submit">Upload</button>  
-    </form>  
+{% load static %}
+{% block content %} 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Terra Ingenieria</title>
+	<link rel="stylesheet" type="text/css" href={% static 'css/ti_ingreso.css' %}?{% now "U" %}>
+	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
+	<link rel="icon" href={% static 'logo.ico' %}>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<form method="post" enctype="multipart/form-data">  
+    {% csrf_token %}  
+    {% for hidden in form.hidden_fields %}  
+        {{hidden}}
+    {% endfor %}
+    {% for field in form %}
+    <h2 class="form__input">
+        {{field.name}}
+        {{field}} <br />
+    </h2>
+    {% endfor %}
+    {{ imageform.management_form}}
+    {% for form in imageform %}
+        {{ form }}
+    {% endfor %}
+    <button type="submit">Upload</button>  
+</form>  
   
 {% endblock content %}
