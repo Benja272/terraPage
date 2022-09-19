@@ -29,27 +29,31 @@ nav {
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.nav-container {
-	color: white;
-	height: 100%;
-	max-height: 60px;
+.nav-bar{
+	position: sticky;
+	top: 0;
 	display: flex;
-	padding: 12px 60px;
+	padding: 0 3%;
+	min-height: 68px;
+	align-items: center;
+
+}
+
+.container-fluid {
+	display: flex;
 }
 
 .nav-desktop {
 	display: flex;
-
-	-webkit-box-align: center;
 	align-items: center;
 }
+.logo{
+	display: flex;
+}
 
-.nav-desktop h2 {
-	position: relative;
-	color: white;
-	letter-spacing: 3px;
-	padding: 2px 0px;
-	margin: 0px 30px;
+.logo > img {
+	height: 50px;
+
 }
 
 .nav-desktop a {
@@ -58,7 +62,6 @@ nav {
 	font-weight: 300;
 	letter-spacing: 0.5px;
 	text-decoration: none;
-	padding: 2px 0px;
 	margin: 0px 30px;
 }
 
@@ -66,16 +69,11 @@ nav {
 	color: #fff;
 	font-weight: 300px;
 	margin-right: 10px;
-	font-size: 30px;
+	font-size: 24px;
 }
 
 .nav-desktop>a:hover {
 	text-decoration: underline;
-}
-
-.left {
-	font-size: 30px;
-	color: #fff;
 }
 
 .right {

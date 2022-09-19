@@ -1,0 +1,21 @@
+body{
+    background: #654ea3;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666));
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666));
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.flex-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	background: #fff;
+	margin: 50px auto;
+	max-width: 600px;
+	max-height: 600px;
+	border: 3px solid #a9a3b9;
+}
