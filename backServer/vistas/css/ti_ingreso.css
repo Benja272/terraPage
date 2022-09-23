@@ -46,8 +46,8 @@ body {
 	transition: transform .5s, color .3s;
 }
 
-.form__input:focus + .form__label,
-.form__input:not(:placeholder-shown) + .form__label {
+.form__input:focus+.form__label,
+.form__input:not(:placeholder-shown)+.form__label {
 	transform: translateY(-9px)scale(.8);
 	transform-origin: top left;
 	--color: #3866f2;
@@ -59,7 +59,7 @@ body {
 	border-bottom: 1px solid #7575a3;
 }
 
-.form__input--active{
+.form__input--active {
 	width: 100%;
 	font-family: inherit;
 	font-size: 1rem;
@@ -71,8 +71,9 @@ body {
 	border-bottom: 1px solid var(--color);
 }
 
-.form__input--active:focus{
-	background: transparent; /* modificar */
+.form__input--active:focus {
+	background: transparent;
+	/* modificar */
 }
 
 .form-img {

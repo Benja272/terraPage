@@ -6,12 +6,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Terra Ingenieria</title>
-	<link rel="stylesheet" type="text/css" href={% static 'css/ti_vista-flota.css' %}?{% now "U" %}>
 	<link rel="stylesheet" type="text/css" href={% static 'css/normalize.css' %}?{% now "U" %}>
-	<link rel="icon" href={% static 'logo.ico' %}>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href={% static 'css/ti_vista-flota.css' %}?{% now "U" %}>
+	<link rel="icon" href={% static 'logo.ico' %}>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300&display=swap"
+		rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+		crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,12 +26,13 @@
 			</div>
 			<div class="nav-desktop right">
 				<button class="btn btn-outline-success me-2" type="button">
-					<a href="add">Agregar flota</a></button>
+					<a href="add">Agregar flota</a>
+				</button>
 				<form class="d-flex" role="search">
 					<input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Buscador">
 					<button class="btn btn-outline-success" type="submit">Buscar</button>
 				</form>
-				<a href="/logout">Cerrar sesión</a>
+				<a class="btn btn-outline-success" type="button" href="/logout">Cerrar Sesión</a>
 			</div>
 		</div>
 	</nav>
@@ -47,20 +52,111 @@
 			{% endfor %}
 		</div>-->
 	</header>
-	<main>
-		<section class="conteiner-flotas">
+	<section class="flotes">
+		<div class="contenedor">
 			<h2 class="titulo">FLOTAS</h2>
-			<div class="conteiner-flotas-img">
-				<img src={% static 'ret01.png' %}>
+			<div class="contenedor-flotes">
+				<div class="contenedor-flotes-img">
+					<img src={% static 'ret01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'cam01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'car01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'car01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'car01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'car01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="contenedor-flotes-img">
+					<img src={% static 'car01.png' %}>
+					<div class="hover-img dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							Maquinaria
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
+							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="conteiner-flotas-img">
-				<img src={% static 'cam01.png' %}>
-			</div>
-			<div class="conteiner-flotas-img">
-				<img src={% static 'car01.png' %}>
-			</div>
-		</section>
-	</main>
+		</div>
+	</section>
 
 	<!--<div class="flex-container">
 		<div class="form-img">

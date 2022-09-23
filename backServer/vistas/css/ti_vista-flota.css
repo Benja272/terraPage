@@ -1,23 +1,6 @@
 body {
 	background: #47476b;
-	font-family: 'Bebas Neue', cursive;
-}
-
-header {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 600px;
-	background: #654ea3;
-	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-size: cover;
-	background-attachment: fixed;
-	position: relative;
+	font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -27,16 +10,16 @@ nav {
 	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	z-index: 100;
 }
 
-.nav-bar{
+.nav-bar {
 	position: sticky;
 	top: 0;
 	display: flex;
 	padding: 0 3%;
 	min-height: 68px;
 	align-items: center;
-
 }
 
 .container-fluid {
@@ -47,13 +30,16 @@ nav {
 	display: flex;
 	align-items: center;
 }
-.logo{
+
+.logo {
 	display: flex;
+	height: 50px;
+	min-width: 120px;
 }
 
-.logo > img {
-	height: 50px;
-
+.logo>img {
+	height: 100%;
+	width: 100%;
 }
 
 .nav-desktop a {
@@ -72,14 +58,47 @@ nav {
 	font-size: 24px;
 }
 
-.nav-desktop>a:hover {
-	text-decoration: underline;
-}
+
 
 .right {
 	margin-left: auto;
 	font-size: 27px;
 	color: #fff;
+}
+
+.btn-outline-success {
+    --bs-btn-color: #fff;
+    --bs-btn-border-color: #47476b;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #47476b;
+    --bs-btn-hover-border-color: #47476b;
+    --bs-btn-focus-shadow-rgb: 25,135,84;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #47476b;
+    --bs-btn-active-border-color: #47476b;
+    --bs-btn-active-shadow: inset 0 3px 5pxrgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #47476b;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #47476b;
+    --bs-gradient: none;
+}
+
+header {
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 600px;
+	background: #654ea3;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
 }
 
 .wave {
@@ -88,28 +107,56 @@ nav {
 	width: 100%;
 }
 
-.conteiner-flotas {
+.contenedor-flotes {
 	display: inline-flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
 
-.conteiner-flotas-img {
-	width: 480px;
-	height: 300px;
+.contenedor-flotes-img {
+	width: 500px;
+	height: 350px;
 	margin: 50px 30px;
-	margin-top: 50px;
 	background-size: cover;
 	background-position: center;
 	position: relative;
 	overflow: hidden;
+	cursor: pointer;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
 }
 
-.conteiner-flotas-img:hover::after{
+.contenedor-flotes-img > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.hover-img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	transform: scale(0);
+	background: #654ea396;
+	color: #fff;
+	transition: transform .3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.contenedor-flotes-img:hover .hover-img{
+	transform: scale(1);
+}
+
+/*.contenedor-flotes-img:hover::after {
 	transform: translateY(0);
 }
 
-.conteiner-flotas-img::after {
-	content: "Info de la maquina";
+.contenedor-flotes-img::after {
+	content: "Maquinaria";
 	font-size: 2rem;
 	color: #fff;
 	background-color: #654ea396;
@@ -119,5 +166,4 @@ nav {
 	place-items: center;
 	transform: translateY(100%);
 	transition: transform .3s;
-}
-
+}*/

@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <html>
 
-    <div class="container">
-        {% for message in messages %}
-        <script src="{% static 'alert.js' %}"></script>
-        <p id="messages">{{message}}</p>
-        {% endfor %}
-    
-    
-    </div>
+<div class="container">
+    {% for message in messages %}
+    <script src="{% static 'alert.js' %}"></script>
+    <p id="messages">{{message}}</p>
+    {% endfor %}
 
-    {% block content %} {% endblock %}
+
+</div>
+
+{% block content %} {% endblock %}
 
 </html>
