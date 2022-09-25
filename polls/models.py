@@ -10,13 +10,22 @@ STATES = [
     ('RED', 'RED')
 ]
 
+FLOTE_TYPES = [
+    ('CAM', 'CAMIONETA'),
+    ('RET', 'RETROESCAVADORA'),
+    ('CAR', 'CARRETON'),
+    ('MOT', 'MOTONIVELADORA'),
+    ('CAO', 'CAMIÓN'),
+    ('TAN', 'TANQUE DE COMBUSTIBLE'),
+]
+
 class Flote(models.Model):
-    name = models.CharField(max_length=50)
+    type = models.CharField(choices=FLOTE_TYPES, max_length=50)
     code = models.CharField(primary_key=True, max_length=50)
     brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
     characteristics = models.CharField(max_length=600, blank=True)
-    patent = models.CharField(max_length=20)
+    patent = models.CharField(max_length=20, blank=True)
     production_year = models.DateField(null=True, blank=True)
     engine_number = models.IntegerField(null=True, blank=True)
     chassis_number = models.IntegerField(null=True, blank=True)
@@ -25,7 +34,7 @@ class Flote(models.Model):
     operators = ArrayField(models.CharField(max_length=50, blank=True), default=list)
 
     def __str__(self):
-        return "%s %s" % (self.name, self.code, self.status)
+        return "%s %s %s" % (self.type, self.code, self.status)
 
 MAINTENANCE_TYPES = [
     ('REP', 'REPAIR'),

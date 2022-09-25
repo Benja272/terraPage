@@ -45,114 +45,32 @@
 			</svg>
 		</div>
 
-		<!--<div> 			<--- hay que llamar a este div de alguna forma desde el css
-			{% for flote in flotes %}
-			<p>{{ flote }}</p>
-			{% endfor %}
-		</div>-->
 	</header>
+	<!--<div> 			<--- hay que llamar a este div de alguna forma desde el css
+		{% for flote in flotes %}
+		<p>{{ flote }}</p>
+		{% endfor %}
+	</div>-->
 	<section class="flotes">
 		<div class="contenedor">
 			<h2 class="titulo">FLOTAS</h2>
 			<div class="contenedor-flotes">
+				{% for key,value in info.items %}
 				<div class="contenedor-flotes-img">
-					<img src={% static 'ret01.png' %}>
+					<img src={% static value.image_file %}>
 					<div class="hover-img dropdown">
 						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
 							aria-expanded="false">
-							Maquinaria
+							{{ key }}
 						</button>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
+							{% for flote in value.flotes %}
+							<li><a class="dropdown-item" href="#">{{ flote.code }}</a></li>
+							{% endfor %}
 						</ul>
 					</div>
 				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'cam01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'car01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'car01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'car01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'car01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="contenedor-flotes-img">
-					<img src={% static 'car01.png' %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Maquinaria
-						</button>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Maquinaria-1</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-2</a></li>
-							<li><a class="dropdown-item" href="#">Maquinaria-3</a></li>
-						</ul>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

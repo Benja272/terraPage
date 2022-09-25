@@ -7,11 +7,28 @@ from .models import *
 import logging
 logger = logging.getLogger(__name__)
 
+FLOTES_IMAGES = {
+    'CAMIONETA': "cam01.png",
+    'RETROESCAVADORA': "ret01.png",
+    'CARRETON': "car01.png",
+    'MOTONIVELADORA': "car01.png",
+    'CAMIÓN': "car01.png",
+    'TANQUE DE COMBUSTIBLE': "car01.png",
+}
+
 def flotes():
     flotes = Flote.objects.all()
     flotes = to_json(flotes)
-    logger.error(flotes)
-    return flotes
+    res = {}
+    for type in FLOTE_TYPES:
+        res[type[1]] = {'flotes': []}
+        res[type[1]]['image_file'] = FLOTES_IMAGES[type[1]]
+    for flote in flotes:
+        flote_type = flote['fields']['type']
+        flote['fields']['code'] = flote['pk']
+        res[flote_type]['flotes'].append(flote['fields'])
+    logger.error(res)
+    return res
 
 def flote_by_name(name):
     flotes = Flote.objects.filter(name=name)
