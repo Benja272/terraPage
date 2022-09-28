@@ -1,7 +1,5 @@
 # Create your views here.
-from email.errors import InvalidMultipartContentTransferEncodingDefect
-import re
-from django.http import JsonResponse, HttpRequest
+from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -31,7 +29,7 @@ def get_home_page(request):
 def get_flotes_page(request):
     json_flotes = flotes()
     logger.info(json_flotes)
-    return render(request, 'ti_vista-flota.html', {'flotes': json_flotes})
+    return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
 
 @allowed_users(allowed_roles=['admin'])
