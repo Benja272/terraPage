@@ -8,13 +8,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 FLOTES_IMAGES = {
-    'CAMIONETA': "cam01.png",
-    'RETROESCAVADORA': "ret01.png",
-    'CARRETON': "car01.png",
+    'RETROESCAVADORA': "retro.png",
+    'CAMIONETA': "cam.png",
+    'CARRETON': "carre.png",
+    'TANQUE REGADOR': "tar.png",
+    'TANQUE DE COMBUSTIBLE': "tac.png",
     'MOTONIVELADORA': "motn.png",
-    'CAMIÓN': "car01.png",
-    'TANQUE DE COMBUSTIBLE': "car01.png",
-    'TANQUE REGADOR': "car01.png"
+    'CAMIÓN': "can.png",
 }
 
 def flotes():
@@ -31,8 +31,8 @@ def flotes():
     logger.error(res)
     return res
 
-def flote_by_name(name):
-    flotes = Flote.objects.filter(name=name)
+def flote_by_code(code):
+    flotes = Flote.objects.filter(code=code)
     flotes = to_json(flotes)
     logger.error(flotes[0])
     return flotes[0]
