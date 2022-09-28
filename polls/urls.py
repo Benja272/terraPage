@@ -7,5 +7,5 @@ urlpatterns = [path('home/', views.get_home_page, name='home_page'),
                path('home/flotes/<str:code>', views.get_flote_by_code, name='flote'),
                path('login', views.login_user, name='login'),
                path('logout', views.logout_user, name='logout'),
-               path('home/flotes/add', views.add_flote, name='add_flote')
+               path('flotes/add', views.add_flote, name='add_flote')
                ]

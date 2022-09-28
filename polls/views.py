@@ -14,10 +14,10 @@ import logging
 logger = logging.getLogger(__name__)
 #Flote.objects.create(name="camionee", code="2131", brand="renault", patent="212adc", status=1)
 
-@login_required(login_url='/home/')
+#@login_required(login_url='/home/')
 def get_flote_by_code(request, code):
     flote = flote_by_code(code)
-    return JsonResponse(flote)
+    return render(request, 'flota.html', {'flote': flote})
 
 
 @unauthenticated_user
@@ -73,6 +73,7 @@ def add_flote(request):
         else:
             print(form.errors)
     else:
+        print("aca")
         form = FloteForm()
         image_form = ImageForm()
 
