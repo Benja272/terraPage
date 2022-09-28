@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm
-from polls.sevices import flotes, flote_by_name, flote_create, login_service
+from polls.sevices import flotes, flote_by_code, flote_create, login_service
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote
 
@@ -14,9 +14,9 @@ import logging
 logger = logging.getLogger(__name__)
 #Flote.objects.create(name="camionee", code="2131", brand="renault", patent="212adc", status=1)
 
-
-def get_flote_by_name(request, name):
-    flote = flote_by_name(name)
+@login_required(login_url='/home/')
+def get_flote_by_code(request, code):
+    flote = flote_by_code(code)
     return JsonResponse(flote)
 
 

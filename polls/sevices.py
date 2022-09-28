@@ -31,8 +31,8 @@ def flotes():
     logger.error(res)
     return res
 
-def flote_by_name(name):
-    flotes = Flote.objects.filter(name=name)
+def flote_by_code(code):
+    flotes = Flote.objects.filter(code=code)
     flotes = to_json(flotes)
     logger.error(flotes[0])
     return flotes[0]
