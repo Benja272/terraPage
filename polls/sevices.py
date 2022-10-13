@@ -33,14 +33,18 @@ def flotes():
 
 def flote_by_code(code):
     flotes = Flote.objects.filter(code=code)
-    flotes = to_json(flotes)
+    json_flotes = to_json(flotes)
     res = None
-    if flotes[0]:
-        res = flotes[0]
-    res = res['fields']
-    res['code'] = flotes[0]['pk']
-    print(res)
-    return res
+    image = None
+    if json_flotes:
+        res = json_flotes[0]['fields']
+        images = Image.objects.filter(flote=flotes[0])
+        if images:
+            image = images[0].image.url
+            res['img'] = image
+        res['code'] = json_flotes[0]['pk']
+        print(res)
+        return res
 
 def flote_create(request):
     name = request.POST['name']

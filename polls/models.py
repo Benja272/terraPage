@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 
 STATES = [
-    ('GRE', 'GREEN'),
-    ('YEL', 'YELLOW'),
-    ('RED', 'RED')
+    ('GRE', 'VERDE'),
+    ('YEL', 'AMARILLO'),
+    ('RED', 'ROJO')
 ]
 
 FLOTE_TYPES = [
