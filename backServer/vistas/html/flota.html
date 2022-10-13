@@ -2,14 +2,65 @@
 {% load static %}
 {% block content %}
 
-</body>
-</html>
 <head>
-	<link rel="stylesheet" type="text/css" href={% static 'css/flota.css' %}?{% now "U" %}>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href={% static 'css/flota.css' %}?{% now "U" %}>
 </head>
 
-<body class="conteiner-flote">
-    <p>{{flote.type}}</p>
-</body>
+<body>
+    <nav class="nav-bar">
+        <div class="container-fluid">
+            <div class="nav-desktop logo">
+                <img src={% static 'logo-nav.png' %}>
+            </div>
+            <div class="nav-desktop right">
+                <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+                <a class="btn btn-outline-success me-2" href="../flotes" role="button">VOLVER</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card mb-3" style="width: 600px;">
+        <img src={% static 'cam.png' %} class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{flote.type}}</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{flote.code}}</li>
+            <li class="list-group-item">{{flote.brand}}</li>
+            <li class="list-group-item">{{flote.characteristics}}</li>
+            <li class="list-group-item">{{flote.patent}}</li>
+            <li class="list-group-item">{{flote.production_year}}</li>
+            <li class="list-group-item">{{flote.engine_number}}</li>
+            <li class="list-group-item">{{flote.chassis_number}}</li>
+            <li class="list-group-item">{{flote.status}}</li>
+            <li class="list-group-item">{{flote.justifyStatus}}</li>
+            <li class="list-group-item">{{flote.operators}}</li>
+          </ul>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+
+    <!--<div class="contenedor flex-container">
+        <div class="contenedor-img">
+            <img src={% static 'cam.png' %}>
+        </div>
+        <div class="contedor-info">
+            <ul class="contenedor-flotes list-group">
+                <li class="contenedor-flotes-data list-group-item">{{flote.type}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.code}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.brand}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.characteristics}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.patent}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.production_year}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.engine_number}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.chassis_number}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.status}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.justifyStatus}}</li>
+                <li class="contenedor-flotes-data list-group-item">{{flote.operators}}</li>
+            </ul>      
+        </div>
+    </div>
+</body>-->
 
 {% endblock content %}
