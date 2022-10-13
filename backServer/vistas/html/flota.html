@@ -22,7 +22,7 @@
     </nav>
 
     <div class="card mb-3" style="width: 600px;">
-        <img src={% static 'cam.png' %} class="card-img-top" alt="...">
+        <img src="{{ flote.img }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{flote.type}}</h5>
           <ul class="list-group list-group-flush">
@@ -40,27 +40,5 @@
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
-
-    <!--<div class="contenedor flex-container">
-        <div class="contenedor-img">
-            <img src={% static 'cam.png' %}>
-        </div>
-        <div class="contedor-info">
-            <ul class="contenedor-flotes list-group">
-                <li class="contenedor-flotes-data list-group-item">{{flote.type}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.code}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.brand}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.characteristics}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.patent}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.production_year}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.engine_number}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.chassis_number}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.status}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.justifyStatus}}</li>
-                <li class="contenedor-flotes-data list-group-item">{{flote.operators}}</li>
-            </ul>      
-        </div>
-    </div>
-</body>-->
 
 {% endblock content %}

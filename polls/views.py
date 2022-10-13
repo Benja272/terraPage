@@ -56,7 +56,7 @@ def logout_user(request):
     messages.success(request, ("Sesion cerrada."))
     return redirect('/home/')
 
-
+@allowed_users(allowed_roles=['admin'])
 def add_flote(request):
     if request.method == 'POST':
         form = FloteForm(request.POST, request.FILES)
@@ -73,7 +73,6 @@ def add_flote(request):
         else:
             print(form.errors)
     else:
-        print("aca")
         form = FloteForm()
         image_form = ImageForm()
 
