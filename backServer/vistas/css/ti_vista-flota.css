@@ -13,7 +13,7 @@ nav {
 	z-index: 100;
 }
 
-.nav-bar {
+.navbar {
 	position: sticky;
 	top: 0;
 	display: flex;
@@ -44,7 +44,7 @@ nav {
 
 .nav-desktop a {
 	position: relative;
-	font-size: 21px;
+	font-size: 18px !important;
 	color: white;
 	font-weight: 300;
 	letter-spacing: 0.5px;
@@ -58,8 +58,6 @@ nav {
 	margin-right: 10px;
 	font-size: 24px;
 }
-
-
 
 .right {
 	margin-left: auto;

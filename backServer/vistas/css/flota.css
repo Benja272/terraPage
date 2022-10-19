@@ -50,7 +50,7 @@ nav {
 	color: white;
 	font-weight: 300;
 	letter-spacing: 0.5px;
-	text-decoration: none;
+	text-decoration: none !important;
 	margin: 0px 30px;
 }
 
@@ -88,7 +88,7 @@ nav {
 	--bs-gradient: none;
 }
 
-.card{
+.card {
 	align-items: center;
 	justify-content: center;
 	margin: auto;

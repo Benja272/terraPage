@@ -8,6 +8,16 @@ body {
 	font-family: 'Poppins', sans-serif
 }
 
+nav {
+	background: #fff;
+	/* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m.png);
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	z-index: 100;
+}
+
 .nav-bar {
 	position: sticky;
 	top: 0;
@@ -38,9 +48,9 @@ body {
 .nav-desktop a {
 	position: relative;
 	color: white;
-	font-weight: 300;
+	font-weight: 10;
 	letter-spacing: 0.5px;
-	text-decoration: none;
+	text-decoration: none !important;
 	margin: 0px 30px;
 }
 
