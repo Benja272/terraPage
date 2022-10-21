@@ -40,7 +40,7 @@
 	</nav>-->
 
 	<header class="header">
-		<div class="wave " style="height: 150px; overflow: hidden;">
+		<div class="wave" style="height: 150px; overflow: hidden;">
 			<svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
 				<path d="M-9.87,55.77 C209.65,148.53 333.23,8.41 500.00,49.98 L500.00,150.00 L-3.10,152.47 Z"
 					style="stroke: none; fill: #47476b;">
@@ -55,22 +55,24 @@
 		{% endfor %}
 	</div>-->
 	<section class="flotes">
-		<div class="contenedor">
-			<h2 class="titulo text-center fw-bold">FLOTAS</h2>
-			<div class="contenedor-flotes">
+		<h2 class="titulo text-center fw-bold">FLOTAS</h2>
+		<div class="container mt-5 mb-5">
+			<div class="row justify-content-md-center">
 				{% for key,value in info.items %}
-				<div class="contenedor-flotes-img">
-					<img src={% static value.image_file %}>
-					<div class="hover-img dropdown">
-						<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							{{ key }}
-						</button>
-						<ul class="dropdown-menu">
-							{% for flote in value.flotes %}
-							<li><a class="dropdown-item" href={{ flote.code }}>{{ flote.code }}</a></li>
-							{% endfor %}
-						</ul>
+				<div class="col-12 col-sm-6 mt-2 container-flotes">
+					<div class="card container-flotes-img">
+						<img src={% static value.image_file %}>
+						<div class="hover-img dropdown">
+							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								{{ key }}
+							</button>
+							<ul class="dropdown-menu">
+								{% for flote in value.flotes %}
+								<li><a class="dropdown-item" href={{ flote.code }}>{{ flote.code }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
 					</div>
 				</div>
 				{% endfor %}
