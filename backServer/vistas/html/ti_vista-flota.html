@@ -57,10 +57,10 @@
 	<section class="flotes">
 		<h2 class="titulo text-center fw-bold">FLOTAS</h2>
 		<div class="container mt-5 mb-5">
-			<div class="row justify-content-md-center">
+			<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
 				{% for key,value in info.items %}
-				<div class="col-12 col-sm-6 mt-2 container-flotes">
-					<div class="card container-flotes-img">
+				<div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mb-5 container-flotes">
+					<div class="card h-100 container-flotes-img">
 						<img src={% static value.image_file %}>
 						<div class="hover-img dropdown">
 							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
