@@ -9,15 +9,31 @@
 </head>
 
 <body>
-    <nav class="nav-bar">
+    <nav class="navbar sticky-top">
         <div class="container-fluid">
-            <div class="nav-desktop logo">
-                <img src={% static 'logo-nav.png' %}>
+            <div class="navbar-brand">
+                <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+                    class="d-inline-block align-text-top">
             </div>
-            <div class="nav-desktop right">
-                <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-                <a class="btn btn-outline-success me-2" href="../flotes" role="button">VOLVER</a>
-            </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item search">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Buscador">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="../flotes" role="button">Volver</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -25,22 +41,22 @@
         <!--<img src="{{ flote.img }}" class="card-img-top" alt="...">-->
         <img src={% static 'cam.png' %} class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{flote.type}}</h5>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{flote.code}}</li>
-            <li class="list-group-item">{{flote.brand}}</li>
-            <li class="list-group-item">{{flote.characteristics}}</li>
-            <li class="list-group-item">{{flote.patent}}</li>
-            <li class="list-group-item">{{flote.production_year}}</li>
-            <li class="list-group-item">{{flote.engine_number}}</li>
-            <li class="list-group-item">{{flote.chassis_number}}</li>
-            <li class="list-group-item">{{flote.status}}</li>
-            <li class="list-group-item">{{flote.justifyStatus}}</li>
-            <li class="list-group-item">{{flote.operators}}</li>
-          </ul>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <h5 class="card-title">{{flote.type}}</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{flote.code}}</li>
+                <li class="list-group-item">{{flote.brand}}</li>
+                <li class="list-group-item">{{flote.characteristics}}</li>
+                <li class="list-group-item">{{flote.patent}}</li>
+                <li class="list-group-item">{{flote.production_year}}</li>
+                <li class="list-group-item">{{flote.engine_number}}</li>
+                <li class="list-group-item">{{flote.chassis_number}}</li>
+                <li class="list-group-item">{{flote.status}}</li>
+                <li class="list-group-item">{{flote.justifyStatus}}</li>
+                <li class="list-group-item">{{flote.operators}}</li>
+            </ul>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
-      </div>
+    </div>
 
 
-{% endblock content %}
+    {% endblock content %}

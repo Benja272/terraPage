@@ -9,35 +9,30 @@
 </head>
 
 <body>
-	<nav class="navbar">
+	<nav class="navbar sticky-top">
 		<div class="container-fluid">
-			<div class="navbar-brand logo">
-				<img src={% static 'logo-nav.png' %}>
+			<div class="navbar-brand">
+				<img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+					class="d-inline-block align-text-top">
 			</div>
-			<form class="d-flex" role="search">
-				<a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-				<input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Buscador">
-				<button class="btn btn-outline-success" type="submit">Buscar</button>
-				<a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
-			</form>
+			<ul class="nav justify-content-end">
+				<li class="nav-item search">
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Buscador">
+						<button class="btn btn-outline-success" type="submit">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form>
+				</li>
+				<li class="nav-item">
+					<a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+				</li>
+				<li class="nav-item">
+					<a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
+				</li>
+			</ul>
 		</div>
 	</nav>
-
-	<!--<nav class="nav-bar">
-		<div class="container-fluid">
-			<div class="nav-desktop logo">
-				<img src={% static 'logo-nav.png' %}>
-			</div>
-			<div class="nav-desktop right">
-				<a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-				<form class="d-flex" role="search">
-					<input class="form-control me-2" type="search" placeholder="Buscador" aria-label="Buscador">
-					<button class="btn btn-outline-success" type="submit">Buscar</button>
-				</form>
-				<a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
-			</div>
-		</div>
-	</nav>-->
 
 	<header class="header">
 		<div class="wave" style="height: 150px; overflow: hidden;">
@@ -49,21 +44,23 @@
 		</div>
 
 	</header>
-	<!--<div> 			<--- hay que llamar a este div de alguna forma desde el css
+
+	<!--<div> 			<--- Esto ya no hace falta?
 		{% for flote in flotes %}
 		<p>{{ flote }}</p>
 		{% endfor %}
 	</div>-->
+
 	<section class="flotes">
 		<h2 class="titulo text-center fw-bold">FLOTAS</h2>
 		<div class="container mt-5 mb-5">
-			<div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+			<div class="row justify-content-center">
 				{% for key,value in info.items %}
-				<div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-5 mb-5 container-flotes">
-					<div class="card h-100 container-flotes-img">
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mt-3 mb-5 container-flotes">
+					<div class="card h-100">
 						<img src={% static value.image_file %}>
-						<div class="hover-img dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+						<div class="card-hover dropdown">
+							<button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
 								aria-expanded="false">
 								{{ key }}
 							</button>

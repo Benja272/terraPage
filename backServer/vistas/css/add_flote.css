@@ -18,57 +18,12 @@ nav {
 	z-index: 100;
 }
 
-.nav-bar {
-	position: sticky;
-	top: 0;
-	display: flex;
-	padding: 0 3%;
-	min-height: 68px;
-	align-items: center;
+.navbar {
+	padding: 0 0 0 1%;
 }
 
-.container-fluid {
-	display: flex;
-}
-
-.nav-desktop {
-	display: flex;
-	align-items: center;
-}
-
-.logo {
-	display: flex;
-}
-
-.logo>img {
-	height: 50px;
-
-}
-
-.nav-desktop a {
-	position: relative;
-	color: white;
-	font-weight: 10;
-	letter-spacing: 0.5px;
-	text-decoration: none !important;
-	margin: 0px 30px;
-}
-
-.nav-desktop>a {
-	color: #fff;
-	font-weight: 300px;
-	margin-right: 10px;
-	font-size: 24px;
-}
-
-.nav-desktop>a:hover {
-	text-decoration: underline;
-}
-
-.right {
-	margin-left: auto;
-	font-size: 27px;
-	color: #fff;
+.search {
+	margin-right: 8px;
 }
 
 .btn-outline-success {
