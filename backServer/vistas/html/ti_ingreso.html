@@ -6,29 +6,52 @@
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_ingreso.css' %}?{% now "U" %}>
 </head>
 
-<body class="container">
-	<div class="flex-container">
-		<div class="form-img">
-			<div class="img-container">
-				<div>
-					<img src={% static 'logo.jpg' %}>
-				</div>
+<body>
+	<div class="alert alert-danger d-flex justify-content-center fade show position-relative" role="alert">
+		{% for message in messages %}
+		<script src="{% static 'alert.js' %}"></script>
+		<p id="messages" class="position-absolute top-0 start-0 translate-middle"></p>{{message}}</p>
+		{% endfor %}
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-9 col-sm-6 col-md-5 col-lg-4 mt-5 mb-5">
+				<form class="form card" action="{% url 'login' %}" method=POST>
+					{% csrf_token %}
+					<img src={% static 'logo.jpg' %} class="card-img-top" alt="...">
+					<div class="card-body">
+						<div class="form-floating mb-2">
+							<input type="email name" required name="username" class="form-control" id="floatingInput"
+								placeholder="Usuario">
+							<label for="floatingInput">Usuario</label>
+						</div>
+						<div class="form-floating mb-2">
+							<input type="password" required name="password" class="form-control" id="password"
+								placeholder="Contraseña">
+							<label for="floatingPassword">Contraseña</label>
+							<i class="bi bi-eye-slash" id="togglePassword"></i>
+						</div>
+						<div class="text-center">
+							<button type="submit" value="Ingresar" class="btn btn-outline-dark">Ingresar</button>
+						</div>
+						<script>
+							const togglePassword = document.querySelector("#togglePassword");
+							const password = document.querySelector("#password");
+
+							togglePassword.addEventListener("click", function () {
+								// toggle the type attribute
+								const type = password.getAttribute("type") === "password" ? "text" : "password";
+								password.setAttribute("type", type);
+
+								// toggle the icon
+								this.classList.toggle("bi-eye");
+							});
+						</script>
+					</div>
+				</form>
 			</div>
 		</div>
-		<form class="form" action="{% url 'login' %}" method=POST>
-			{% csrf_token %}
-			<div class="form__section">
-				<input id="name" name="username" type="email name" required class="form__input" placeholder=" ">
-				<label for="name" class="form__label">Usuario</label>
-			</div>
-			<div class="form__section">
-				<input name="password" type="password" required class="form__input" placeholder="Contraseña">
-			</div>
-			<div class="form__section">
-				<input type="submit" value="Ingresar" class="form__input--active">
-			</div>
-		</form>
 	</div>
-
 </body>
 {% endblock %}

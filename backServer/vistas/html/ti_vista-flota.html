@@ -3,8 +3,6 @@
 {% block content %}
 
 <head>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href={% static 'css/ti_vista-flota.css' %}?{% now "U" %}>
 </head>
 
@@ -53,10 +51,10 @@
 
 	<section class="flotes">
 		<h2 class="titulo text-center fw-bold">FLOTAS</h2>
-		<div class="container mt-5 mb-5">
+		<div class="container mt-5 mb-3">
 			<div class="row justify-content-center">
 				{% for key,value in info.items %}
-				<div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mt-3 mb-5 container-flotes">
+				<div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-4 mt-3 mb-5">
 					<div class="card h-100">
 						<img src={% static value.image_file %}>
 						<div class="card-hover dropdown">
