@@ -13,12 +13,8 @@ body {
 	overflow: hidden;
 }
 
-.alert {
-	z-index: 1000 !important;
-}
-
-.container-fluid {
-	z-index: 100 !important;
+.w-100 {
+	position: absolute;
 }
 
 .card {
