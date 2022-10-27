@@ -53,3 +53,55 @@ nav {
 	max-height: 600px;
 	border: 3px solid #a9a3b9;
 }
+
+.responsive {
+	display: none !important;
+}
+
+@media only screen and (max-width: 670px) {
+	.no-responsive {
+		display: none !important;
+	}
+
+	.responsive {
+		display: flex !important;
+	}
+
+	.fa-arrow-left{
+		padding-top: 3px;
+	}
+
+	.fa-bars{
+		padding-top: 3px;
+	}
+
+	.fa-solid {
+		font-size: 22px;
+	}
+
+	.offcanvas {
+		background: #fff;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.offcanvas-title {
+		color: #fff;
+	}
+
+	.nav-link {
+		color: #fff !important;
+	}
+
+	.nav-link:hover {
+		color: #d2b7d9 !important;
+	}
+
+	.nav-link:active {
+		color: #a570b2 !important;
+	}
+
+}

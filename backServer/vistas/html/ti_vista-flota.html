@@ -8,7 +8,7 @@
 
 <body>
 	<nav class="navbar sticky-top">
-		<div class="container-fluid">
+		<div class="container-fluid no-responsive">
 			<div class="navbar-brand">
 				<img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
 					class="d-inline-block align-text-top">
@@ -30,6 +30,58 @@
 				</li>
 			</ul>
 		</div>
+
+		<div class="container-fluid responsive">
+			<div class="navbar-brand">
+				<img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+					class="d-inline-block align-text-top">
+			</div>
+			<button class="responsive float-end btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+				data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+			<div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Terra Ingenieria</h4>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+						aria-label="Close"></i></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item search">
+							<form class="d-flex mt-3 mb-2" role="search">
+								<input class="form-control me-2" type="search" placeholder="Buscador"
+									aria-label="Buscador">
+								<button class="btn btn-outline-success" type="submit">
+									<i class="fa-solid fa-magnifying-glass"></i>
+								</button>
+							</form>
+						</li>
+						<li class="nav-item mt-3">
+							<a class="nav-link active" href="/flotes/add">Agregar flota</a>
+						</li>
+						<li class="nav-item mt-3">
+							<a class="nav-link active" href="/logout">Cerrar Sesión</a>
+						</li>
+						<!-- <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								Dropdown
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
 	</nav>
 
 	<header class="header">
@@ -40,7 +92,6 @@
 				</path>
 			</svg>
 		</div>
-
 	</header>
 
 	<!--<div> 			<--- Esto ya no hace falta?

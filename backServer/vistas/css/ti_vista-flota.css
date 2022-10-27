@@ -49,7 +49,7 @@ header {
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m1.png);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-size: cover;
-	background-position: center;
+	background-position: center center;
 	position: relative;
 }
 
@@ -110,4 +110,49 @@ header {
 
 .dropdown-item {
 	color: #fff;
+}
+
+.responsive {
+	display: none !important;
+}
+
+
+@media only screen and (max-width: 750px) {
+	.no-responsive {
+		display: none !important;
+	}
+
+	.responsive {
+		display: flex !important;
+	}
+
+	.fa-solid {
+		font-size: 22px;
+	}
+
+	.offcanvas {
+		background: #fff;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+
+	.offcanvas-title {
+		color: #fff;
+	}
+
+	.nav-link {
+		color: #fff !important;
+	}
+
+	.nav-link:hover {
+		color: #d2b7d9 !important;
+	}
+
+	.nav-link:active {
+		color: #a570b2 !important;
+	}
+
 }
