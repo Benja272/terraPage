@@ -139,7 +139,7 @@ header {
 }
 
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 740px) {
 	.no-responsive {
 		display: none !important;
 	}
@@ -154,11 +154,11 @@ header {
 
 	.offcanvas {
 		background: #fff;
-		/* fallback for old browsers */
+		
 		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		/* Chrome 10-25, Safari 5.1-6 */
+		
 		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		
 	}
 
 	.offcanvas-title {
@@ -176,5 +176,5 @@ header {
 	.nav-link:active {
 		color: #a570b2 !important;
 	}
-
+	
 }
