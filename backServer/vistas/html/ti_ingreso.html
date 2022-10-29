@@ -7,18 +7,6 @@
 </head>
 
 <body>
-	<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100">
-		<div class="alert alert-danger fade show" role="alert" aria-live="assertive" aria-atomic="true">
-			<div class="toast-header">
-					{% for message in messages %}
-					<script src="{% static 'alert.js' %}"></script>
-					<p class="fw-semibold" id="messages"></p>{{message}}</p>
-					<!-- retocar -->
-					{% endfor %}
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		</div>
-	</div>
 	<div class="container">
 		<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
 			<div class="col-9 col-sm-9 col-md-6 col-lg-6 col-xl-5 col-xxl-5">
