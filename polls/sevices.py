@@ -23,6 +23,7 @@ def get_type_name(type):
             return t[1]
 
 def flotes():
+    import ipdb;ipdb.set_trace()
     flotes = Flote.objects.all()
     flotes = to_json(flotes)
     res = {}

@@ -26,7 +26,7 @@ class Flote(models.Model):
     model = models.CharField(max_length=50)
     characteristics = models.CharField(max_length=600, blank=True)
     patent = models.CharField(max_length=20, blank=True)
-    production_year = models.DateField(null=True, blank=True)
+    production_year = models.IntegerField(null=True, blank=True)
     engine_number = models.IntegerField(null=True, blank=True)
     chassis_number = models.IntegerField(null=True, blank=True)
     status = models.CharField(choices=STATES, max_length=30)
