@@ -75,24 +75,8 @@
     <div class="input-group mb-3 flex-container">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-            {{hidden}}
-            {% endfor %}
-            {% for field in form %}
-            <span class="input-group-text" id="inputGroup-sizing-default">
-                {{field.name}}
-                {{field}}
-            </span>
-            {% endfor %}
-            <!--<div class="mb-3">
-                <label for="formFileMultiple" class="form-label"> 
-                    {{ imageform.management_form}}
-                    {% for form in imageform %}
-                    {{ form }}
-                    {% endfor %}
-                </label>
-                <input class="form-control" type="file" id="formFileMultiple" multiple>
-            </div>-->
+
+            {{ form.as_p }}
             {{ imageform.management_form}}
             {% for form in imageform %}
             {{ form }}

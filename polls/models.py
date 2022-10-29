@@ -1,8 +1,7 @@
-from email.mime import image
-from tokenize import blank_re
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
+
 
 STATES = [
     ('GRE', 'VERDE'),
@@ -60,3 +59,5 @@ class Maintenance(models.Model):
 class Image(models.Model):
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
+
+
