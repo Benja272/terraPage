@@ -21,7 +21,7 @@ nav {
 	margin-right: 8px;
 }
 
-.btn-lg{
+.btn-lg {
 	--bs-btn-font-weight: 800;
 	letter-spacing: 2px;
 }
@@ -154,11 +154,11 @@ header {
 
 	.offcanvas {
 		background: #fff;
-		
+
 		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		
+
 		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		
+
 	}
 
 	.offcanvas-title {
@@ -176,5 +176,5 @@ header {
 	.nav-link:active {
 		color: #a570b2 !important;
 	}
-	
+
 }
