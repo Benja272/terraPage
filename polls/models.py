@@ -12,7 +12,7 @@ STATES = [
 FLOTE_TYPES = [
     ('CAM', 'CAMIONETA'),
     ('RET', 'RETROESCAVADORA'),
-    ('CAR', 'CARRETON'),
+    ('CAR', 'CARRETÓN'),
     ('MOT', 'MOTONIVELADORA'),
     ('CAO', 'CAMIÓN'),
     ('TAN', 'TANQUE DE COMBUSTIBLE'),

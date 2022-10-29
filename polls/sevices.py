@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 FLOTES_IMAGES = {
     'RETROESCAVADORA': "retro.png",
     'CAMIONETA': "cam.png",
-    'CARRETON': "carre.png",
+    'CARRETÓN': "carre.png",
     'TANQUE REGADOR': "tar.png",
     'TANQUE DE COMBUSTIBLE': "tac.png",
     'MOTONIVELADORA': "motn.png",
