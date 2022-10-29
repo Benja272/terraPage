@@ -17,7 +17,13 @@ FLOTES_IMAGES = {
     'CAMIÓN': "can.png",
 }
 
+def get_type_name(type):
+    for t in FLOTE_TYPES:
+        if type == t[0]:
+            return t[1]
+
 def flotes():
+    import ipdb;ipdb.set_trace()
     flotes = Flote.objects.all()
     flotes = to_json(flotes)
     res = {}
@@ -25,7 +31,7 @@ def flotes():
         res[type[1]] = {'flotes': []}
         res[type[1]]['image_file'] = FLOTES_IMAGES[type[1]]
     for flote in flotes:
-        flote_type = flote['fields']['type']
+        flote_type = get_type_name(flote['fields']['type'])
         flote['fields']['code'] = flote['pk']
         res[flote_type]['flotes'].append(flote['fields'])
     logger.error(res)

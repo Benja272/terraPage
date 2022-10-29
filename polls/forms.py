@@ -1,7 +1,7 @@
 from django.db import models  
 from django.forms import fields , ModelForm , ClearableFileInput, ImageField
 from django import forms 
-from polls.models import Flote, Image, STATES
+from polls.models import Flote, Image, STATES, FLOTE_TYPES
 
 FIELDS_TRANSLATE = {
     'type': 'Tipo',
@@ -39,7 +39,8 @@ class FloteForm(ModelForm):
         fields = '__all__'
         labels = FIELDS_TRANSLATE
         status = forms.ChoiceField(choices=STATES)
-        type = forms.ChoiceField()
+        type = forms.ChoiceField(choices=FLOTE_TYPES)
+
         widgets = {
             'type': forms.Select(attrs=CSS_CLASS['type']),
             'code': forms.TextInput(attrs=CSS_CLASS['code']),
