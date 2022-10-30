@@ -1,20 +1,14 @@
 body {
 	background: #654ea3;
-	/* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666));
-	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666));
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	font-family: 'Poppins', sans-serif
 }
 
 nav {
 	background: #fff;
-	/* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../logo-m.png);
-	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../logo-m.png);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	z-index: 100;
 }
 
@@ -73,11 +67,11 @@ nav {
 		display: flex !important;
 	}
 
-	.fa-arrow-left{
+	.fa-arrow-left {
 		padding-top: 3px;
 	}
 
-	.fa-bars{
+	.fa-bars {
 		padding-top: 3px;
 	}
 
@@ -87,14 +81,12 @@ nav {
 
 	.offcanvas {
 		background: #fff;
-		/* fallback for old browsers */
 		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		/* Chrome 10-25, Safari 5.1-6 */
 		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 
 	.offcanvas-title {
+		letter-spacing: .8px;
 		color: #fff;
 	}
 

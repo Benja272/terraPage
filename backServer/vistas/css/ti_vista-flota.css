@@ -5,16 +5,18 @@ body {
 
 nav {
 	background: #fff;
-	/* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../logo-m.png);
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../logo-m.png);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	z-index: 100;
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../white.png);
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../white.png);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	overflow: hidden;
 }
 
 .navbar {
 	padding: 0 0 0 1%;
+	display: flex;
 }
 
 .search {
@@ -65,11 +67,8 @@ header {
 	display: flex;
 	height: 600px;
 	background: #654ea3;
-	/* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m1.png);
-	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.666), hsla(284, 100%, 9%, 0.666)), url(../logo-m1.png);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-size: cover;
 	background-position: center center;
 	position: relative;
@@ -154,14 +153,12 @@ header {
 
 	.offcanvas {
 		background: #fff;
-
 		background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-
 		background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-
 	}
 
 	.offcanvas-title {
+		letter-spacing: .8px;
 		color: #fff;
 	}
 
