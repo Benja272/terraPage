@@ -1,11 +1,8 @@
 body {
 	background: #fff;
 	min-height: 100vh;
-	/* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../fondo-in1.png);
-	/* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../fondo-in1.png);
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	background-size: cover;
 	background-position: bottom center;
 	background-attachment: fixed;

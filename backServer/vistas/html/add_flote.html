@@ -74,12 +74,11 @@
     </nav>
 
     <div class="container">
-        <div class="d-flex justify-content-center align-items-center">
-            <!--  style="height: 120vh;" comprobar en mi compu-->
+        <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post row" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
 
                             {% for field in form %}
@@ -88,16 +87,17 @@
                                 {{ field }}
                             </div>
                             {% endfor %}
-                            <div class="mt-3">
-                                <label for="formFileMultiple" class="form-label"> Foto de la flota
+                            <div class="mt-2">
+                                <label for="formFileMultiple col-sm-6" class="form-label"> Foto de la flota
                                 </label>
                                 {{ imageform.management_form}}
                                 {% for form in imageform %}
-                                {{ form }}
+                                <div class="col-sm-10">
+                                    {{ form }}
+                                </div>
                                 {% endfor %}
                             </div>
-                            <br>
-                            <button type="submit" value="Ingresar" class="btn btn-outline-dark">Crear</button>
+                            <button type="submit" class="btn btn-outline-dark mt-3">Crear</button>
                         </form>
                     </div>
                 </div>
