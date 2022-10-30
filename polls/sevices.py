@@ -23,6 +23,7 @@ def get_type_name(type):
             return t[1]
 
 def flotes():
+    # import ipdb;ipdb.set_trace()
     flotes = Flote.objects.all()
     flotes = to_json(flotes)
     res = {}
@@ -42,7 +43,8 @@ def flote_by_code(code):
     res = None
     image = None
     if json_flotes:
-        res = json_flotes[0]['fields']
+        json_flotes = fix_operators(json_flotes)
+        res = json_flotes[0]['fields']    
         images = Image.objects.filter(flote=flotes[0])
         if images:
             image = images[0].image.url
@@ -51,20 +53,11 @@ def flote_by_code(code):
         print(res)
         return res
 
-def flote_create(request):
-    name = request.POST['name']
-    code = request.POST['code']
-    brand = request.POST['brand']
-    model = request.POST['model']
-    characteristics = request.POST['characteristics']
-    patent = request.POST['patent']
-    production_year = request.POST['production_year']
-    engine_number = request.POST['engine_number']
-    chassis_number = request.POST['chassis_number']
-    status = request.POST['status']
-    justifyStatus = request.POST['justifyStatus']
-    operators = request.POST['operators']
-    views = request.POST['views']
+def fix_operators(json_flotes):
+    operators = json_flotes[0]['fields']['operators'].replace('"', '')
+    operators = operators[1:len(operators)-1]
+    json_flotes[0]['fields']['operators'] = operators
+    return json_flotes
 
 def to_json(entities):
     if entities:

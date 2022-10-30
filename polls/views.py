@@ -1,14 +1,13 @@
 # Create your views here.
-from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from polls.forms import FloteForm, ImageForm
-from polls.sevices import flotes, flote_by_code, flote_create, login_service
+from polls.forms import FloteForm, ImageForm, MaintenanceForm
+from polls.sevices import flotes, flote_by_code, login_service
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote
+from datetime import datetime
 
 import logging
 logger = logging.getLogger(__name__)
@@ -31,11 +30,6 @@ def get_flotes_page(request):
     logger.info(json_flotes)
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
-
-@allowed_users(allowed_roles=['admin'])
-def create_flote(request):
-    if request.method == "POST":
-        flote_create(request)
 
 # auth
 
@@ -62,12 +56,10 @@ def add_flote(request):
         form = FloteForm(request.POST, request.FILES)
         files = request.FILES.getlist("image")
         if form.is_valid():
-            form.save()
-            flote = Flote.objects.get(code=request.POST["code"])
+            flote = form.save()
+            # flote = Flote.objects.get(code=request.POST["code"])
             for image in files:
                 Image.objects.create(flote=flote, image=image)
-            # Getting the current instance object to display in the template
-            img_object = form.instance
             messages.success(request, "Flota Agregada!")
             return redirect("/home/")
         else:
@@ -77,7 +69,27 @@ def add_flote(request):
         image_form = ImageForm()
         return render(request, 'add_flote.html', {'form': form, "imageform": image_form})
 
-
+@allowed_users(allowed_roles=['admin'])
+def add_repair(request, code):
+    if request.method == 'POST':
+        flote = Flote.objects.get(code=code)
+        post = request.POST.copy()
+        post['flote'] = flote.code
+        post['date'] = datetime.now()
+        form = MaintenanceForm(post)
+        if form.is_valid() and flote:
+            form.save()
+            messages.success(request, "Se registro correctamente!")
+            return redirect("/home/")
+        else:
+            print(form.errors)
+    else:
+        images = Image.objects.filter(flote__code = code)
+        image_url = images[0].image.url if images else ""
+        form = MaintenanceForm()
+        fields = {"array": ['Tipo', 'Kilometraje', 'Descripción', 'Costo']}
+        return render(request, 'add_maintenance.html',\
+            {'form': form, 'image_url': image_url, "avoid_fields": fields})
 
 
 

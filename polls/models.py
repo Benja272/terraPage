@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 from django.contrib.postgres.fields import ArrayField
+
 
 
 STATES = [
@@ -34,7 +36,7 @@ class Flote(models.Model):
     operators = ArrayField(models.CharField(max_length=50, blank=True), default=list)
 
     def __str__(self):
-        return "%s %s %s" % (self.type, self.code, self.status)
+        return "%s %s" % (self.code, self.brand)
 
 MAINTENANCE_TYPES = [
     ('REP', 'REPAIR'),
@@ -42,11 +44,11 @@ MAINTENANCE_TYPES = [
 ]
 class Maintenance(models.Model):
     type = models.CharField(choices=MAINTENANCE_TYPES, max_length=30)
-    date = models.DateField()
+    date = models.DateField(null=True, blank=True)
     mileage = models.IntegerField() #kilometraje
     description = models.CharField(max_length=600)
     cost = models.FloatField()
-    flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
+    flote = models.ForeignKey(Flote, on_delete=models.CASCADE, null=True, blank=True)
 
 
     class Meta:
