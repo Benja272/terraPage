@@ -8,29 +8,29 @@ FIELDS_TRANSLATE = {
     'code': 'Código',
     'brand': 'Marca',
     'model': 'Modelo',
-    'characteristics': 'Caracteristicas',
+    'characteristics': 'Características',
     'patent': 'Patente',
     'production_year': 'Año de Producción',
-    'engine_number': 'Numero de Motor',
-    'chassis_number': 'Numero de Chassis',
+    'engine_number': 'Número de Motor',
+    'chassis_number': 'Número de Chasis',
     'status': 'Estado',
     'justifyStatus': 'Justificación del Estado',
     'operators': 'Operadores'
 }
 
 CSS_CLASS = {
-    'type': {'class': 'card'},
-    'code': {'class': 'card'},
-    'brand': {'class': 'card'},
-    'model': {'class': 'card'},
-    'characteristics': {'class': 'card'},
-    'patent': {'class': 'card'},
-    'production_year': {'class': 'card'},
-    'engine_number': {'class': 'card'},
-    'chassis_number': {'class': 'card'},
-    'status': {'class': 'card'},
-    'justifyStatus': {'class': 'card'},
-    'operators':{'class': 'card'} 
+    'type': {'class': 'form-select',},
+    'code': {'class': 'form-control'},
+    'brand': {'class': 'form-control'},
+    'model': {'class': 'form-control'},
+    'characteristics': {'class': 'form-control'},
+    'patent': {'class': 'form-control'},
+    'production_year': {'class': 'form-control'},
+    'engine_number': {'class': 'form-control'},
+    'chassis_number': {'class': 'form-control'},
+    'status': {'class': 'form-select'},
+    'justifyStatus': {'class': 'form-control'},
+    'operators':{'class': 'form-control'} 
 }
   
 class FloteForm(ModelForm):
@@ -44,13 +44,22 @@ class FloteForm(ModelForm):
         widgets = {
             'type': forms.Select(attrs=CSS_CLASS['type']),
             'code': forms.TextInput(attrs=CSS_CLASS['code']),
+            'brand': forms.TextInput(attrs=CSS_CLASS['brand']),
+            'model': forms.TextInput(attrs=CSS_CLASS['model']),
+            'characteristics': forms.TextInput(attrs=CSS_CLASS['characteristics']),
+            'patent': forms.TextInput(attrs=CSS_CLASS['patent']),
+            'production_year': forms.NumberInput(attrs=CSS_CLASS['production_year']),
+            'engine_number': forms.NumberInput(attrs=CSS_CLASS['engine_number']),
+            'chassis_number': forms.NumberInput(attrs=CSS_CLASS['chassis_number']),
             'status': forms.Select(attrs=CSS_CLASS['status']),
+            'justifyStatus': forms.TextInput(attrs=CSS_CLASS['justifyStatus']),
+            'operators': forms.TextInput(attrs=CSS_CLASS['operators']),
         }
 
 class ImageForm(ModelForm):
     image = ImageField(
         label="Fotos de la flota",
-        widget=ClearableFileInput(attrs={"multiple": True}),
+        widget=ClearableFileInput(attrs={"multiple": True, "class": "form-control"}),
     ) 
 
     class Meta:
