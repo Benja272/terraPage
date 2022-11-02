@@ -17,7 +17,7 @@ FIELDS_FLOTE_TRANSLATE = {
     'chassis_number': 'Número de Chasis',
     'status': 'Estado',
     'justifyStatus': 'Justificación del Estado',
-    'operators': 'Operadores (Ingresar nombres separados por comas)'
+    'operators': 'Operadores'
 }
 
 FIELDS_MAINTENANCE_TRANSLATE = {
@@ -39,7 +39,7 @@ CSS_FLOTE_CLASS = {
     'chassis_number': {'class': 'form-control'},
     'status': {'class': 'form-select'},
     'justifyStatus': {'class': 'form-control'},
-    'operators':{'class': 'form-control'} 
+    'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
 }
 
 CSS_MAINTENANCE_CLASS = {
@@ -54,8 +54,7 @@ class FloteForm(ModelForm):
         labels = FIELDS_FLOTE_TRANSLATE
         status = forms.ChoiceField(choices=STATES)
         type = forms.ChoiceField(choices=FLOTE_TYPES)
-        operators = SimpleArrayField(forms.TextInput(attrs=CSS_FLOTE_CLASS['operators']))
-
+       
         widgets = {
             'type': forms.Select(attrs=CSS_FLOTE_CLASS['type']),
             'code': forms.TextInput(attrs=CSS_FLOTE_CLASS['code']),
@@ -68,6 +67,7 @@ class FloteForm(ModelForm):
             'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS['chassis_number']),
             'status': forms.Select(attrs=CSS_FLOTE_CLASS['status']),
             'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS['justifyStatus']),
+            'operators' : forms.TextInput(attrs=CSS_FLOTE_CLASS['operators'])
         }
 
 class ImageForm(ModelForm):
