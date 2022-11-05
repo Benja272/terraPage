@@ -126,7 +126,7 @@ header {
 
 .dropdown-menu {
 	background-color: #272727e6;
-	z-index: 1000;
+	max-height: 40%;
 }
 
 .dropdown-item {

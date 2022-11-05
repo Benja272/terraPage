@@ -44,7 +44,11 @@ CSS_FLOTE_CLASS = {
 
 CSS_MAINTENANCE_CLASS = {
     'flote': {'type': 'hidden'},
-    'date': {'type': 'hidden'}
+    'date': {'type': 'hidden'},
+    'type': {'class': 'form-select'},
+    'mileage': {'class': 'form-control'},
+    'cost': {'class': 'form-control'},
+    'description': {'class': 'form-control'}
 }
   
 class FloteForm(ModelForm):
@@ -88,6 +92,10 @@ class MaintenanceForm(ModelForm):
         # fields = ['type','mileage','description','cost']
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
-            'flote': forms.TextInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
-            'date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date'])
+            'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
+            'date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date']),
+            'type': forms.Select(attrs=CSS_MAINTENANCE_CLASS['type']),
+            'mileage': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['mileage']),
+            'cost': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['cost']),
+            'description': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['description'])
         }

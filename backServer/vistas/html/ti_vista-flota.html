@@ -109,7 +109,7 @@
 								data-bs-toggle="dropdown" aria-expanded="false">
 								{{ key }}
 							</button>
-							<ul class="dropdown-menu">
+							<ul class="dropdown-menu overflow-auto">
 								{% for flote in value.flotes %}
 								<li><a class="dropdown-item" href={{ flote.code }}>{{ flote.code }}</a></li>
 								{% endfor %}
