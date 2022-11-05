@@ -18,8 +18,11 @@ logger = logging.getLogger(__name__)
 @login_required(login_url='/home/')
 def get_flote_by_code(request, code):
     flote = flote_by_code(code)
-    return render(request, 'flota.html', {'flote': flote})
-
+    if flote:
+        return render(request, 'flota.html', {'flote': flote})
+    else:
+        messages.error(request, ("La flota no existe."))
+        return redirect("/home/flotes")
 
 @unauthenticated_user
 def get_home_page(request):
@@ -28,6 +31,9 @@ def get_home_page(request):
 
 @login_required(login_url='/home/')
 def get_flotes_page(request):
+    if request.method == 'POST':
+        print("/home/flotes/" + request.POST['code'])
+        return redirect("/home/flotes/" + request.POST['code'])
     json_flotes = flotes()
     logger.info(json_flotes)
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
@@ -63,7 +69,7 @@ def add_flote(request):
             for image in files:
                 Image.objects.create(flote=flote, image=image)
             messages.success(request, "Flota Agregada!")
-            return redirect("/home/")
+            return redirect("/home/flotes")
         else:
             print(form.errors)
     else:
@@ -82,7 +88,7 @@ def add_repair(request, code):
         if form.is_valid() and flote:
             form.save()
             messages.success(request, "Se registro correctamente!")
-            return redirect("/home/")
+            return redirect("/home/flotes")
         else:
             print(form.errors)
     else:

@@ -39,13 +39,13 @@ class Flote(models.Model):
         return "%s %s" % (self.code, self.brand)
 
 MAINTENANCE_TYPES = [
-    ('REP', 'REPAIR'),
-    ('MAN', 'MAINTENANCE')
+    ('REP', 'REPARACIÓN'),
+    ('MAN', 'MANTENIMIENTO')
 ]
 class Maintenance(models.Model):
     type = models.CharField(choices=MAINTENANCE_TYPES, max_length=30)
     date = models.DateField(null=True, blank=True)
-    mileage = models.IntegerField() #kilometraje
+    mileage = models.IntegerField()
     description = models.CharField(max_length=600)
     cost = models.FloatField()
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE, null=True, blank=True)
