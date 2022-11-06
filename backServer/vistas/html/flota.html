@@ -15,7 +15,8 @@
             </div>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}" role="button">Mantenimiento de {{ flote.code }}</a>
+                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}"
+                        role="button">Mantenimiento de {{ flote.code }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
@@ -87,9 +88,20 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-center">{{flote.type}}</h5>
-                        <ul class="list-group list-group-flush text-center">
+                    <div class="card-body" style="width: 100%;">
+                        <div class="card-title">
+                            <h5 class="text-center">{{flote.type}}</h5>
+                            <div id="container" class="text-end">
+                                <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button type="submit" id="end-editing" class="btn btn-outline-dark btn-sm">
+                                    <i class="fa-solid fa-check"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <ul id="edit" class="list-group list-group-flush text-center">
                             <li class="list-group-item">{{flote.code}}</li>
                             <li class="list-group-item">{{flote.brand}}</li>
                             <li class="list-group-item">{{flote.characteristics}}</li>
@@ -101,6 +113,21 @@
                             <li class="list-group-item">{{flote.justifyStatus}}</li>
                             <li class="list-group-item">{{flote.operators}}</li>
                         </ul>
+                        <script>
+                            const paragraph = document.getElementById("edit");
+                            const edit_button = document.getElementById("edit-button");
+                            const end_button = document.getElementById("end-editing");
+
+                            edit_button.addEventListener("click", function () {
+                                paragraph.contentEditable = true;
+                                paragraph.style.backgroundColor = "#fff";
+                            });
+
+                            end_button.addEventListener("click", function () {
+                                paragraph.contentEditable = false;
+                                paragraph.style.backgroundColor = "#fff";
+                            })
+                        </script>
                     </div>
                 </div>
             </div>

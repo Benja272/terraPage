@@ -41,6 +41,23 @@ nav {
 	--bs-gradient: none;
 }
 
+.btn-outline-dark {
+	--bs-btn-color: #000;
+	--bs-btn-border-color: #ced4da;
+	--bs-btn-hover-color: #fff;
+	--bs-btn-hover-bg: #654ea3;
+	--bs-btn-hover-border-color: #654ea3;
+	--bs-btn-focus-shadow-rgb: 33, 37, 41;
+	--bs-btn-active-color: #fff;
+	--bs-btn-active-bg: #22002e;
+	--bs-btn-active-border-color: #22002e;
+	--bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	--bs-btn-disabled-color: #000;
+	--bs-btn-disabled-bg: transparent;
+	--bs-btn-disabled-border-color: #ced4da;
+	--bs-gradient: none;
+}
+
 .card {
 	align-items: center;
 	justify-content: center;
