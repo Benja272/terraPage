@@ -17,7 +17,8 @@
 				<li class="nav-item search">
 					<form method="post" class="d-flex" enctype="multipart/form-data">
 						{% csrf_token %}
-						<input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador" aria-label="Buscador">
+						<input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
+							aria-label="Buscador">
 						<button class="btn btn-outline-success" type="submit">
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
@@ -51,9 +52,10 @@
 				<div class="offcanvas-body">
 					<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 						<li class="nav-item search">
-							<form class="d-flex mt-3 mb-2" role="search">
-								<input class="form-control me-2" type="search" placeholder="Buscador"
-									aria-label="Buscador">
+							<form method="post" class="d-flex mt-3 mb-2" enctype="multipart/form-data">
+								{% csrf_token %}
+								<input class="form-control me-2" name="code" id="search" type="search"
+									placeholder="Buscador" aria-label="Buscador">
 								<button class="btn btn-outline-success" type="submit">
 									<i class="fa-solid fa-magnifying-glass"></i>
 								</button>

@@ -23,8 +23,8 @@ FIELDS_FLOTE_TRANSLATE = {
 FIELDS_MAINTENANCE_TRANSLATE = {
     'type': 'Tipo',
     'mileage': 'Kilometraje',
-    'description': 'Descripción',
-    'cost': 'Costo'
+    'cost': 'Costo',
+    'description': 'Descripción'
 }
 
 CSS_FLOTE_CLASS = {
@@ -89,7 +89,7 @@ class MaintenanceForm(ModelForm):
     class Meta:
         model = Maintenance
         fields = '__all__'
-        # fields = ['type','mileage','description','cost']
+        # fields = ['type','mileage','cost', 'description']
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
             'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
