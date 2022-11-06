@@ -29,17 +29,14 @@
                 </li>
             </ul>
         </div>
-
         <div class="container-fluid responsive">
             <div class="navbar-brand">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </div>
-
             <div class="nav justify-content-end">
                 <a class="nav-item btn btn-outline-success me-2" href="/home/flotes" role="button">
                     <i class="fa-solid fa-arrow-left"></i></a>
-
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fa-solid fa-bars"></i>
@@ -52,7 +49,11 @@
                             aria-label="Close"></i></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">    
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}"
+                                    role="button">Mantenimiento de {{ flote.code }}</a>
+                            </li>
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
                             </li>
@@ -100,7 +101,6 @@
                                 </button>
                             </div>
                         </div>
-
                         <ul id="edit" class="list-group list-group-flush text-center">
                             <li class="list-group-item">{{flote.code}}</li>
                             <li class="list-group-item">{{flote.brand}}</li>

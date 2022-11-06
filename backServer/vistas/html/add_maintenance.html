@@ -15,6 +15,10 @@
             </div>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}" role="button">Historial
+                        de {{ flote.code }}</a> <!-- cambiar href por nueva url, a la de abajo tambien -->
+                </li>
+                <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
                 </li>
                 <li class="nav-item">
@@ -25,17 +29,14 @@
                 </li>
             </ul>
         </div>
-
         <div class="container-fluid responsive">
             <div class="navbar-brand">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </div>
-
             <div class="nav justify-content-end">
                 <a class="nav-item btn btn-outline-success me-2" href="/home/flotes" role="button">
                     <i class="fa-solid fa-arrow-left"></i></a>
-
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fa-solid fa-bars"></i>
@@ -49,6 +50,10 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}" role="button">Historial de
+                                    {{ flote.code }}</a> <!-- cambiar href por nueva url -->
+                            </li>
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
                             </li>
@@ -81,7 +86,6 @@
                             {% endif %}
                             {% endfor %}
                             <button type="submit" class="btn btn-outline-dark mt-3 float-end">Crear</button>
-                        </form>
                         </form>
                     </div>
                 </div>

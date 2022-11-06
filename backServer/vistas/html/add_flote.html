@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href={% static 'css/add_flote.css' %}?{% now "U" %}>
 </head>
 
-<body>
+<body>  
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
             <div class="navbar-brand">
@@ -22,17 +22,14 @@
                 </li>
             </ul>
         </div>
-
         <div class="container-fluid responsive">
             <div class="navbar-brand">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </div>
-
             <div class="nav justify-content-end">
                 <a class="nav-item btn btn-outline-success me-2" href="/home/flotes" role="button">
                     <i class="fa-solid fa-arrow-left"></i></a>
-
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fa-solid fa-bars"></i>
@@ -63,7 +60,6 @@
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-
                             {% for field in form %}
                             <label class="col-sm-6 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
                             <div class="col-sm-10">
