@@ -50,6 +50,9 @@ def flote_by_code(code):
             image = images[0].image.url
             res['img'] = image
         res['code'] = json_flotes[0]['pk']
+        for type in FLOTE_TYPES:
+            if res['type'] == type[0]:
+                res['type'] = type[1]
         print(res)
         return res
 
