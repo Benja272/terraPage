@@ -5,9 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm, MaintenanceForm
-from polls.sevices import flotes, flote_by_code, login_service
+from polls.sevices import flotes, flote_by_code, login_service, maintenances
 from polls.decorators import unauthenticated_user, allowed_users
-from polls.models import Image, Flote
+from polls.models import Image, Flote, Maintenance
 from datetime import datetime
 from django.db.models import Q
 
@@ -35,7 +35,6 @@ def get_flotes_page(request):
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
     json_flotes = flotes()
-    logger.info(json_flotes)
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
 
@@ -97,9 +96,13 @@ def add_repair(request, code):
         form = MaintenanceForm()
         fields = {"array": ['Tipo', 'Kilometraje', 'Descripción', 'Costo']}
         return render(request, 'add_maintenance.html',\
-            {'form': form, 'image_url': image_url, "avoid_fields": fields})
+            {'form': form, 'image_url': image_url, "avoid_fields": fields, "code": code})
 
-
+@allowed_users(allowed_roles=['admin'])
+def list_repair(request, code):
+    xs = maintenances(code)
+    print(xs)
+    return render(request, 'maintenance_history.html', {'list': xs, 'code': code})
 
 # def register_user(request):
 #     if request.method == "POST":

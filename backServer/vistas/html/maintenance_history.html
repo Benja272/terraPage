@@ -18,7 +18,7 @@
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}" role="button">Volver</a>
+                    <a class="btn btn-outline-success me-2" href="../add_repair/{{ code }}" role="button">Volver</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
@@ -58,17 +58,22 @@
             </div>
         </div>
     </nav>
-
+    {% for repair in list%}
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
-                        <p><b>Insertar aca contenido deseable (borrar esto)</b></p>
+                        <p><b>{{ repair.type }}</b></p>
+                        <p><b>{{ repair.date }}</b></p>
+                        <p><b>{{ repair.milage }}</b></p>
+                        <p><b>{{ repair.description }}</b></p>
+                        <p><b>{{ repair.cost }}</b></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 </body>
 {% endblock content %}

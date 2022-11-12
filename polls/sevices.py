@@ -23,7 +23,6 @@ def get_type_name(type):
             return t[1]
 
 def flotes():
-    # import ipdb;ipdb.set_trace()
     flotes = Flote.objects.all()
     flotes = to_json(flotes)
     res = {}
@@ -77,3 +76,12 @@ def login_service(request, username, password):
         messages.success(request, "Usuario o Contraseña erroneos, por favor intente de nuevo.")
         redirect_url = '/home/'
     return redirect_url
+
+def maintenances(code):
+    query = list(Maintenance.objects.filter(flote__code = code))
+    for maintenance in query:
+        if maintenance.type == "REP":
+            maintenance.type = "Reparación"
+        else:
+            maintenance.type = "Mantenimiento" 
+    return query

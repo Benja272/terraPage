@@ -15,14 +15,14 @@
             </div>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}" role="button">Historial
-                        de {{ flote.code }}</a> <!-- cambiar href por nueva url, a la de abajo tambien -->
+                    <a class="btn btn-outline-success me-2" href="../repair/{{ code }}" role="button">Historial
+                        de {{ code }}</a> <!-- cambiar href por nueva url, a la de abajo tambien -->
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="../flotes" role="button">Volver</a>
+                    <a class="btn btn-outline-success me-2" href="../{{ code }}" role="button">Volver</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>

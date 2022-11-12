@@ -55,7 +55,7 @@ class Maintenance(models.Model):
         ordering = ['date']
 
     def __str__(self):
-        return "%s %s" % (self.type, self.date, self.flote.__str__())
+        return "%s %s" % (self.type, self.flote.__str__())
 
 
 class Image(models.Model):
