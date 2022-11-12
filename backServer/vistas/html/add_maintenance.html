@@ -9,20 +9,22 @@
 <body>
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
-            <div class="navbar-brand">
+            <a class="navbar-brand" href="../flotes">
+                <!-- Arreglar ventana emergente que aparece de onda cuando se vuelve al home (tambien pasa desde el history) -->
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
-            </div>
+            </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
+                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                        <i class="fa-solid fa-arrow-left"></i></a>
+                </li>
+                <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="../repair/{{ code }}" role="button">Historial
-                        de {{ code }}</a> <!-- cambiar href por nueva url, a la de abajo tambien -->
+                        de {{ code }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="../{{ code }}" role="button">Volver</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
@@ -35,7 +37,7 @@
                     class="d-inline-block align-text-top">
             </div>
             <div class="nav justify-content-end">
-                <a class="nav-item btn btn-outline-success me-2" href="/home/flotes" role="button">
+                <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
                     <i class="fa-solid fa-arrow-left"></i></a>
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -52,7 +54,7 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="add_repair/{{ flote.code }}" role="button">Historial de
-                                    {{ flote.code }}</a> <!-- cambiar href por nueva url -->
+                                    {{ flote.code }}</a>
                             </li>
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
