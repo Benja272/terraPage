@@ -2,6 +2,7 @@ import json
 from django.core import serializers
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import *
 from .models import *
 
 import logging
@@ -33,11 +34,14 @@ def flotes():
         flote_type = get_type_name(flote['fields']['type'])
         flote['fields']['code'] = flote['pk']
         res[flote_type]['flotes'].append(flote['fields'])
-    logger.error(res)
     return res
 
 def flote_by_code(code):
     flotes = Flote.objects.filter(code=code)
+    flote_in_db = None
+    if flotes:
+        flote_in_db = flotes.first()
+
     json_flotes = to_json(flotes)
     res = None
     image = None
@@ -46,14 +50,13 @@ def flote_by_code(code):
         res = json_flotes[0]['fields']    
         images = Image.objects.filter(flote=flotes[0])
         if images:
-            image = images[0].image.url
-            res['img'] = image
+            images = map(lambda x: x.image.url, images)
+            res['images'] = images
         res['code'] = json_flotes[0]['pk']
         for type in FLOTE_TYPES:
             if res['type'] == type[0]:
                 res['type'] = type[1]
-        print(res)
-        return res
+        return res, flote_in_db
 
 def fix_operators(json_flotes):
     operators = json_flotes[0]['fields']['operators'].replace('"', '')
@@ -79,9 +82,15 @@ def login_service(request, username, password):
 
 def maintenances(code):
     query = list(Maintenance.objects.filter(flote__code = code))
+    query.sort(key= lambda x: x.date)
     for maintenance in query:
         if maintenance.type == "REP":
             maintenance.type = "Reparación"
         else:
             maintenance.type = "Mantenimiento" 
     return query
+
+def create_images(flote, files):
+    for image in files:
+        if not Image.objects.filter(flote=flote, image=image):
+            Image.objects.create(flote=flote, image=image)

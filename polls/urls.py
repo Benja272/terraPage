@@ -10,5 +10,7 @@ urlpatterns = [path('home/', views.get_home_page, name='home_page'),
                path('logout', views.logout_user, name='logout'),
                path('flotes/add', views.add_flote, name='add_flote'),
                path('home/flotes/add_repair/<str:code>', views.add_repair, name='add_repair'),
-               path('home/flotes/repair/<str:code>', views.list_repair, name='add_repair')
+               path('home/flotes/repair/<str:code>', views.list_repair, name='repair'),
+               path('delete/flote/<str:code>', views.delete_flote, name='delete_flote'),
+               path('delete/repair/<str:pk>', views.delete_repair, name='delete_repair'),
                ]

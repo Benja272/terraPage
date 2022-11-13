@@ -19,8 +19,8 @@
                         role="button">Mantenimiento de {{ flote.code }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="../repair/{{ flote.code }}" role="button">Historial
-                        de {{ flote.code }}</a> <!-- Arreglar -->
+                    <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
+                        de {{ flote.code }}</a> 
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
@@ -54,8 +54,8 @@
                                     role="button">Mantenimiento de {{ flote.code }}</a>
                             </li>
                             <li class="nav-item mt-3">
-                                <a class="nav-link active" href="../repair/{{ flote.code }}" role="button">Historial
-                                    de {{ flote.code }}</a> <!-- Arreglar -->
+                                <a class="nav-link active" href="repair/{{ flote.code }}" role="button">Historial
+                                    de {{ flote.code }}</a>
                             </li>
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
@@ -95,6 +95,7 @@
                     <div class="card-body" style="width: 100%;">
                         <div class="card-title">
                             <h5 class="text-center">{{flote.type}}</h5>
+                            {% if correct_group %}
                             <div id="container" class="text-end"> <!-- Hacer que lo editado quede guardado en la base de datos -->
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -103,8 +104,9 @@
                                     <i class="fa-solid fa-check"></i>
                                 </button>
                             </div>
+                            {% endif %}
                         </div>
-                        <ul id="edit" class="list-group list-group-flush text-center">
+                        <!-- <ul id="edit" class="list-group list-group-flush text-center">
                             <li class="list-group-item">{{flote.code}}</li>
                             <li class="list-group-item">{{flote.brand}}</li>
                             <li class="list-group-item">{{flote.characteristics}}</li>
@@ -115,6 +117,28 @@
                             <li class="list-group-item">{{flote.status}}</li>
                             <li class="list-group-item">{{flote.justifyStatus}}</li>
                             <li class="list-group-item">{{flote.operators}}</li>
+                        </ul> -->
+                        <ul id="edit" class="list-group list-group-flush text-center">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% for field in update_form %}
+                                <label class="col-sm-6 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                                <div class="col-sm-10">
+                                    {{ field }}
+                                </div>
+                                {% endfor %}
+                                <div class="mt-2">
+                                    <label for="formFileMultiple col-sm-6" class="form-label"> Foto de la flota
+                                    </label>
+                                    {{ imageform.management_form}}
+                                    {% for image in images %}
+                                    <div class="col-sm-10">
+                                        {{ image }}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                <button type="submit" class="btn btn-outline-dark mt-3 float-end">Actualizar</button>
+                            </form>
                         </ul>
                         <script>
                             const paragraph = document.getElementById("edit");

@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm, MaintenanceForm
-from polls.sevices import flotes, flote_by_code, login_service, maintenances
+from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
 from datetime import datetime
@@ -17,12 +17,27 @@ logger = logging.getLogger(__name__)
 
 @login_required(login_url='/home/')
 def get_flote_by_code(request, code):
-    flote = flote_by_code(code)
-    if flote:
-        return render(request, 'flota.html', {'flote': flote})
+    flote , flote_in_db = flote_by_code(code)
+    if request.method == 'POST':
+        form = FloteForm(request.POST, request.FILES, instance=flote_in_db)
+        files = request.FILES.getlist("image")
+        if form.is_valid():
+            flote = form.save()
+            create_images(flote, files)
+            messages.success(request, "Flota Actualizada!")
+            return redirect("/home/flotes")
+        else:
+            print(form.errors)
     else:
-        messages.error(request, ("La flota no existe."))
-        return redirect("/home/flotes")
+        correct_group = False
+        if request.user.groups.all()[0].name == 'admin':
+            correct_group = True
+        if flote:
+            update_form = FloteForm(instance=flote_in_db)
+            return render(request, 'flota.html', {'flote': flote, "update_form": update_form, "correct_group": correct_group})
+        else:
+            messages.error(request, ("La flota no existe."))
+            return redirect("/home/flotes")
 
 @unauthenticated_user
 def get_home_page(request):
@@ -103,6 +118,18 @@ def list_repair(request, code):
     xs = maintenances(code)
     print(xs)
     return render(request, 'maintenance_history.html', {'list': xs, 'code': code})
+
+@allowed_users(allowed_roles=['admin'])
+def delete_flote(request, code):
+    flotes = Flote.objects.filter(code=code)
+    if flotes:
+        flotes.first().delete()
+
+@allowed_users(allowed_roles=['admin'])
+def delete_repair(request, pk):
+    repairs = Maintenance.objects.filter(pk=pk)
+    if repairs:
+        repairs.first().delete()
 
 # def register_user(request):
 #     if request.method == "POST":
