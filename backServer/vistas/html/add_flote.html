@@ -15,22 +15,23 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item search">
-					<form method="post" class="d-flex" enctype="multipart/form-data"> <!-- Arreglar, no busca -->
-						{% csrf_token %}
-						<input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
-							aria-label="Buscador">
-						<button class="btn btn-outline-success" type="submit">
-							<i class="fa-solid fa-magnifying-glass"></i>
-						</button>
-					</form>
-				</li>
+                    <form method="post" class="d-flex" enctype="multipart/form-data">
+                        <!-- Arreglar, no busca -->
+                        {% csrf_token %}
+                        <input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
+                            aria-label="Buscador">
+                        <button class="btn btn-outline-success" type="submit">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
         <div class="container-fluid responsive">
-            <a class="navbar-brand" href="../flotes">
+            <a class="navbar-brand" href="/home/flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
@@ -49,10 +50,11 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item search">
-                                <form method="post" class="d-flex" enctype="multipart/form-data"> <!-- Arreglar -->
+                                <form method="post" class="d-flex" enctype="multipart/form-data">
+                                    <!-- Arreglar -->
                                     {% csrf_token %}
-                                    <input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
-                                        aria-label="Buscador">
+                                    <input class="form-control me-2" name="code" id="search" type="search"
+                                        placeholder="Buscador" aria-label="Buscador">
                                     <button class="btn btn-outline-success" type="submit">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>

@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
-            <a class="navbar-brand" href="../flotes">
+            <a class="navbar-brand" href="/home/flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
@@ -32,7 +32,7 @@
                     class="d-inline-block align-text-top">
             </a>
             <div class="nav justify-content-end">
-                <a class="nav-item btn btn-outline-success me-2" href="../add_repair/{{ code }}" role="button">
+                <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
                     <i class="fa-solid fa-arrow-left"></i></a>
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -62,7 +62,7 @@
     {% for repair in list%}
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-8 col-xxl-8 mt-3 mb-3">
                 <div class="card h-100">
                     <div class="card-body">
                         <p><b>{{ repair.type }}</b></p>
