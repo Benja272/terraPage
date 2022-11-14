@@ -96,7 +96,7 @@
                         <div class="card-title">
                             <h5 class="text-center">{{flote.type}}</h5>
                             {% if correct_group %}
-                            <div id="container" class="text-end"> <!-- Hacer que lo editado quede guardado en la base de datos -->
+                            <div id="container" class="text-end"> 
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
@@ -139,6 +139,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-outline-dark mt-3 float-end">Actualizar</button>
                             </form>
+                            <!-- generar botton para eliminar con referencia a /delete/flote/{{ flote.code}} -->
                         </ul>
                         <script>
                             const paragraph = document.getElementById("edit");
