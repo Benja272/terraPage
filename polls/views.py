@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from polls.forms import FloteForm, ImageForm, MaintenanceForm
+from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2
 from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def get_flote_by_code(request, code):
     flote , flote_in_db = flote_by_code(code)
     if request.method == 'POST':
-        form = FloteForm(request.POST, request.FILES, instance=flote_in_db)
+        form = FloteForm2(request.POST, request.FILES, instance=flote_in_db)
         files = request.FILES.getlist("image")
         if form.is_valid():
             flote = form.save()
@@ -33,7 +33,7 @@ def get_flote_by_code(request, code):
         if request.user.groups.all()[0].name == 'admin':
             correct_group = True
         if flote:
-            update_form = FloteForm(instance=flote_in_db)
+            update_form = FloteForm2(instance=flote_in_db)
             return render(request, 'flota.html', {'flote': flote, "update_form": update_form, "correct_group": correct_group})
         else:
             messages.error(request, ("La flota no existe."))

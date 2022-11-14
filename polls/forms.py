@@ -20,6 +20,7 @@ FIELDS_FLOTE_TRANSLATE = {
     'operators': 'Operadores'
 }
 
+
 FIELDS_MAINTENANCE_TRANSLATE = {
     'type': 'Tipo',
     'mileage': 'Kilometraje',
@@ -28,7 +29,7 @@ FIELDS_MAINTENANCE_TRANSLATE = {
 }
 
 CSS_FLOTE_CLASS = {
-    'type': {'class': 'form-select',},
+    'type': {'class': 'form-select'},
     'code': {'class': 'form-control'},
     'brand': {'class': 'form-control'},
     'model': {'class': 'form-control'},
@@ -41,6 +42,23 @@ CSS_FLOTE_CLASS = {
     'justifyStatus': {'class': 'form-control'},
     'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
 }
+
+CSS_FLOTE_CLASS2 = {
+    'type': {'class': 'form-select', "disabled":""},
+    'code': {'class': 'form-control'},
+    'brand': {'class': 'form-control'},
+    'model': {'class': 'form-control'},
+    'characteristics': {'class': 'form-control'},
+    'patent': {'class': 'form-control'},
+    'production_year': {'class': 'form-control'},
+    'engine_number': {'class': 'form-control'},
+    'chassis_number': {'class': 'form-control'},
+    'status': {'class': 'form-select'},
+    'justifyStatus': {'class': 'form-control'},
+    'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
+}
+
+
 
 CSS_MAINTENANCE_CLASS = {
     'flote': {'type': 'hidden'},
@@ -58,7 +76,7 @@ class FloteForm(ModelForm):
         labels = FIELDS_FLOTE_TRANSLATE
         status = forms.ChoiceField(choices=STATES)
         type = forms.ChoiceField(choices=FLOTE_TYPES)
-       
+
         widgets = {
             'type': forms.Select(attrs=CSS_FLOTE_CLASS['type']),
             'code': forms.TextInput(attrs=CSS_FLOTE_CLASS['code']),
@@ -72,6 +90,30 @@ class FloteForm(ModelForm):
             'status': forms.Select(attrs=CSS_FLOTE_CLASS['status']),
             'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS['justifyStatus']),
             'operators' : forms.TextInput(attrs=CSS_FLOTE_CLASS['operators'])
+        }
+
+# flota
+class FloteForm2(ModelForm):
+    class Meta:
+        model = Flote
+        fields = '__all__'
+        labels = FIELDS_FLOTE_TRANSLATE
+        status = forms.ChoiceField(choices=STATES)
+        type = forms.ChoiceField(choices=FLOTE_TYPES)
+
+        widgets = {
+            'type': forms.Select(attrs=CSS_FLOTE_CLASS2['type']),
+            'code': forms.TextInput(attrs=CSS_FLOTE_CLASS2['code']),
+            'brand': forms.TextInput(attrs=CSS_FLOTE_CLASS2['brand']),
+            'model': forms.TextInput(attrs=CSS_FLOTE_CLASS2['model']),
+            'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']),
+            'patent': forms.TextInput(attrs=CSS_FLOTE_CLASS2['patent']),
+            'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']),
+            'engine_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['engine_number']),
+            'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['chassis_number']),
+            'status': forms.Select(attrs=CSS_FLOTE_CLASS2['status']),
+            'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']),
+            'operators' : forms.TextInput(attrs=CSS_FLOTE_CLASS2['operators'])
         }
 
 class ImageForm(ModelForm):
@@ -88,8 +130,7 @@ class MaintenanceForm(ModelForm):
     
     class Meta:
         model = Maintenance
-        fields = '__all__'
-        # fields = ['type','mileage','cost', 'description']
+        fields = ['flote', 'date','type','mileage','cost', 'description']
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
             'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),

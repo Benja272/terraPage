@@ -15,8 +15,7 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item search">
-                    <form method="post" class="d-flex" enctype="multipart/form-data">
-                        <!-- Arreglar, no busca -->
+                    <form action="/home/flotes/" method="post" class="d-flex" enctype="multipart/form-data">
                         {% csrf_token %}
                         <input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
                             aria-label="Buscador">
@@ -50,8 +49,7 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item search">
-                                <form method="post" class="d-flex" enctype="multipart/form-data">
-                                    <!-- Arreglar -->
+                                <form action="/home/flotes/" method="post" class="d-flex" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     <input class="form-control me-2" name="code" id="search" type="search"
                                         placeholder="Buscador" aria-label="Buscador">

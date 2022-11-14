@@ -57,6 +57,8 @@ def flote_by_code(code):
             if res['type'] == type[0]:
                 res['type'] = type[1]
         return res, flote_in_db
+    else:
+        return None, None
 
 def fix_operators(json_flotes):
     operators = json_flotes[0]['fields']['operators'].replace('"', '')
