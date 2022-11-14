@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
-            <a class="navbar-brand" href="../flotes">
+            <a class="navbar-brand" href="/home/flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
@@ -20,7 +20,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
-                        de {{ flote.code }}</a> 
+                        de {{ flote.code }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
@@ -48,7 +48,7 @@
                             aria-label="Close"></i></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">    
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="add_repair/{{ flote.code }}"
                                     role="button">Mantenimiento de {{ flote.code }}</a>
@@ -73,7 +73,7 @@
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div id="carouselExampleFade" class="carousel slide carousel-dark carousel-fade"
                         data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -92,11 +92,12 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div class="card-body" style="width: 100%;">
+                    <div class="card-body text-center" style="width: 100%;">
                         <div class="card-title">
                             <h5 class="text-center">{{flote.type}}</h5>
                             {% if correct_group %}
-                            <div id="container" class="text-end"> <!-- Hacer que lo editado quede guardado en la base de datos -->
+                            <div id="container" class="text-end">
+                                <!-- Hacer que lo editado quede guardado en la base de datos -->
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
@@ -122,7 +123,9 @@
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% for field in update_form %}
-                                <label class="col-sm-6 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                                <label class="col-sm-8 col-form-label" for="{{ field.auto_id }}">
+                                    {{ field.label}}
+                                </label>
                                 <div class="col-sm-10">
                                     {{ field }}
                                 </div>

@@ -62,7 +62,7 @@ nav {
 	display: none !important;
 }
 
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 600px) {
 	.no-responsive {
 		display: none !important;
 	}
