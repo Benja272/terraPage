@@ -44,18 +44,18 @@ CSS_FLOTE_CLASS = {
 }
 
 CSS_FLOTE_CLASS2 = {
-    'type': {'class': 'form-select', "disabled":""},
-    'code': {'class': 'form-control'},
-    'brand': {'class': 'form-control'},
-    'model': {'class': 'form-control'},
-    'characteristics': {'class': 'form-control'},
-    'patent': {'class': 'form-control'},
-    'production_year': {'class': 'form-control'},
-    'engine_number': {'class': 'form-control'},
-    'chassis_number': {'class': 'form-control'},
-    'status': {'class': 'form-select'},
-    'justifyStatus': {'class': 'form-control'},
-    'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
+    'type': {'class': 'form-select', "disabled":""}, # ver si hay forma de hacer que todos los forms tengan el atributo disable para asi poder activarlo y desactivarlo a gusto
+    'code': {'class': 'form-control', "disabled":""},
+    'brand': {'class': 'form-control', "disabled":""},
+    'model': {'class': 'form-control', "disabled":""},
+    'characteristics': {'class': 'form-control', "disabled":""},
+    'patent': {'class': 'form-control', "disabled":""},
+    'production_year': {'class': 'form-control', "disabled":""},
+    'engine_number': {'class': 'form-control', "disabled":""},
+    'chassis_number': {'class': 'form-control', "disabled":""},
+    'status': {'class': 'form-select', "disabled":""},
+    'justifyStatus': {'class': 'form-control', "disabled":""},
+    'operators':{'class': 'form-control', "disabled":""} 
 }
 
 
@@ -68,11 +68,11 @@ CSS_MAINTENANCE_CLASS = {
     'cost': {'class': 'form-control'},
     'description': {'class': 'form-control'}
 }
-  
+
 class FloteForm(ModelForm):
     class Meta:
         model = Flote
-        fields = '__all__'
+        fields = ['type', 'code', 'brand', 'model', 'patent', 'production_year', 'engine_number', 'chassis_number', 'characteristics', 'status', 'justifyStatus', 'operators']
         labels = FIELDS_FLOTE_TRANSLATE
         status = forms.ChoiceField(choices=STATES)
         type = forms.ChoiceField(choices=FLOTE_TYPES)
@@ -96,7 +96,7 @@ class FloteForm(ModelForm):
 class FloteForm2(ModelForm):
     class Meta:
         model = Flote
-        fields = '__all__'
+        fields = ['type', 'code', 'brand', 'model', 'patent', 'production_year', 'engine_number', 'chassis_number', 'characteristics', 'status', 'justifyStatus', 'operators']
         labels = FIELDS_FLOTE_TRANSLATE
         status = forms.ChoiceField(choices=STATES)
         type = forms.ChoiceField(choices=FLOTE_TYPES)
@@ -106,14 +106,14 @@ class FloteForm2(ModelForm):
             'code': forms.TextInput(attrs=CSS_FLOTE_CLASS2['code']),
             'brand': forms.TextInput(attrs=CSS_FLOTE_CLASS2['brand']),
             'model': forms.TextInput(attrs=CSS_FLOTE_CLASS2['model']),
-            'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']),
+            'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']), # cambiar de lugar, va despues de nro de chasis lo mismo para el add_flotes
             'patent': forms.TextInput(attrs=CSS_FLOTE_CLASS2['patent']),
-            'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']),
+            'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']), # cambiar a Año de fabricación
             'engine_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['engine_number']),
             'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['chassis_number']),
             'status': forms.Select(attrs=CSS_FLOTE_CLASS2['status']),
-            'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']),
-            'operators' : forms.TextInput(attrs=CSS_FLOTE_CLASS2['operators'])
+            'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']), # cambiar a Observaciones
+            'operators': forms.TextInput(attrs=CSS_FLOTE_CLASS2['operators'])
         }
 
 class ImageForm(ModelForm):

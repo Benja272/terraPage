@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <!-- Navegador -->
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
@@ -70,6 +71,7 @@
         </div>
     </nav>
 
+    <!-- Contenido de la flota -->
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
@@ -78,11 +80,13 @@
                         data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ flote.img }}" class="card-img-top" alt="...">
+                                <img src="{{ flote.img }}" class="card-img-top" alt="Imagen de la flota">
+                                <!-- No muestra las imagenes -->
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
                             data-bs-slide="prev">
+                            <!-- Hay que hacer funcionar el deslizamiento de imagenes -->
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
@@ -95,14 +99,24 @@
                     <div class="card-body text-center" style="width: 100%;">
                         <div class="card-title">
                             <h5 class="text-center">{{flote.type}}</h5>
+
                             {% if correct_group %}
-                            <div id="container" class="text-end"> 
+                            <div id="container" class="Default btn-group text-end" role="group" aria-label="Basic outlined example">
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 <button type="submit" id="end-editing" class="btn btn-outline-dark btn-sm">
-                                    <i class="fa-solid fa-check"></i>
+                                    <i class="fa-solid fa-check"></i> <!-- Este boton es el equivalente a actualizar -->
                                 </button>
+                                <script>
+                                    function confirmarAccesoURL() {
+                                        return confirm("¿Está seguro que desea eliminar la flota (insertar el nombre de la flota)?");
+                                    }
+                                </script>
+                                <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarAccesoURL()"
+                                    class="btn btn-outline-dark btn-sm" type="button"> 
+                                    <i class="fa-sharp fa-solid fa-xmark"></i>
+                                </a>
                             </div>
                             {% endif %}
                         </div>
@@ -140,6 +154,7 @@
                                     {% endfor %}
                                 </div>
                                 <button type="submit" class="btn btn-outline-dark mt-3 float-end">Actualizar</button>
+                                <!-- No funciona -->
                             </form>
                             <!-- generar botton para eliminar con referencia a /delete/flote/{{ flote.code}} -->
                         </ul>

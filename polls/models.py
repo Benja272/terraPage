@@ -5,7 +5,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 
-STATES = [
+STATES = [ # se puede modificar desde aca el css de STATES?
     ('GRE', 'VERDE'),
     ('YEL', 'AMARILLO'),
     ('RED', 'ROJO')
