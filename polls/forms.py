@@ -44,7 +44,7 @@ CSS_FLOTE_CLASS = {
 }
 
 CSS_FLOTE_CLASS2 = {
-    'type': {'class': 'form-select', "disabled":""}, # ver si hay forma de hacer que todos los forms tengan el atributo disable para asi poder activarlo y desactivarlo a gusto
+    'type': {'class': 'form-select', "disabled":""}, 
     'code': {'class': 'form-control', "disabled":""},
     'brand': {'class': 'form-control', "disabled":""},
     'model': {'class': 'form-control', "disabled":""},
@@ -125,6 +125,24 @@ class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = ("image",)
+
+    def __init__(self, *args, **kwargs):
+        super(ImageForm, self).__init__(*args, **kwargs)
+        self.fields['image'].required = False
+
+class ImageForm2(ModelForm):
+    image = ImageField(
+        label="Fotos de la flota",
+        widget=ClearableFileInput(attrs={"multiple": True, "class": "form-control", "disabled":""}),
+    ) 
+
+    class Meta:
+        model = Image
+        fields = ("image",)
+
+    def __init__(self, *args, **kwargs):
+        super(ImageForm2, self).__init__(*args, **kwargs)
+        self.fields['image'].required = False
 
 class MaintenanceForm(ModelForm):
     

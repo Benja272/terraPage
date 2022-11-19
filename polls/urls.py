@@ -13,4 +13,5 @@ urlpatterns = [path('home/', views.get_home_page, name='home_page'),
                path('home/flotes/repair/<str:code>', views.list_repair, name='repair'),
                path('delete/flote/<str:code>', views.delete_flote, name='delete_flote'),
                path('delete/repair/<str:pk>', views.delete_repair, name='delete_repair'),
+               path('delete/img/<str:pk>', views.delete_img, name='delete_img'),
                ]

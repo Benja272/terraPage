@@ -79,18 +79,24 @@
                     <div id="carouselExampleFade" class="carousel slide carousel-dark carousel-fade"
                         data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ flote.img }}" class="card-img-top" alt="Imagen de la flota">
-                                <!-- No muestra las imagenes -->
+                            <div id="images" class="carousel-item active">
+                                {% for img in flote.images %}
+                                    <div hidden>
+                                        <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDelete()"
+                                        class="btn btn-outline-dark btn-sm" type="button"> 
+                                            <i class="fa-sharp fa-solid fa-xmark"></i>
+                                        </a>
+                                        <img src="{{ img.url }}" class="card-img-top" alt="Imagen de la flota">
+                                    </div>
+                                {% endfor %}
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                        <button id="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
                             data-bs-slide="prev">
-                            <!-- Hay que hacer funcionar el deslizamiento de imagenes -->
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                        <button id="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
                             data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
@@ -105,35 +111,26 @@
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button type="submit" id="end-editing" class="btn btn-outline-dark btn-sm">
-                                    <i class="fa-solid fa-check"></i> <!-- Este boton es el equivalente a actualizar -->
+                                <button type="submit" form="myform" id="end-editing" class="btn btn-outline-dark btn-sm">
+                                    <i class="fa-solid fa-check"></i> 
                                 </button>
                                 <script>
                                     function confirmarAccesoURL() {
-                                        return confirm("¿Está seguro que desea eliminar la flota (insertar el nombre de la flota)?");
+                                        return confirm("¿Está seguro que desea eliminar la flota {{ flote.code }}?");
+                                    }
+                                    function confirmarDelete() {
+                                        return confirm("¿Está seguro que desea eliminar la imagen?");
                                     }
                                 </script>
-                                <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarAccesoURL()"
+                                <a href="/delete/flote/{{ flote.code }}" onclick="return confirmarAccesoURL()"
                                     class="btn btn-outline-dark btn-sm" type="button"> 
                                     <i class="fa-sharp fa-solid fa-xmark"></i>
                                 </a>
                             </div>
                             {% endif %}
                         </div>
-                        <!-- <ul id="edit" class="list-group list-group-flush text-center">
-                            <li class="list-group-item">{{flote.code}}</li>
-                            <li class="list-group-item">{{flote.brand}}</li>
-                            <li class="list-group-item">{{flote.characteristics}}</li>
-                            <li class="list-group-item">{{flote.patent}}</li>
-                            <li class="list-group-item">{{flote.production_year}}</li>
-                            <li class="list-group-item">{{flote.engine_number}}</li>
-                            <li class="list-group-item">{{flote.chassis_number}}</li>
-                            <li class="list-group-item">{{flote.status}}</li>
-                            <li class="list-group-item">{{flote.justifyStatus}}</li>
-                            <li class="list-group-item">{{flote.operators}}</li>
-                        </ul> -->
                         <ul id="edit" class="list-group list-group-flush text-center">
-                            <form method="post" enctype="multipart/form-data">
+                            <form id="myform" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% for field in update_form %}
                                 <label class="col-sm-8 col-form-label" for="{{ field.auto_id }}">
@@ -146,32 +143,64 @@
                                 <div class="mt-2">
                                     <label for="formFileMultiple col-sm-6" class="form-label"> Foto de la flota
                                     </label>
-                                    {{ imageform.management_form}}
-                                    {% for image in images %}
-                                    <div class="col-sm-10">
-                                        {{ image }}
-                                    </div>
-                                    {% endfor %}
+                                    {% if correct_group %}
+                                        {{ imageform.management_form}}
+                                        {% for form in imageform %}
+                                        <div class="col-sm-10">
+                                            {{ form }}
+                                        </div>
+                                        {% endfor %}
+                                    {% endif %}
                                 </div>
-                                <button type="submit" class="btn btn-outline-dark mt-3 float-end">Actualizar</button>
-                                <!-- No funciona -->
                             </form>
-                            <!-- generar botton para eliminar con referencia a /delete/flote/{{ flote.code}} -->
                         </ul>
                         <script>
                             const paragraph = document.getElementById("edit");
                             const edit_button = document.getElementById("edit-button");
                             const end_button = document.getElementById("end-editing");
+                            const prev_button = document.getElementById("prev")
+                            const next_button = document.getElementById("next")
+                            const images_div = document.getElementById("images")
+                            const form_elements = document.querySelectorAll('.form-control, .form-select')
+                            var childrens =  Array.from(images_div.childNodes);
+                            childrens = childrens.filter(child => child.tagName == "DIV")
+                            childrens[0].hidden = false
 
                             edit_button.addEventListener("click", function () {
-                                paragraph.contentEditable = true;
-                                paragraph.style.backgroundColor = "#fff";
+                                form_elements.forEach(function(elem){
+                                    elem.disabled = false
+                                })
                             });
 
-                            end_button.addEventListener("click", function () {
-                                paragraph.contentEditable = false;
-                                paragraph.style.backgroundColor = "#fff";
+                            // end_button.addEventListener("click", function () {
+                            //     paragraph.contentEditable = false;
+                            //     paragraph.style.backgroundColor = "#fff";
+                            // })
+
+                            next_button.addEventListener("click", function () {
+                                var ready = true
+                                childrens.forEach(function(item, index){
+                                    if (ready && !item.hidden && index != childrens.length - 1){
+                                        console.log(item)
+                                        item.hidden = true
+                                        childrens[index + 1].hidden = false
+                                        ready = false
+                                    }
+                                })
                             })
+                            
+                            prev_button.addEventListener("click", function () {
+                                var ready = true
+                                childrens.forEach(function(item, index){
+                                    if (ready && !item.hidden && index != 0){
+                                        console.log(item)
+                                        item.hidden = true
+                                        childrens[index - 1].hidden = false
+                                        ready = false
+                                    }
+                                })
+                            })
+
                         </script>
                     </div>
                 </div>

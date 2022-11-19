@@ -50,7 +50,7 @@ def flote_by_code(code):
         res = json_flotes[0]['fields']    
         images = Image.objects.filter(flote=flotes[0])
         if images:
-            images = map(lambda x: x.image.url, images)
+            images = map(lambda x: {'url': x.image.url, 'pk': x.pk}, images)
             res['images'] = images
         res['code'] = json_flotes[0]['pk']
         for type in FLOTE_TYPES:
