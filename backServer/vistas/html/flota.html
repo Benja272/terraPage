@@ -81,38 +81,40 @@
                         <div class="carousel-inner">
                             <div id="images" class="carousel-item active">
                                 {% for img in flote.images %}
-                                    <div hidden>
-                                        <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDelete()"
-                                        class="btn btn-outline-dark btn-sm" type="button"> 
-                                            <i class="fa-sharp fa-solid fa-xmark"></i>
-                                        </a>
-                                        <img src="{{ img.url }}" class="card-img-top" alt="Imagen de la flota">
-                                    </div>
+                                <div hidden class="imagen-flota">
+                                    <img src="{{ img.url }}" class="card-img-top" alt="Imagen de la flota">
+                                    <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDelete()"
+                                        class="btn btn-outline-dark btn fw-semibold mt-2 type="button">
+                                        Eliminar imagen
+                                    </a>
+                                </div>
                                 {% endfor %}
                             </div>
                         </div>
-                        <button id="prev" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="prev">
+                        <button id="prev" class="carousel-control-prev" type="button"
+                            data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button id="next" class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="next">
+                        <button id="next" class="carousel-control-next" type="button"
+                            data-bs-target="#carouselExampleFade" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div class="card-body text-center" style="width: 100%;">
+                    <div class="card-body container text-center" style="width: 100%;">
                         <div class="card-title">
                             <h5 class="text-center">{{flote.type}}</h5>
 
                             {% if correct_group %}
-                            <div id="container" class="Default btn-group text-end" role="group" aria-label="Basic outlined example">
+                            <div id="container" class="Default btn-group text-end" role="group"
+                                aria-label="Basic outlined example">
                                 <button type="submit" id="edit-button" class="btn btn-outline-dark btn-sm">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button type="submit" form="myform" id="end-editing" class="btn btn-outline-dark btn-sm">
-                                    <i class="fa-solid fa-check"></i> 
+                                <button type="submit" form="myform" id="end-editing"
+                                    class="btn btn-outline-dark btn-sm">
+                                    <i class="fa-solid fa-check"></i>
                                 </button>
                                 <script>
                                     function confirmarAccesoURL() {
@@ -123,20 +125,20 @@
                                     }
                                 </script>
                                 <a href="/delete/flote/{{ flote.code }}" onclick="return confirmarAccesoURL()"
-                                    class="btn btn-outline-dark btn-sm" type="button"> 
+                                    class="btn btn-outline-dark btn-sm" type="button">
                                     <i class="fa-sharp fa-solid fa-xmark"></i>
                                 </a>
                             </div>
                             {% endif %}
                         </div>
-                        <ul id="edit" class="list-group list-group-flush text-center">
+                        <ul id="edit" class="list-group row justify-content-md-center">
                             <form id="myform" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% for field in update_form %}
                                 <label class="col-sm-8 col-form-label" for="{{ field.auto_id }}">
                                     {{ field.label}}
                                 </label>
-                                <div class="col-sm-10">
+                                <div class="col-md-auto">
                                     {{ field }}
                                 </div>
                                 {% endfor %}
@@ -144,12 +146,12 @@
                                     <label for="formFileMultiple col-sm-6" class="form-label"> Foto de la flota
                                     </label>
                                     {% if correct_group %}
-                                        {{ imageform.management_form}}
-                                        {% for form in imageform %}
-                                        <div class="col-sm-10">
-                                            {{ form }}
-                                        </div>
-                                        {% endfor %}
+                                    {{ imageform.management_form}}
+                                    {% for form in imageform %}
+                                    <div class="col-md-auto">
+                                        {{ form }}
+                                    </div>
+                                    {% endfor %}
                                     {% endif %}
                                 </div>
                             </form>
@@ -162,12 +164,12 @@
                             const next_button = document.getElementById("next")
                             const images_div = document.getElementById("images")
                             const form_elements = document.querySelectorAll('.form-control, .form-select')
-                            var childrens =  Array.from(images_div.childNodes);
+                            var childrens = Array.from(images_div.childNodes);
                             childrens = childrens.filter(child => child.tagName == "DIV")
                             childrens[0].hidden = false
 
                             edit_button.addEventListener("click", function () {
-                                form_elements.forEach(function(elem){
+                                form_elements.forEach(function (elem) {
                                     elem.disabled = false
                                 })
                             });
@@ -179,8 +181,8 @@
 
                             next_button.addEventListener("click", function () {
                                 var ready = true
-                                childrens.forEach(function(item, index){
-                                    if (ready && !item.hidden && index != childrens.length - 1){
+                                childrens.forEach(function (item, index) {
+                                    if (ready && !item.hidden && index != childrens.length - 1) {
                                         console.log(item)
                                         item.hidden = true
                                         childrens[index + 1].hidden = false
@@ -188,11 +190,11 @@
                                     }
                                 })
                             })
-                            
+
                             prev_button.addEventListener("click", function () {
                                 var ready = true
-                                childrens.forEach(function(item, index){
-                                    if (ready && !item.hidden && index != 0){
+                                childrens.forEach(function (item, index) {
+                                    if (ready && !item.hidden && index != 0) {
                                         console.log(item)
                                         item.hidden = true
                                         childrens[index - 1].hidden = false

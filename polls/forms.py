@@ -44,18 +44,18 @@ CSS_FLOTE_CLASS = {
 }
 
 CSS_FLOTE_CLASS2 = {
-    'type': {'class': 'form-select', "disabled":""}, 
-    'code': {'class': 'form-control', "disabled":""},
-    'brand': {'class': 'form-control', "disabled":""},
-    'model': {'class': 'form-control', "disabled":""},
-    'characteristics': {'class': 'form-control', "disabled":""},
-    'patent': {'class': 'form-control', "disabled":""},
-    'production_year': {'class': 'form-control', "disabled":""},
-    'engine_number': {'class': 'form-control', "disabled":""},
-    'chassis_number': {'class': 'form-control', "disabled":""},
-    'status': {'class': 'form-select', "disabled":""},
-    'justifyStatus': {'class': 'form-control', "disabled":""},
-    'operators':{'class': 'form-control', "disabled":""} 
+    'type': {'class': 'form-select text-center', "disabled":""}, 
+    'code': {'class': 'form-control text-center', "disabled":""},
+    'brand': {'class': 'form-control text-center', "disabled":""},
+    'model': {'class': 'form-control text-center', "disabled":""},
+    'characteristics': {'class': 'form-control text-center', "disabled":""},
+    'patent': {'class': 'form-control text-center', "disabled":""},
+    'production_year': {'class': 'form-control text-center', "disabled":""},
+    'engine_number': {'class': 'form-control text-center', "disabled":""},
+    'chassis_number': {'class': 'form-control text-center', "disabled":""},
+    'status': {'class': 'form-select text-center', "disabled":""},
+    'justifyStatus': {'class': 'form-control text-center', "disabled":""},
+    'operators':{'class': 'form-control text-center', "disabled":""} 
 }
 
 
