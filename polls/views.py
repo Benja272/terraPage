@@ -13,7 +13,6 @@ from django.db.models import Q
 
 import logging
 logger = logging.getLogger(__name__)
-#Flote.objects.create(name="camionee", code="2131", brand="renault", patent="212adc", status=1)
 
 
 @login_required(login_url='/home/')
@@ -36,8 +35,8 @@ def get_flote_by_code(request, code):
         if flote:
             update_form = FloteForm2(instance=flote_in_db)
             image_form = ImageForm2()
-            return render(request, 'flota.html', {'flote': flote, "update_form": update_form,\
-                "correct_group": correct_group, 'imageform': image_form})
+            return render(request, 'flota.html', {'flote': flote, "update_form": update_form,
+                                                  "correct_group": correct_group, 'imageform': image_form})
         else:
             messages.error(request, ("La flota no existe."))
             return redirect("/home/flotes")
@@ -150,6 +149,7 @@ def delete_repair(request, pk):
         messages.error(request, "No existe!")
         return redirect("/home/flotes")
 
+
 @allowed_users(allowed_roles=['admin'])
 def delete_img(request, pk):
     images = Image.objects.filter(pk=pk)
@@ -162,6 +162,3 @@ def delete_img(request, pk):
     else:
         messages.error(request, "No existe la foto!")
         return redirect("/home/flotes")
-
-
-

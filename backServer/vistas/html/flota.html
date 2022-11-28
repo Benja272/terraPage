@@ -164,6 +164,24 @@
                             const images_div = document.getElementById("images")
                             const form_elements = document.querySelectorAll('.form-control, .form-select, .finalizar')
                             var childrens = Array.from(images_div.childNodes);
+                            const status_elem = document.getElementById("status")
+                            var index = 0
+                            status_elem.childNodes.forEach(function(elem){if (elem.tagName == "OPTION") {
+                            switch(index){
+                            case 0:
+                                    index = index + 1
+                                    break;
+                            case 1:
+                                    elem.classList.add("green")
+                                    index = index + 1
+                                    break;
+                            case 2:
+                                    elem.classList.add("yellow")
+                                    index = index + 1
+                                    break;
+                            default:
+                                elem.classList.add("red")
+                            }}})  
                             childrens = childrens.filter(child => child.tagName == "DIV")
                             childrens[0].hidden = false
 

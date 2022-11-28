@@ -38,7 +38,7 @@ CSS_FLOTE_CLASS = {
     'production_year': {'class': 'form-control'},
     'engine_number': {'class': 'form-control'},
     'chassis_number': {'class': 'form-control'},
-    'status': {'class': 'form-select'},
+    'status': {'class': 'form-select', 'id': 'status'},
     'justifyStatus': {'class': 'form-control'},
     'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
 }
@@ -53,7 +53,7 @@ CSS_FLOTE_CLASS2 = {
     'production_year': {'class': 'form-control text-center', "disabled":""},
     'engine_number': {'class': 'form-control text-center', "disabled":""},
     'chassis_number': {'class': 'form-control text-center', "disabled":""},
-    'status': {'class': 'form-select text-center', "disabled":""},
+    'status': {'class': 'form-select text-center', "disabled":"", 'id': 'status'},
     'justifyStatus': {'class': 'form-control text-center', "disabled":""},
     'operators':{'class': 'form-control text-center', "disabled":""} 
 }
