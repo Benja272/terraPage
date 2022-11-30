@@ -83,7 +83,7 @@
                                 {% for img in flote.images %}
                                 <div hidden class="imagen-flota">
                                     <img src="{{ img.url }}" class="card-img-top" alt="Imagen de la flota">
-                                    <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDelete()"
+                                    <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDeleteImg()"
                                         class="btn btn-outline-dark btn fw-semibold mt-2" type="button">
                                         Eliminar imagen
                                     </a>
@@ -116,14 +116,14 @@
                                     <i class="fa-solid fa-check"></i>
                                 </button>
                                 <script>
-                                    function confirmarAccesoURL() {
+                                    function confirmarDeleteFlote() {
                                         return confirm("¿Está seguro que desea eliminar la flota {{ flote.code }}?");
                                     }
-                                    function confirmarDelete() {
+                                    function confirmarDeleteImg() {
                                         return confirm("¿Está seguro que desea eliminar la imagen?");
                                     }
                                 </script>
-                                <a href="/delete/flote/{{ flote.code }}" onclick="return confirmarAccesoURL()"
+                                <a href="/delete/flote/{{ flote.code }}" onclick="return confirmarDeleteFlote()"
                                     class="btn btn-outline-dark btn-sm" type="button">
                                     <i class="fa-sharp fa-solid fa-xmark"></i>
                                 </a>
@@ -152,6 +152,9 @@
                                     </div>
                                     {% endfor %}
                                     {% endif %}
+                                </div>
+                                <div>
+
                                 </div>
                             </form>
                         </ul>

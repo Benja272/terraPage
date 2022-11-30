@@ -36,7 +36,7 @@ def get_flote_by_code(request, code):
             update_form = FloteForm2(instance=flote_in_db)
             image_form = ImageForm2()
             return render(request, 'flota.html', {'flote': flote, "update_form": update_form,
-                                                  "correct_group": correct_group, 'imageform': image_form})
+                                                "correct_group": correct_group, 'imageform': image_form})
         else:
             messages.error(request, ("La flota no existe."))
             return redirect("/home/flotes")
@@ -116,7 +116,7 @@ def add_repair(request, code):
         form = MaintenanceForm()
         fields = {"array": ['Tipo', 'Kilometraje', 'Descripción', 'Costo']}
         return render(request, 'add_maintenance.html',
-                      {'form': form, 'image_url': image_url, "avoid_fields": fields, "code": code})
+                    {'form': form, 'image_url': image_url, "avoid_fields": fields, "code": code})
 
 
 @login_required(login_url='/home/')
