@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2
-from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images
+from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images\
+    , generate_notifications
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
 from datetime import datetime
@@ -27,7 +28,9 @@ def get_flote_by_code(request, code):
             messages.success(request, "Flota Actualizada!")
             return redirect("/home/flotes/" + code)
         else:
-            print(form.errors)
+            errors = ".".join(err[0] for err in form.errors.values())
+            messages.error(request, errors)
+            redirect("/flotes/add")
     else:
         correct_group = False
         if request.user.groups.all()[0].name == 'admin':
@@ -35,8 +38,10 @@ def get_flote_by_code(request, code):
         if flote:
             update_form = FloteForm2(instance=flote_in_db)
             image_form = ImageForm2()
+            notifications = generate_notifications(flote_in_db)
+            print(notifications)
             return render(request, 'flota.html', {'flote': flote, "update_form": update_form,
-                                                "correct_group": correct_group, 'imageform': image_form})
+                        "correct_group": correct_group, 'imageform': image_form, "notifications": notifications})
         else:
             messages.error(request, ("La flota no existe."))
             return redirect("/home/flotes")
@@ -89,7 +94,8 @@ def add_flote(request):
             messages.success(request, "Flota Agregada!")
             return redirect("/home/flotes/" + flote.code)
         else:
-            print(form.errors)
+            errors = ".".join(err[0] for err in form.errors.values())
+            messages.error(request, errors)
     else:
         form = FloteForm()
         image_form = ImageForm()
@@ -102,19 +108,22 @@ def add_repair(request, code):
         flote = Flote.objects.get(code=code)
         post = request.POST.copy()
         post['flote'] = flote.code
-        post['date'] = datetime.now()
+        post['date'] = datetime.strptime(post['date'], '%d/%m/%Y').date()
         form = MaintenanceForm(post)
         if form.is_valid() and flote:
             form.save()
             messages.success(request, "Se registro correctamente!")
             return redirect("/home/flotes/" + flote.code)
         else:
-            print(form.errors)
+            errors = ".".join(err[0] for err in form.errors.values())
+            messages.success(request, errors)
+            return redirect("/home/flotes/add_repair/" + code)
     else:
         images = Image.objects.filter(flote__code=code)
         image_url = images[0].image.url if images else ""
         form = MaintenanceForm()
-        fields = {"array": ['Tipo', 'Kilometraje', 'Descripción', 'Costo']}
+        fields = [field.label for field in form.fields.values()]
+        fields = {"array": list(filter(lambda x: x != 'Flote', fields))}
         return render(request, 'add_maintenance.html',
                     {'form': form, 'image_url': image_url, "avoid_fields": fields, "code": code})
 

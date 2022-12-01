@@ -89,12 +89,21 @@ def login_service(request, username, password):
 
 def maintenances(code):
     query = list(Maintenance.objects.filter(flote__code=code))
-    query.sort(key=lambda x: x.date)
+    query.sort(key=lambda x: x.date, reverse=True)
     for maintenance in query:
         if maintenance.type == "REP":
             maintenance.type = "Reparación"
         else:
             maintenance.type = "Mantenimiento"
+        if maintenance.oil:
+            maintenance.oil = "Se cambio el aceite"
+        else:
+            maintenance.oil = ""
+        if maintenance.filter:
+            maintenance.filter = "Se cambio el filtro"
+        else:
+            maintenance.filter = ""
+
     return query
 
 
@@ -112,35 +121,36 @@ def get_flote_images(flote):
     return res
 
 
-def generate_notifications(flotes):
+def generate_notifications(flote):
     notifications = []
-    for flote in flotes:
-        last_main = get_last_maintenance(flote)
-        if need_maintenance(last_main):
-            notifications.append(generate_notify(last_main, flote.code))
+    last_main_oil = get_last_maintenance_of(flote, 'oil')
+    last_main_filter = get_last_maintenance_of(flote, 'filter')
+    if need_maintenance(last_main_oil):
+        notifications.append(generate_notify(last_main_oil, flote.code, 'aceite'))
+    if need_maintenance(last_main_filter):
+        notifications.append(generate_notify(last_main_filter, flote.code, 'filtro'))
+
     return notifications
 
 
-def get_last_maintenance(flote):
-    maintenances = Maintenance.objects.filter(flote=flote)
+def get_last_maintenance_of(flote, field):
+    maintenances = Maintenance.objects.filter(flote=flote, **{field: True})
     if maintenances:
         return maintenances.latest('date')
 
 
 def need_maintenance(maintenance):
     if maintenance:
+        delta_days = (date.today() - maintenance.date).days
+        if delta_days >= 23:
+            return True
+    else:
         return True
 
 
-def generate_notify(last_main, code):
-    delta_days = (date.today() - last_main.date).days
-    months = delta_days // 30
-    days = delta_days % 30
-    notify = (f"La flota con codigo {code} tuvo su ultimo mantenimiento hace ")
-    if months and days:
-        notify += f"{months} meses y {days} dias."
-    if months:
-        notify += f"{months} meses"
+def generate_notify(last_main, code, of_what):
+    if last_main:
+        delta_days = (date.today() - last_main.date).days
+        return f"La flota con codigo {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
     else:
-        notify += f"{days} dias."
-    return notify
+        return f"La flota no tiene mantenimientos de {of_what}"

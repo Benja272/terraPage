@@ -25,7 +25,10 @@ FIELDS_MAINTENANCE_TRANSLATE = {
     'type': 'Tipo',
     'mileage': 'Kilometraje',
     'cost': 'Costo',
-    'description': 'Descripción'
+    'description': 'Descripción',
+    'oil': 'Cambio de aceite',
+    'filter': 'Cambio de filtro',
+    'date': 'Fecha'
 }
 
 CSS_FLOTE_CLASS = {
@@ -62,11 +65,13 @@ CSS_FLOTE_CLASS2 = {
 
 CSS_MAINTENANCE_CLASS = {
     'flote': {'type': 'hidden'},
-    'date': {'type': 'hidden'},
+    'date': {'type': 'form-control'},
     'type': {'class': 'form-select'},
     'mileage': {'class': 'form-control'},
     'cost': {'class': 'form-control'},
-    'description': {'class': 'form-control'}
+    'description': {'class': 'form-control'},
+    'oil': {'class': ''},
+    'filter': {'class': ''}
 }
 
 class FloteForm(ModelForm):
@@ -148,7 +153,7 @@ class MaintenanceForm(ModelForm):
     
     class Meta:
         model = Maintenance
-        fields = ['flote', 'date','type','mileage','cost', 'description']
+        fields = ['flote','type','mileage','cost', 'description', 'date', 'oil', 'filter']
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
             'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
@@ -156,5 +161,7 @@ class MaintenanceForm(ModelForm):
             'type': forms.Select(attrs=CSS_MAINTENANCE_CLASS['type']),
             'mileage': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['mileage']),
             'cost': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['cost']),
-            'description': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['description'])
+            'description': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['description']),
+            'oil': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['oil']),
+            'filter': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['filter'])
         }

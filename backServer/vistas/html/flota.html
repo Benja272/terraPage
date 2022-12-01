@@ -130,6 +130,9 @@
                             </div>
                             {% endif %}
                         </div>
+                        {% for not in notifications %}
+                        <p>{{ not }}</p>
+                        {% endfor%}
                         <ul id="edit" class="list-group row justify-content-md-center">
                             <form id="myform" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}

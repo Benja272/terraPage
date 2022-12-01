@@ -41,12 +41,16 @@ MAINTENANCE_TYPES = [
     ('REP', 'REPARACIÓN'),
     ('MAN', 'MANTENIMIENTO')
 ]
+
+INPUTS_FORMATS = ['%d/%m/%Y']
 class Maintenance(models.Model):
     type = models.CharField(choices=MAINTENANCE_TYPES, max_length=30)
     date = models.DateField(null=True, blank=True)
     mileage = models.IntegerField()
     description = models.CharField(max_length=600)
     cost = models.FloatField()
+    oil = models.BooleanField(default=False)
+    filter = models.BooleanField(default=False)
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE, null=True, blank=True)
 
 
