@@ -20,6 +20,10 @@
                         <i class="fa-solid fa-arrow-left"></i></a>
                 </li>
                 <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}"
+                        role="button">Mantenimiento de {{ flote.code }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
                 </li>
                 <li class="nav-item">
@@ -49,6 +53,10 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item mt-3">
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}">Mantenimiento de 
+                                    {{flote.code }}</a>
+                            </li>
+                            <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
                             </li>
                             <li class="nav-item mt-3">
@@ -68,14 +76,14 @@
             <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-8 col-xxl-8 mt-3 mb-3">
                 <div class="card">
                     <div class="text-end">
-                        <script> 
+                        <script>
                             //Cuadro de diálogo de confirmación en JavaScript
-                            function confirmarAccesoURL()
-                            {
-                        return confirm("¿Está seguro que lo desea eliminar?");
+                            function confirmarAccesoURL() {
+                                return confirm("¿Está seguro que lo desea eliminar?");
                             }
                         </script>
-                        <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarAccesoURL()" class="btn btn-outline-dark btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
+                        <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarAccesoURL()"
+                            class="btn btn-outline-dark btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                     </div>
                     <div class="card-body">
                         <p><b>{{ repair.type }}</b></p>
