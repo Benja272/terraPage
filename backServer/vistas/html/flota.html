@@ -74,6 +74,19 @@
     <!-- Contenido de la flota -->
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
+            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end"
+                            style="position: absolute; z-index: 1000;">
+                            <div class="alert alert-danger fade show" role="alert" aria-live="assertive"
+                                aria-atomic="true">
+                                <div class="toast-header">
+                                    {% for not in notifications %}
+                                    <p class="fw-semibold" id="messages"></p>{{ not }}</p>
+                                    {% endfor%}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
                 <div class="card h-100 text-center">
                     <div id="carouselExampleFade" class="carousel slide carousel-dark carousel-fade"
@@ -130,11 +143,6 @@
                             </div>
                             {% endif %}
                         </div>
-                        <div>
-                            {% for not in notifications %}
-                            <p>{{ not }}</p>
-                            {% endfor%}
-                        </div>
                         <ul id="edit" class="list-group row justify-content-md-center">
                             <form id="myform" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
@@ -174,22 +182,25 @@
                             var childrens = Array.from(images_div.childNodes);
                             const status_elem = document.getElementById("status")
                             var index = 0
-                            status_elem.childNodes.forEach(function(elem){if (elem.tagName == "OPTION") {
-                            switch(index){
-                            case 0:
-                                    index = index + 1
-                                    break;
-                            case 1:
-                                    elem.classList.add("green")
-                                    index = index + 1
-                                    break;
-                            case 2:
-                                    elem.classList.add("yellow")
-                                    index = index + 1
-                                    break;
-                            default:
-                                elem.classList.add("red")
-                            }}})  
+                            status_elem.childNodes.forEach(function (elem) {
+                                if (elem.tagName == "OPTION") {
+                                    switch (index) {
+                                        case 0:
+                                            index = index + 1
+                                            break;
+                                        case 1:
+                                            elem.classList.add("green")
+                                            index = index + 1
+                                            break;
+                                        case 2:
+                                            elem.classList.add("yellow")
+                                            index = index + 1
+                                            break;
+                                        default:
+                                            elem.classList.add("red")
+                                    }
+                                }
+                            })
                             childrens = childrens.filter(child => child.tagName == "DIV")
                             childrens[0].hidden = false
 

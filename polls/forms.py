@@ -65,13 +65,13 @@ CSS_FLOTE_CLASS2 = {
 
 CSS_MAINTENANCE_CLASS = {
     'flote': {'type': 'hidden'},
-    'date': {'type': 'form-control'},
+    'date': {'type': 'date', 'class':'form-control'},
     'type': {'class': 'form-select'},
     'mileage': {'class': 'form-control'},
     'cost': {'class': 'form-control'},
     'description': {'class': 'form-control'},
-    'oil': {'class': ''},
-    'filter': {'class': ''}
+    'oil': {'class': 'form-check-input','type': 'checkbox', 'id': 'flexCheckDefault'},
+    'filter': {'class': 'form-check-input', 'type': 'checkbox', 'id': 'flexCheckDefault'}
 }
 
 class FloteForm(ModelForm):
@@ -153,7 +153,7 @@ class MaintenanceForm(ModelForm):
     
     class Meta:
         model = Maintenance
-        fields = ['flote','type','mileage','cost', 'description', 'date', 'oil', 'filter']
+        fields = ['flote', 'date', 'type','mileage','cost', 'description', 'oil', 'filter']
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
             'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
