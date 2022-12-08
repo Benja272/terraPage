@@ -151,6 +151,6 @@ def need_maintenance(maintenance):
 def generate_notify(last_main, code, of_what):
     if last_main:
         delta_days = (date.today() - last_main.date).days
-        return f"La flota con codigo {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
+        return f"La flota {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
     else:
         return f"La flota no tiene mantenimientos de {of_what}"
