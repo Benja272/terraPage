@@ -108,7 +108,6 @@ def add_repair(request, code):
         flote = Flote.objects.get(code=code)
         post = request.POST.copy()
         post['flote'] = flote.code
-        post['date'] = datetime.strptime(post['date'], '%d/%m/%Y').date()
         form = MaintenanceForm(post)
         if form.is_valid() and flote:
             form.save()
