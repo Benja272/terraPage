@@ -19,6 +19,8 @@ FLOTES_IMAGES = {
     'CAMIÓN': "can.png",
 }
 
+FLOTE_CODES = ["RET01", "RET02", "RET03","CON01" ,"CAM01", "CAM02", "CAM03",
+ "CAM04", "CAM05", "CAM06", "CAM07", "MOT01"]
 
 def get_type_name(type):
     for t in FLOTE_TYPES:
@@ -122,15 +124,20 @@ def get_flote_images(flote):
 
 
 def generate_notifications(flote):
-    notifications = []
-    last_main_oil = get_last_maintenance_of(flote, 'oil')
-    last_main_filter = get_last_maintenance_of(flote, 'filter')
-    if need_maintenance(last_main_oil):
-        notifications.append(generate_notify(last_main_oil, flote.code, 'aceite'))
-    if need_maintenance(last_main_filter):
-        notifications.append(generate_notify(last_main_filter, flote.code, 'filtro'))
+    if flote.code in FLOTE_CODES:
+        notifications = []
+        last_main_oil = get_last_maintenance_of(flote, 'oil')
+        last_main_filter = get_last_maintenance_of(flote, 'filter')
+        if need_maintenance(last_main_oil):
+            notify = generate_notify(last_main_oil, flote.code, 'aceite')
+            if notify:
+                notifications.append(notify)
+        if need_maintenance(last_main_filter):
+            notify = generate_notify(last_main_filter, flote.code, 'filtro')
+            if notify:
+                notifications.append(notify)
 
-    return notifications
+        return notifications
 
 
 def get_last_maintenance_of(flote, field):
