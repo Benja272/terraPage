@@ -27,8 +27,7 @@
 {% for message in messages %}
 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center w-100"
     style="position: absolute; z-index: 1000;">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" aria-live="assertive" aria-atomic="true">
-            <script src="{% static 'alert.js' %}"></script>
+    <div class="alert alert-danger alert-dismissible fade show text-center" style="padding-bottom: .1rem;" role="alert" aria-live="assertive" aria-atomic="true">
             <p class="fw-normal" id="messages">{{message}}</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
