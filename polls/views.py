@@ -1,5 +1,4 @@
 # Create your views here.
-from pkgutil import ImpImporter
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -9,7 +8,7 @@ from polls.sevices import flotes, flote_by_code, login_service, maintenances, cr
     , generate_notifications
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
-from datetime import datetime
+from datetime import date, datetime
 from django.db.models import Q
 
 import logging
@@ -25,7 +24,6 @@ def get_flote_by_code(request, code):
         if form.is_valid():
             flote = form.save()
             create_images(flote, files)
-            messages.success(request, "Flota Actualizada!")
             return redirect("/home/flotes/" + code)
         else:
             errors = ".".join(err[0] for err in form.errors.values())
@@ -39,7 +37,6 @@ def get_flote_by_code(request, code):
             update_form = FloteForm2(instance=flote_in_db)
             image_form = ImageForm2()
             notifications = generate_notifications(flote_in_db)
-            print(notifications)
             return render(request, 'flota.html', {'flote': flote, "update_form": update_form,
                         "correct_group": correct_group, 'imageform': image_form, "notifications": notifications})
         else:
@@ -91,7 +88,6 @@ def add_flote(request):
             # flote = Flote.objects.get(code=request.POST["code"])
             for image in files:
                 Image.objects.create(flote=flote, image=image)
-            messages.success(request, "Flota Agregada!")
             return redirect("/home/flotes/" + flote.code)
         else:
             errors = ".".join(err[0] for err in form.errors.values())
@@ -109,9 +105,8 @@ def add_repair(request, code):
         post = request.POST.copy()
         post['flote'] = flote.code
         form = MaintenanceForm(post)
-        if form.is_valid() and flote:
+        if form.is_valid() and flote and control_date(request, post):
             form.save()
-            messages.success(request, "Se registro correctamente!")
             return redirect("/home/flotes/" + flote.code)
         else:
             errors = ".".join(err[0] for err in form.errors.values())
@@ -125,6 +120,13 @@ def add_repair(request, code):
         fields = {"array": list(filter(lambda x: x != 'Flote', fields))}
         return render(request, 'add_maintenance.html',
                     {'form': form, 'image_url': image_url, "avoid_fields": fields, "code": code})
+
+def control_date(request, post):
+    res = datetime.strptime(post['date'], '%Y-%m-%d').date() <= date.today()
+    if not res:
+        messages.error(request, "La fecha debe ser menor que la actual.")
+
+    return res
 
 
 @login_required(login_url='/home/')
