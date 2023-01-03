@@ -161,3 +161,8 @@ def generate_notify(last_main, code, of_what):
         return f"La flota {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
     else:
         return f"La flota no tiene mantenimientos de {of_what}"
+
+def get_alerts():
+    alerts = Alert.objects.all()
+    alerts = to_json(alerts)
+    return alerts

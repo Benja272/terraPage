@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="card-body">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ alertform }}
+    </form>
+    {% for alert in alerts %}
+        {{alert}}
+    {% endfor %}
+</div>
+{% endblock content %}
