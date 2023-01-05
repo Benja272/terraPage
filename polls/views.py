@@ -175,6 +175,12 @@ def delete_img(request, pk):
 
 @allowed_users(allowed_roles=['admin'])
 def alerts(request, code):
-    alerts = get_alerts()  
-    form = AlertForm()
-    return render(request, "alerts.html", {"alerts": alerts, "alertform": form})
+    if request.method == 'POST':
+        form = FloteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("/alerts/" + code)
+    else:
+        alerts = get_alerts()  
+        form = AlertForm()
+        return render(request, "alerts.html", {"alerts": alerts, "alertform": form})
