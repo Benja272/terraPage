@@ -131,7 +131,7 @@ def generate_notifications(flote):
 
 
 def get_alert_notifications(flote):
-    import ipdb;ipdb.set_trace()
+    # import ipdb;ipdb.set_trace()
     res = []
     flote_alerts = get_alerts_by_flote(flote)
     for alert in flote_alerts:

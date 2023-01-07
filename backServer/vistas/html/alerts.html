@@ -2,7 +2,76 @@
 {% load static %}
 {% block content %}
 
-<div class="card-body">
+<head>
+    <link rel="stylesheet" type="text/css" href={% static 'css/flota.css' %}?{% now "U" %}>
+</head>
+
+<body>
+    <!-- Navegador -->
+    <nav class="navbar sticky-top">
+        <div class="container-fluid no-responsive">
+            <a class="navbar-brand" href="/home/flotes">
+                <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+                    class="d-inline-block align-text-top">
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}"
+                        role="button">Mantenimiento de {{ flote.code }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
+                        de {{ flote.code }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid responsive">
+            <a class="navbar-brand" href="../flotes">
+                <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+                    class="d-inline-block align-text-top">
+            </a>
+            <div class="nav justify-content-end">
+                <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Terra Ingenieria</h4>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></i></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}"
+                                    role="button">Mantenimiento de {{ flote.code }}</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="repair/{{ flote.code }}" role="button">Historial
+                                    de {{ flote.code }}</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="/flotes/add">Agregar flota</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="/logout">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card-body">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ alertform }}
@@ -10,5 +79,6 @@
     {% for alert in alerts %}
         {{alert}}
     {% endfor %}
-</div>
-{% endblock content %}
+    </div>
+    {% endblock content %} 
+</body>
