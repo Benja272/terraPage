@@ -30,16 +30,16 @@ def get_type_name(type):
 
 
 def flotes():
-    flotes = Flote.objects.all()
-    flotes = to_json(flotes)
+    flotes = Flote.objects.values_list('pk', 'type')
+    # flotes = to_json(flotes)
     res = {}
     for type in FLOTE_TYPES:
         res[type[1]] = {'flotes': []}
         res[type[1]]['image_file'] = FLOTES_IMAGES[type[1]]
     for flote in flotes:
-        flote_type = get_type_name(flote['fields']['type'])
-        flote['fields']['code'] = flote['pk']
-        res[flote_type]['flotes'].append(flote['fields'])
+        flote_type = get_type_name(flote[1])
+        attrs = {'code': flote[0]}
+        res[flote_type]['flotes'].append(attrs)
     return res
 
 
@@ -131,12 +131,11 @@ def generate_notifications(flote):
 
 
 def get_alert_notifications(flote):
-    # import ipdb;ipdb.set_trace()
     res = []
     flote_alerts = get_alerts_by_flote(flote)
     for alert in flote_alerts:
-        if alert.date >= date.today():
-            delta = abs(get_delta_days(alert.date))
+        if alert.limit_date >= date.today():
+            delta = abs(get_delta_days(alert.limit_date))
             if delta <= 7:
                 res.append(generate_alert_notify(alert, delta))
         else:
@@ -151,8 +150,8 @@ def generate_alert_notify(alert, delta):
 
 
 def get_maintenance_notifications(flote):
+    notifications = []
     if flote.code in FLOTE_CODES:
-        notifications = []
         last_main_oil = get_last_maintenance_of(flote, 'oil')
         last_main_filter = get_last_maintenance_of(flote, 'filter')
         if need_maintenance(last_main_oil):
@@ -166,7 +165,7 @@ def get_maintenance_notifications(flote):
             if notify:
                 notifications.append(notify)
 
-        return notifications
+    return notifications
 
 
 def get_last_maintenance_of(flote, field):

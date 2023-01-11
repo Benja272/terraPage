@@ -171,3 +171,7 @@ class AlertForm(ModelForm):
     class Meta:
         model = Alert
         fields = '__all__'
+
+        widgets = {
+            'limit_date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date']),
+        }

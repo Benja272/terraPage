@@ -36,22 +36,22 @@
                     <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel">
                         {% if notifications %}
-                        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end"
-                            style="position: absolute; z-index: 1000;">
+                        {% for not in notifications %}
+                        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
                             <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert"
                                 aria-live="assertive" aria-atomic="true">
                                 <div class="d-flex justify-content-end">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
+                                <h2> {{ not.title }}</h2>
                                 <p class="fw-normal" id="messages">
-                                    {% for not in notifications %}
                                     {{ not.msg }}
                                     <br>
-                                    {% endfor%}
                                 </p>
                             </div>
                         </div>
+                        {% endfor%}
                         {% endif %}
 
                     </div>

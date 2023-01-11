@@ -1,4 +1,4 @@
-# Create your views here.
+import time
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -54,7 +54,10 @@ def get_flotes_page(request):
     if request.method == 'POST':
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
+    st = time.time()
     json_flotes = flotes()
+    et = time.time()
+    print("time of execution : " + str(et - st))
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
 
@@ -176,11 +179,12 @@ def delete_img(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def alerts(request, code):
     if request.method == 'POST':
-        form = FloteForm(request.POST)
+        form = AlertForm(request.POST)
+        # import ipdb;ipdb.set_trace()
         if form.is_valid():
             form.save()
             return redirect("/alerts/" + code)
     else:
         alerts = get_alerts()  
         form = AlertForm()
-        return render(request, "alerts.html", {"alerts": alerts, "alertform": form})
+        return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})
