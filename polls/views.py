@@ -1,11 +1,11 @@
-# Create your views here.
+import time
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2
+from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2, AlertForm
 from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images\
-    , generate_notifications
+    , generate_notifications, get_alerts
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
 from datetime import date, datetime
@@ -54,7 +54,10 @@ def get_flotes_page(request):
     if request.method == 'POST':
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
+    st = time.time()
     json_flotes = flotes()
+    et = time.time()
+    print("time of execution : " + str(et - st))
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
 
@@ -172,3 +175,16 @@ def delete_img(request, pk):
     else:
         messages.error(request, "No existe la foto!")
         return redirect("/home/flotes")
+
+@allowed_users(allowed_roles=['admin'])
+def alerts(request, code):
+    if request.method == 'POST':
+        form = AlertForm(request.POST)
+        # import ipdb;ipdb.set_trace()
+        if form.is_valid():
+            form.save()
+            return redirect("/alerts/" + code)
+    else:
+        alerts = get_alerts()  
+        form = AlertForm()
+        return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})

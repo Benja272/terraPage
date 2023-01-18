@@ -3,7 +3,7 @@ from django.db import models
 from django.forms import fields , ModelForm , ClearableFileInput, ImageField
 from django import forms 
 from django.contrib.postgres.forms import SimpleArrayField
-from polls.models import Flote, Maintenance, Image, STATES, FLOTE_TYPES
+from polls.models import Alert, Flote, Maintenance, Image, STATES, FLOTE_TYPES
 
 FIELDS_FLOTE_TRANSLATE = {
     'type': 'Tipo',
@@ -30,6 +30,7 @@ FIELDS_MAINTENANCE_TRANSLATE = {
     'filter': 'Cambio de filtro',
     'date': 'Fecha'
 }
+
 
 CSS_FLOTE_CLASS = {
     'type': {'class': 'form-select'},
@@ -164,4 +165,13 @@ class MaintenanceForm(ModelForm):
             'description': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['description']),
             'oil': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['oil']),
             'filter': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['filter'])
+        }
+
+class AlertForm(ModelForm):
+    class Meta:
+        model = Alert
+        fields = '__all__'
+
+        widgets = {
+            'limit_date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date']),
         }

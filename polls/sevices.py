@@ -19,8 +19,9 @@ FLOTES_IMAGES = {
     'CAMIÓN': "can.png",
 }
 
-FLOTE_CODES = ["RET01", "RET02", "RET03","CON01" ,"CAM01", "CAM02", "CAM03",
- "CAM04", "CAM05", "CAM06", "CAM07", "MOT01"]
+FLOTE_CODES = ["RET01", "RET02", "RET03", "CON01", "CAM01", "CAM02", "CAM03",
+               "CAM04", "CAM05", "CAM06", "CAM07", "MOT01"]
+
 
 def get_type_name(type):
     for t in FLOTE_TYPES:
@@ -29,16 +30,16 @@ def get_type_name(type):
 
 
 def flotes():
-    flotes = Flote.objects.all()
-    flotes = to_json(flotes)
+    flotes = Flote.objects.values_list('pk', 'type')
+    # flotes = to_json(flotes)
     res = {}
     for type in FLOTE_TYPES:
         res[type[1]] = {'flotes': []}
         res[type[1]]['image_file'] = FLOTES_IMAGES[type[1]]
     for flote in flotes:
-        flote_type = get_type_name(flote['fields']['type'])
-        flote['fields']['code'] = flote['pk']
-        res[flote_type]['flotes'].append(flote['fields'])
+        flote_type = get_type_name(flote[1])
+        attrs = {'code': flote[0]}
+        res[flote_type]['flotes'].append(attrs)
     return res
 
 
@@ -124,20 +125,47 @@ def get_flote_images(flote):
 
 
 def generate_notifications(flote):
+    main_nots = get_maintenance_notifications(flote)
+    alert_nots = get_alert_notifications(flote)
+    return main_nots + alert_nots
+
+
+def get_alert_notifications(flote):
+    res = []
+    flote_alerts = get_alerts_by_flote(flote)
+    for alert in flote_alerts:
+        if alert.limit_date >= date.today():
+            delta = abs(get_delta_days(alert.limit_date))
+            if delta <= 7:
+                res.append(generate_alert_notify(alert, delta))
+        else:
+            alert.delete()
+
+    return res
+
+
+def generate_alert_notify(alert, delta):
+    return {"title": alert.title,
+            "msg": f"{alert.description}. Quedan {delta} dias para la fecha limite"}
+
+
+def get_maintenance_notifications(flote):
+    notifications = []
     if flote.code in FLOTE_CODES:
-        notifications = []
         last_main_oil = get_last_maintenance_of(flote, 'oil')
         last_main_filter = get_last_maintenance_of(flote, 'filter')
         if need_maintenance(last_main_oil):
-            notify = generate_notify(last_main_oil, flote.code, 'aceite')
+            notify = generate_maintenance_notify(
+                last_main_oil, flote.code, 'aceite')
             if notify:
                 notifications.append(notify)
         if need_maintenance(last_main_filter):
-            notify = generate_notify(last_main_filter, flote.code, 'filtro')
+            notify = generate_maintenance_notify(
+                last_main_filter, flote.code, 'filtro')
             if notify:
                 notifications.append(notify)
 
-        return notifications
+    return notifications
 
 
 def get_last_maintenance_of(flote, field):
@@ -148,16 +176,32 @@ def get_last_maintenance_of(flote, field):
 
 def need_maintenance(maintenance):
     if maintenance:
-        delta_days = (date.today() - maintenance.date).days
+        delta_days = get_delta_days(maintenance.date)
         if delta_days >= 23:
             return True
     else:
         return True
 
 
-def generate_notify(last_main, code, of_what):
+def get_delta_days(date1):
+    return (date.today() - date1).days
+
+
+def generate_maintenance_notify(last_main, code, of_what):
     if last_main:
         delta_days = (date.today() - last_main.date).days
-        return f"La flota {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
+        msg = f"La flota {code} tuvo su ultimo mantenimiento de {of_what} hace {delta_days} dias."
     else:
-        return f"La flota no tiene mantenimientos de {of_what}"
+        msg = f"La flota no tiene mantenimientos de {of_what}"
+    return {"title": "Mantenimiento", "msg": msg}
+
+
+def get_alerts():
+    alerts = Alert.objects.all()
+    alerts = to_json(alerts)
+    return alerts
+
+
+def get_alerts_by_flote(flote):
+    alerts = Alert.objects.filter(flote=flote)
+    return alerts

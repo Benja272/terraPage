@@ -65,4 +65,8 @@ class Image(models.Model):
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='images/', null=True, blank=True)
 
-
+class Alert(models.Model):
+    flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
+    limit_date = models.DateField(null=True, blank=True)
+    title = models.CharField(max_length=30)
+    description = models.CharField(max_length=30)

@@ -26,6 +26,38 @@
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
                 </li>
+
+
+                <li class="nav-item">
+                    <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <i class="fa-sharp fa-solid fa-bell"></i>
+                    </button>
+                    <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        {% if notifications %}
+                        {% for not in notifications %}
+                        <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
+                            <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert"
+                                aria-live="assertive" aria-atomic="true">
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                                <h2> {{ not.title }}</h2>
+                                <p class="fw-normal" id="messages">
+                                    {{ not.msg }}
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        {% endfor%}
+                        {% endif %}
+
+                    </div>
+                </li>
+
+
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
                 </li>
@@ -74,22 +106,6 @@
     <!-- Contenido de la flota -->
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
-            {% if notification %}
-            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end"
-                style="position: absolute; z-index: 1000;">
-                <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <p class="fw-normal" id="messages">
-                        {% for not in notifications %}
-                        {{ not }}
-                        <br>
-                        {% endfor%}
-                    </p>
-                </div>
-            </div>
-            {% endif %}
             <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
                 <div class="card h-100 text-center">
                     <div id="carouselExampleFade" class="carousel slide carousel-dark carousel-fade"
