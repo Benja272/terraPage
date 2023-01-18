@@ -12,11 +12,11 @@ FIELDS_FLOTE_TRANSLATE = {
     'model': 'Modelo',
     'characteristics': 'Características',
     'patent': 'Patente',
-    'production_year': 'Año de Producción',
+    'production_year': 'Año de Fabricación',
     'engine_number': 'Número de Motor',
     'chassis_number': 'Número de Chasis',
     'status': 'Estado',
-    'justifyStatus': 'Justificación del Estado',
+    'justifyStatus': 'Observaciones',
     'operators': 'Operadores'
 }
 
@@ -111,13 +111,13 @@ class FloteForm2(ModelForm):
             'code': forms.TextInput(attrs=CSS_FLOTE_CLASS2['code']),
             'brand': forms.TextInput(attrs=CSS_FLOTE_CLASS2['brand']),
             'model': forms.TextInput(attrs=CSS_FLOTE_CLASS2['model']),
-            'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']), # cambiar de lugar, va despues de nro de chasis lo mismo para el add_flotes
+            'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']),
             'patent': forms.TextInput(attrs=CSS_FLOTE_CLASS2['patent']),
-            'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']), # cambiar a Año de fabricación
+            'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']),
             'engine_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['engine_number']),
             'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['chassis_number']),
             'status': forms.Select(attrs=CSS_FLOTE_CLASS2['status']),
-            'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']), # cambiar a Observaciones
+            'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']),
             'operators': forms.TextInput(attrs=CSS_FLOTE_CLASS2['operators'])
         }
 
