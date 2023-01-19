@@ -71,15 +71,22 @@
         </div>
     </nav>
 
-    <div class="card-body">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ alertform }}
-        <button type="submit"> Crear </button>
-    </form>
-    {% for alert in alerts %}
-        {{alert}}
-    {% endfor %}
-    </div>
-    {% endblock content %} 
-</body>
+    <div class="container">
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ alertform }}
+                            <button type="submit"> Crear </button>
+                        </form>
+                        {% for alert in alerts %}
+                            {{alert}}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    {% endblock content %}
