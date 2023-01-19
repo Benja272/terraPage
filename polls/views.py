@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2, AlertForm
 from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images\
-    , generate_notifications, get_alerts
+    , generate_notifications, get_alerts, get_alerts_by_flote
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
 from datetime import date, datetime
@@ -185,6 +185,9 @@ def alerts(request, code):
             form.save()
             return redirect("/alerts/" + code)
     else:
-        alerts = get_alerts()  
+        if code != "null":
+            alerts = get_alerts_by_flote(code)
+        else:
+            alerts = get_alerts()  
         form = AlertForm()
         return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})

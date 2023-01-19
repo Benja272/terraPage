@@ -199,9 +199,17 @@ def generate_maintenance_notify(last_main, code, of_what):
 def get_alerts():
     alerts = Alert.objects.all()
     alerts = to_json(alerts)
-    return alerts
+    return format_alerts(alerts)
 
 
 def get_alerts_by_flote(flote):
     alerts = Alert.objects.filter(flote=flote)
-    return alerts
+    alerts = to_json(alerts)
+    return format_alerts(alerts)
+
+
+def format_alerts(alerts):
+    res = []
+    for alert in alerts:
+        res.append(alert["fields"])
+    return res
