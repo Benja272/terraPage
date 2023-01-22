@@ -31,6 +31,13 @@ FIELDS_MAINTENANCE_TRANSLATE = {
     'date': 'Fecha'
 }
 
+FIELDS_ALERTS_TRANSLATE = {
+    'flote': 'Flota',
+    'limit_date': 'Fecha límite',
+    'title': 'Título',
+    'description': 'Descripción',
+}
+
 
 CSS_FLOTE_CLASS = {
     'type': {'class': 'form-select'},
@@ -74,6 +81,17 @@ CSS_MAINTENANCE_CLASS = {
     'oil': {'class': 'form-check-input','type': 'checkbox', 'id': 'flexCheckDefault'},
     'filter': {'class': 'form-check-input', 'type': 'checkbox', 'id': 'flexCheckDefault'}
 }
+
+
+
+CSS_ALERT_CLASS = {
+    'flote': {'class': 'form-select text-center'},
+    'limit_date': {'type': 'date', 'class':'form-control'},
+    'title': {'class': 'form-control', 'placeholder' : 'Sacar los dos puntitos de los'},
+    'description': {'class': 'form-control', 'placeholder' : 'titulos de flota fecha limite etc'}
+}
+
+
 
 class FloteForm(ModelForm):
     class Meta:
@@ -171,7 +189,11 @@ class AlertForm(ModelForm):
     class Meta:
         model = Alert
         fields = '__all__'
+        labels = FIELDS_ALERTS_TRANSLATE
 
         widgets = {
-            'limit_date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date']),
+            'flote' : forms.Select(attrs=CSS_ALERT_CLASS['flote']),
+            'limit_date': forms.DateInput(attrs=CSS_ALERT_CLASS['limit_date']),
+            'description': forms.DateInput(attrs=CSS_ALERT_CLASS['description']),
+            'title': forms.DateInput(attrs=CSS_ALERT_CLASS['title'])
         }

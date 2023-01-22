@@ -29,15 +29,21 @@
 					<a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
 				</li>
 				<li class="nav-item">
+                    <!-- ARREGLAR -->
+                    <a class="btn btn-outline-success me-2" href="/alerts/..." role="button">Agregar alerta</a>
+                </li>
+				<li class="nav-item">
 					<a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
 				</li>
 			</ul>
 		</div>
+		<!-- Navegador RESPONSIVE -->
 		<div class="container-fluid responsive">
 			<a class="navbar-brand" href="../flotes">
 				<img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
 					class="d-inline-block align-text-top">
 			</a>
+			
 			<button class="responsive float-end btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
 				data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 				<i class="fa-solid fa-bars"></i>
@@ -63,6 +69,10 @@
 						</li>
 						<li class="nav-item mt-3">
 							<a class="nav-link active" href="/flotes/add">Agregar flota</a>
+						</li>
+						<li class="nav-item mt-3">
+							<!-- ARREGLAR -->
+							<a class="nav-link active" href="/alerts/..." role="button">Agregar alerta</a>
 						</li>
 						<li class="nav-item mt-3">
 							<a class="nav-link active" href="/logout">Cerrar Sesión</a>

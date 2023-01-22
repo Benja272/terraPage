@@ -77,8 +77,10 @@ nav {
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
 }
 
-.responsive {
-	display: none !important;
+.offcanvas {
+	background: #fff;
+	background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+	background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
 }
 
 #status > option {
@@ -98,17 +100,17 @@ nav {
 	background-color: red;
 }
 
-@media only screen and (max-width: 885px) {
+.responsive {
+	display: none !important;
+}
+
+@media only screen and (max-width: 940px) {
 	.no-responsive {
 		display: none !important;
 	}
 
 	.responsive {
 		display: flex !important;
-	}
-
-	.fa-arrow-left {
-		padding-top: 3px;
 	}
 
 	.fa-bars {

@@ -3,7 +3,7 @@
 {% block content %}
 
 <head>
-    <link rel="stylesheet" type="text/css" href={% static 'css/flota.css' %}?{% now "U" %}>
+    <link rel="stylesheet" type="text/css" href={% static 'css/alerts.css' %}?{% now "U" %}>
 </head>
 
 <body>
@@ -16,27 +16,28 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="../home/flotes/add_repair/{{ code }}"
-                        role="button">Mantenimiento de {{ code }}</a>
+                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                        <i class="fa-solid fa-arrow-left"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="../home/flotes/repair/{{ code }}" role="button">Historial
-                        de {{ code }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
+        <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
-            <div class="nav justify-content-end">
+            <ul class="nav justify-content-end">
+                <!-- ARREGLAR ESTO -->
+                <li class="nav-item">
+                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                        <i class="fa-solid fa-arrow-left"></i></a>
+                </li>
+
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fa-solid fa-bars"></i>
@@ -51,42 +52,58 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item mt-3">
-                                <a class="nav-link active" href="add_repair/{{ flote.code }}"
-                                    role="button">Mantenimiento de {{ flote.code }}</a>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <a class="nav-link active" href="repair/{{ flote.code }}" role="button">Historial
-                                    de {{ flote.code }}</a>
-                            </li>
-                            <li class="nav-item mt-3">
-                                <a class="nav-link active" href="/flotes/add">Agregar flota</a>
-                            </li>
-                            <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/logout">Cerrar Sesión</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
                 <div class="card h-100 text-center">
                     <div class="card-body">
+                        <form method="post" class="d-flex" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input class="form-control me-2" name="code" id="search" type="search" placeholder="Buscador"
+                                aria-label="Buscador">
+                            <button class="btn btn-outline-dark" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ alertform }}
-                            <button type="submit"> Crear </button>
+                            <button type="submit" class="btn btn-outline-dark mt-3 float-center"> Crear </button>
                         </form>
-                        {% for alert in alerts %}
-                            {{alert}}
-                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-    {% endblock content %}
+        <div class="container">
+            <div class="d-flex justify-content-center mt-3 mb-3">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="text-end">
+                                <script>
+                                    //Cuadro de diálogo de confirmación en JavaScript
+                                    function confirmarDelete() {
+                                        return confirm("¿Está seguro que lo desea eliminar?");
+                                    }
+                                </script>
+                                <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarDelete()"
+                                    class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
+                            </div>
+                            {% for alert in alerts %}
+                            {{alert}}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>
+{% endblock content %}

@@ -7,8 +7,8 @@
 </head>
 
 <body>
-    <!-- Navegador -->
     <nav class="navbar sticky-top">
+        <!-- Navegador NO RESPONSIVE -->
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
@@ -23,8 +23,13 @@
                     <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
                         de {{ flote.code }}</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+                </li> -->
+
+                <li class="nav-item">
+                    <!-- ARREGLAR ESTO -->
+                    <a class="btn btn-outline-success me-2" href="/alerts/..." role="button">Agregar alerta</a>
                 </li>
 
 
@@ -38,17 +43,18 @@
                         {% if notifications %}
                         {% for not in notifications %}
                         <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
-                            <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert"
+                            <div class="alert alert-dark fade show" style="padding-bottom: .1rem;" role="alert"
                                 aria-live="assertive" aria-atomic="true">
                                 <div class="d-flex justify-content-end">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
                                 <h2> {{ not.title }}</h2>
+                                <!-- HABRIA QUE VER PQ APARECE UNA MAS CHICA QUE LA OTRA Y CORREGIR ESO -->
                                 <p class="fw-normal" id="messages">
                                     {{ not.msg }}
-                                    <br>
                                 </p>
+                                <br>
                             </div>
                         </div>
                         {% endfor%}
@@ -63,12 +69,42 @@
                 </li>
             </ul>
         </div>
+        <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
                 <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
-            <div class="nav justify-content-end">
+            <!-- NO ENTIENDO PQ NO FUNCIONA ESTO, LUEGO LO REVISO -->
+            <div class="nav justify-content-end"> 
+
+                <button class="responsive float-end btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <i class="fa-sharp fa-solid fa-bell"></i>
+                </button>
+                <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <!-- HACER JUNTOS ESTO -->
+                    {% if notifications %}
+                    {% for not in notifications %}
+                    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
+                        <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert"
+                            aria-live="assertive" aria-atomic="true">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            <h2> {{ not.title }}</h2>
+                            <p class="fw-normal" id="messages">
+                                {{ not.msg }}
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor%}
+                    {% endif %}
+                </div>
+
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <i class="fa-solid fa-bars"></i>
@@ -90,9 +126,15 @@
                                 <a class="nav-link active" href="repair/{{ flote.code }}" role="button">Historial
                                     de {{ flote.code }}</a>
                             </li>
-                            <li class="nav-item mt-3">
+                            <!-- <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/flotes/add">Agregar flota</a>
+                            </li> -->
+
+                            <li class="nav-item mt-3">
+                                <!-- ARREGLAR -->
+                                <a class="nav-link active" href="/alerts/..." role="button">Agregar alerta</a>
                             </li>
+
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/logout">Cerrar Sesión</a>
                             </li>

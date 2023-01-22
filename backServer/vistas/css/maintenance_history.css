@@ -26,6 +26,7 @@ nav {
 
 .card {
 	border: 0 !important;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
 }
 
 .btn-outline-success {
@@ -63,7 +64,7 @@ nav {
 }
 
 .btn-lg {
-    --bs-btn-padding-y: .5rem;
+    --bs-btn-padding-y: .1rem;
     --bs-btn-padding-x: 1rem;
     --bs-btn-font-size: 1.25rem;
     --bs-btn-border-radius: .5rem;
