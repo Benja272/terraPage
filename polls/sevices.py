@@ -132,7 +132,7 @@ def generate_notifications(flote):
 
 def get_alert_notifications(flote):
     res = []
-    flote_alerts = get_alerts_by_flote(flote)
+    flote_alerts = Alert.objects.filter(flote=flote)
     for alert in flote_alerts:
         if alert.limit_date >= date.today():
             delta = abs(get_delta_days(alert.limit_date))

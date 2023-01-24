@@ -16,7 +16,7 @@
             </a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                    <a class="nav-item btn btn-outline-success me-2" href="/home/flotes/{{ code }}" role="button">
                         <i class="fa-solid fa-arrow-left"></i></a>
                 </li>
 
@@ -32,9 +32,8 @@
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
-                <!-- ARREGLAR ESTO -->
                 <li class="nav-item">
-                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                    <a class="nav-item btn btn-outline-success me-2" href="/home/flotes/{{ code }}" role="button">
                         <i class="fa-solid fa-arrow-left"></i></a>
                 </li>
 
@@ -83,10 +82,12 @@
                 </div>
             </div>
         </div>
+        {% if alerts %}
         <div class="container">
             <div class="d-flex justify-content-center mt-3 mb-3">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3">
                     <div class="card h-100 text-center">
+                        {% for alert in alerts %}
                         <div class="card-body">
                             <div class="text-end">
                                 <script>
@@ -98,12 +99,13 @@
                                 <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarDelete()"
                                     class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                             </div>
-                            {% for alert in alerts %}
                             {{alert}}
-                            {% endfor %}
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        {% endif %}
 </body>
 {% endblock content %}
