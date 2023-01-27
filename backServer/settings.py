@@ -160,8 +160,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"backServer/vistas")
 ]
 
-MEDIA_URL = '/media/'  
+MEDIA_URL = '/backServer/vistas/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'backServer/vistas')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

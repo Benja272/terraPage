@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2, AlertForm
 from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images\
     , generate_notifications, get_alerts, get_alerts_by_flote
@@ -88,13 +90,13 @@ def add_flote(request):
         files = request.FILES.getlist("image")
         if form.is_valid():
             flote = form.save()
-            # flote = Flote.objects.get(code=request.POST["code"])
             for image in files:
                 Image.objects.create(flote=flote, image=image)
             return redirect("/home/flotes/" + flote.code)
         else:
             errors = ".".join(err[0] for err in form.errors.values())
             messages.error(request, errors)
+            return redirect("/home/flotes/")
     else:
         form = FloteForm()
         image_form = ImageForm()
@@ -169,6 +171,7 @@ def delete_img(request, pk):
     if images:
         img = images.first()
         code = img.flote.code
+        default_storage.delete(img.image.name)
         img.delete()
         messages.success(request, "Se elimino correctamente!")
         return redirect("/home/flotes/" + code)
@@ -180,7 +183,6 @@ def delete_img(request, pk):
 def alerts(request, code):
     if request.method == 'POST':
         form = AlertForm(request.POST)
-        # import ipdb;ipdb.set_trace()
         if form.is_valid():
             form.save()
             return redirect("/alerts/" + code)
@@ -188,6 +190,6 @@ def alerts(request, code):
         if code != "null":
             alerts = get_alerts_by_flote(code)
         else:
-            alerts = get_alerts()  
+            alerts = get_alerts()
         form = AlertForm()
         return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})
