@@ -7,8 +7,8 @@ body {
 
 nav {
 	background: #fff;
-	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../white.png);
-	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../white.png);
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../img/white.png);
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.898), hsla(284, 100%, 9%, 0.858)), url(../img/white.png);
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;

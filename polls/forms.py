@@ -87,8 +87,8 @@ CSS_MAINTENANCE_CLASS = {
 CSS_ALERT_CLASS = {
     'flote': {'class': 'form-select text-center'},
     'limit_date': {'type': 'date', 'class':'form-control'},
-    'title': {'class': 'form-control', 'placeholder' : 'Sacar los dos puntitos de los'},
-    'description': {'class': 'form-control', 'placeholder' : 'titulos de flota fecha limite etc'}
+    'title': {'class': 'form-control'},
+    'description': {'class': 'form-control'}
 }
 
 
