@@ -10,13 +10,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 FLOTES_IMAGES = {
-    'RETROESCAVADORA': "retro.png",
-    'CAMIONETA': "cam.png",
-    'CARRETÓN': "carre.png",
-    'TANQUE REGADOR': "tar.png",
-    'TANQUE DE COMBUSTIBLE': "tac.png",
-    'MOTONIVELADORA': "motn.png",
-    'CAMIÓN': "can.png",
+    'RETROESCAVADORA': "img/retro.png",
+    'CAMIONETA': "img/cam.png",
+    'CARRETÓN': "img/carre.png",
+    'TANQUE REGADOR': "img/tar.png",
+    'TANQUE DE COMBUSTIBLE': "img/tac.png",
+    'MOTONIVELADORA': "img/motn.png",
+    'CAMIÓN': "img/can.png",
 }
 
 FLOTE_CODES = ["RET01", "RET02", "RET03", "CON01", "CAM01", "CAM02", "CAM03",
