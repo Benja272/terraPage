@@ -11,7 +11,7 @@
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
-                <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
@@ -28,7 +28,7 @@
         <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
-                <img src={% static 'logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
@@ -74,8 +74,10 @@
                             </button>
                         </form>
                         <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ alertform }}
+                            {% for field in alertform %}
+                            {{ field.label}}
+                            {{ field }}
+                            {% endfor %}
                             <button type="submit" class="btn btn-outline-dark mt-3 float-center"> Crear </button>
                         </form>
                     </div>

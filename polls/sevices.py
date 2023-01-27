@@ -1,6 +1,6 @@
 import json
 from django.core import serializers
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from datetime import date, timedelta
 from .forms import *
@@ -30,6 +30,7 @@ def get_type_name(type):
 
 
 def flotes():
+    # import ipdb;ipdb.set_trace()
     flotes = Flote.objects.values_list('pk', 'type')
     # flotes = to_json(flotes)
     res = {}

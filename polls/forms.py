@@ -188,7 +188,7 @@ class MaintenanceForm(ModelForm):
 class AlertForm(ModelForm):
     class Meta:
         model = Alert
-        fields = '__all__'
+        fields = ['flote', 'limit_date', 'title', 'description']
         labels = FIELDS_ALERTS_TRANSLATE
 
         widgets = {
