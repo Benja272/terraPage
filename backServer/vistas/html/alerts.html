@@ -94,7 +94,12 @@
                                 <a href="/delete/alerts/{{ alert.pk }}" onclick="return confirmarDelete()"
                                     class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                             </div>
-                            {{alert}}
+                            <div class="card-body">
+                                <p><b>{{alert.flote}}</b></p>
+                                <p><b>{{alert.limit_date}}</b></p>
+                                <p><b>{{alert.title}}</b></p>
+                                <p><b>{{alert..description}}</b></p>
+                            </div>
                         {% endfor %}
                         </div>
                     </div>
