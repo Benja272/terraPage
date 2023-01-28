@@ -11,7 +11,7 @@
         <!-- Navegador NO RESPONSIVE -->
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
-                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
@@ -71,7 +71,7 @@
         <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
-                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <!-- NO ENTIENDO PQ NO FUNCIONA ESTO, LUEGO LO REVISO -->
@@ -155,7 +155,7 @@
                                 {% for img in flote.images %}
                                 <div hidden class="imagen-flota">
                                     <img src="{{ img.url }}" class="card-img-top" alt="Imagen de la flota">
-                                    <a href="/delete/img/{{ img.pk }}" onclick="return confirmarDeleteImg()"
+                                    <a href="/delete/images/{{ img.pk }}" onclick="return confirmarDeleteImg()"
                                         class="btn btn-outline-dark btn fw-semibold mt-2" type="button">
                                         Eliminar imagen
                                     </a>

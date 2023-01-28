@@ -1,7 +1,7 @@
 from ast import operator
-from django.db import models  
+from django.db import models
 from django.forms import fields , ModelForm , ClearableFileInput, ImageField
-from django import forms 
+from django import forms
 from django.contrib.postgres.forms import SimpleArrayField
 from polls.models import Alert, Flote, Maintenance, Image, STATES, FLOTE_TYPES
 
@@ -144,7 +144,7 @@ class ImageForm(ModelForm):
     image = ImageField(
         label="Fotos de la flota",
         widget=ClearableFileInput(attrs={"multiple": True, "class": "form-control"}),
-    ) 
+    )
 
     class Meta:
         model = Image
@@ -158,7 +158,7 @@ class ImageForm2(ModelForm):
     image = ImageField(
         label="Fotos de la flota",
         widget=ClearableFileInput(attrs={"multiple": True, "class": "form-control", "disabled":""}),
-    ) 
+    )
 
     class Meta:
         model = Image
@@ -169,7 +169,6 @@ class ImageForm2(ModelForm):
         self.fields['image'].required = False
 
 class MaintenanceForm(ModelForm):
-    
     class Meta:
         model = Maintenance
         fields = ['flote', 'date', 'type','mileage','cost', 'description', 'oil', 'filter']

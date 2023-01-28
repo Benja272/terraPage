@@ -10,13 +10,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 FLOTES_IMAGES = {
-    'RETROESCAVADORA': "img/retro.png",
-    'CAMIONETA': "img/cam.png",
-    'CARRETÓN': "img/carre.png",
-    'TANQUE REGADOR': "img/tar.png",
-    'TANQUE DE COMBUSTIBLE': "img/tac.png",
-    'MOTONIVELADORA': "img/motn.png",
-    'CAMIÓN': "img/can.png",
+    'RETROESCAVADORA': "images/retro.png",
+    'CAMIONETA': "images/cam.png",
+    'CARRETÓN': "images/carre.png",
+    'TANQUE REGADOR': "images/tar.png",
+    'TANQUE DE COMBUSTIBLE': "images/tac.png",
+    'MOTONIVELADORA': "images/motn.png",
+    'CAMIÓN': "images/can.png",
 }
 
 FLOTE_CODES = ["RET01", "RET02", "RET03", "CON01", "CAM01", "CAM02", "CAM03",
@@ -30,7 +30,6 @@ def get_type_name(type):
 
 
 def flotes():
-    # import ipdb;ipdb.set_trace()
     flotes = Flote.objects.values_list('pk', 'type')
     # flotes = to_json(flotes)
     res = {}
@@ -208,9 +207,17 @@ def get_alerts_by_flote(flote):
     alerts = to_json(alerts)
     return format_alerts(alerts)
 
+def get_alert_by_pk(pk):
+    alert = Alert.objects.get(pk=pk)
+    if alert:
+        return alert
+
 
 def format_alerts(alerts):
     res = []
     for alert in alerts:
-        res.append(alert["fields"])
+        pk = alert["pk"]
+        alert = alert["fields"]
+        alert["pk"] = pk
+        res.append(alert)
     return res

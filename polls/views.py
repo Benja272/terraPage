@@ -1,13 +1,12 @@
 import time
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
-from django.core.files.base import ContentFile
 from polls.forms import FloteForm, ImageForm, MaintenanceForm, FloteForm2, ImageForm2, AlertForm
 from polls.sevices import flotes, flote_by_code, login_service, maintenances, create_images\
-    , generate_notifications, get_alerts, get_alerts_by_flote
+    , generate_notifications, get_alerts, get_alerts_by_flote, get_alert_by_pk
 from polls.decorators import unauthenticated_user, allowed_users
 from polls.models import Image, Flote, Maintenance
 from datetime import date, datetime
@@ -193,3 +192,13 @@ def alerts(request, code):
             alerts = get_alerts()
         form = AlertForm()
         return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})
+
+@allowed_users(allowed_roles=['admin'])
+def delete_alert(request, pk):
+    alert = get_alert_by_pk(pk)
+    if alert:
+        alert.delete()
+        return redirect(request.META.get('HTTP_REFERER'))
+    else:
+        messages.error(request, "No existe la alerta!")
+        return redirect("/home/flotes")

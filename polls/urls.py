@@ -15,6 +15,7 @@ urlpatterns = [
             path('home/flotes/repair/<str:code>', views.list_repair, name='repair'),
             path('delete/flote/<str:code>', views.delete_flote, name='delete_flote'),
             path('delete/repair/<str:pk>', views.delete_repair, name='delete_repair'),
-            path('delete/img/<str:pk>', views.delete_img, name='delete_img'),
+            path('delete/images/<str:pk>', views.delete_img, name='delete_img'),
             path('alerts/<str:code>', views.alerts, name='alerts'),
+            path('delete/alerts/<str:pk>', views.delete_alert, name='alerts'),
             ]
