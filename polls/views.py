@@ -186,11 +186,16 @@ def alerts(request, code):
             form.save()
             return redirect("/alerts/" + code)
     else:
+        form = AlertForm()
         if code != "null":
             alerts = get_alerts_by_flote(code)
+            for option in form.fields['flote'].choices:
+                if code in option[1]:
+                    init_option = option[0]
+                    break
+            form = AlertForm(initial={'flote': init_option})
         else:
             alerts = get_alerts()
-        form = AlertForm()
         return render(request, "alerts.html", {"alerts": alerts, "alertform": form, "code": code})
 
 @allowed_users(allowed_roles=['admin'])

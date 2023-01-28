@@ -202,8 +202,8 @@ def get_alerts():
     return format_alerts(alerts)
 
 
-def get_alerts_by_flote(flote):
-    alerts = Alert.objects.filter(flote=flote)
+def get_alerts_by_flote(code):
+    alerts = Alert.objects.filter(flote__code=code)
     alerts = to_json(alerts)
     return format_alerts(alerts)
 
