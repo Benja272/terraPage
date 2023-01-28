@@ -11,7 +11,7 @@
     <nav class="navbar sticky-top">
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
-                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
@@ -28,7 +28,7 @@
         <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
-                <img src={% static 'img/logo-nav.png' %} alt="Logo" width="120" height="50"
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
@@ -93,7 +93,12 @@
                                 <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarDelete()"
                                     class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                             </div>
-                            {{alert}}
+                            <div class="card-body">
+                                <p><b>{{alert.flote}}</b></p>
+                                <p><b>{{alert.limit_date}}</b></p>
+                                <p><b>{{alert.title}}</b></p>
+                                <p><b>{{alert..description}}</b></p>
+                            </div>
                         {% endfor %}
                         </div>
                     </div>

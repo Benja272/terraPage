@@ -1,8 +1,8 @@
 body {
 	background: #fff;
 	min-height: 100vh;
-	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../fondo-in1.png);
-	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../fondo-in1.png);
+	background: -webkit-linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../images/fondo-in1.png);
+	background: linear-gradient(to right, hsla(256, 35%, 47%, 0.647), hsla(284, 100%, 9%, 0.63)), url(../images/fondo-in1.png);
 	background-size: cover;
 	background-position: bottom center;
 	background-attachment: fixed;

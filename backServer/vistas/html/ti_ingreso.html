@@ -13,7 +13,7 @@
 			<div class="col-9 col-sm-9 col-md-6 col-lg-6 col-xl-4 col-xxl-5">
 				<form class="form card" action="{% url 'login' %}" method=POST>
 					{% csrf_token %}
-					<img src={% static 'img/logo.jpg' %} class="card-img-top" alt="...">
+					<img src={% static 'images/logo.jpg' %} class="card-img-top" alt="...">
 					<div class="card-body">
 						<div class="form-floating mb-2">
 							<input type="email name" required name="username" class="form-control" id="floatingInput"
