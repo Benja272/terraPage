@@ -62,7 +62,7 @@
 
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
-            <div class="col-10 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 mb-3">
                 <div class="card h-100 text-center">
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">
@@ -77,35 +77,34 @@
                 </div>
             </div>
         </div>
+        <!-- HISTORIAL ALERTAS -->
         {% if alerts %}
+        {% for alert in alerts %}
         <div class="container">
             <div class="d-flex justify-content-center mt-3 mb-3">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3 mb-3">
-                    <div class="card h-100 text-center">
-                        {% for alert in alerts %}
+                <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-8 col-xxl-8 mt-3 mb-3">
+                    <div class="card">
+                        <div class="text-end">
+                            <script>
+                                //Cuadro de diálogo de confirmación en JavaScript
+                                function confirmarDelete() {
+                                    return confirm("¿Está seguro que lo desea eliminar?");
+                                }
+                            </script>
+                            <a href="/delete/repair/{{ repair.pk }}" onclick="return confirmarDelete()"
+                                class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
+                        </div>
                         <div class="card-body">
-                            <div class="text-end">
-                                <script>
-                                    //Cuadro de diálogo de confirmación en JavaScript
-                                    function confirmarDelete() {
-                                        return confirm("¿Está seguro que lo desea eliminar?");
-                                    }
-                                </script>
-                                <a href="/delete/alerts/{{ alert.pk }}" onclick="return confirmarDelete()"
-                                    class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
-                            </div>
-                            <div class="card-body">
-                                <p><b>{{alert.flote}}</b></p>
-                                <p><b>{{alert.limit_date}}</b></p>
-                                <p><b>{{alert.title}}</b></p>
-                                <p><b>{{alert..description}}</b></p>
-                            </div>
-                        {% endfor %}
+                            <p><b>{{alert.flote}}</b></p>
+                            <p><b>{{alert.limit_date}}</b></p>
+                            <p><b>{{alert.title}}</b></p>
+                            <p><b>{{alert.description}}</b></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}
         {% endif %}
-</body>
+    </body>
 {% endblock content %}

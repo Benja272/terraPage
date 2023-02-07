@@ -9,6 +9,7 @@
 <body>
     <!-- Navegador -->
     <nav class="navbar sticky-top">
+        <!-- Navegador NO RESPONSIVE -->
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
                 <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
@@ -31,6 +32,7 @@
                 </li>
             </ul>
         </div>
+        <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
                 <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
@@ -69,11 +71,11 @@
         </div>
     </nav>
 
-    <!-- Historial de la flota -->
+    <!-- HISTORIAL FLOTA -->
     {% for repair in list%}
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
-            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-8 col-xxl-8 mt-3 mb-3">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-7 col-xl-6 col-xxl-6 mt-3 mb-3">
                 <div class="card">
                     <div class="text-end">
                         <script>

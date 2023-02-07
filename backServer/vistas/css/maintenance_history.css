@@ -24,11 +24,6 @@ nav {
 	margin-right: 8px;
 }
 
-.card {
-	border: 0 !important;
-	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-}
-
 .btn-outline-success {
 	--bs-btn-color: #fff;
 	--bs-btn-border-color: #47476b;
@@ -70,11 +65,20 @@ nav {
     --bs-btn-border-radius: .5rem;
 }
 
+.card {
+	border: 0 !important;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+}
+
+.card-body {
+	margin: auto;
+}
+
 .responsive {
 	display: none !important;
 }
 
-@media only screen and (max-width: 495px) {
+@media only screen and (max-width: 740px) {
 	.no-responsive {
 		display: none !important;
 	}
