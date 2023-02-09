@@ -60,6 +60,17 @@ nav {
 	margin-left: 3px;
 }
 
+.offcanvas {
+	background: #fff;
+	background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+	background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+}
+
+.offcanvas-title {
+	letter-spacing: .8px;
+	color: #fff;
+}
+
 .fa-xmark {
 	font-size: 17px;
 	margin-top: 3px;

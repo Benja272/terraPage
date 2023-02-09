@@ -20,7 +20,7 @@ FLOTES_IMAGES = {
 }
 
 FLOTE_CODES = ["RET01", "RET02", "RET03", "CON01", "CAM01", "CAM02", "CAM03",
-               "CAM04", "CAM05", "CAM06", "CAM07", "MOT01"]
+            "CAM04", "CAM05", "CAM06", "CAM07", "MOT01"]
 
 
 def get_type_name(type):
