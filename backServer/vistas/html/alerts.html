@@ -59,6 +59,7 @@
         </div>
     </nav>
 
+    <!-- CREACION ALERTAS -->
     <div class="container">
         <div class="d-flex justify-content-center mt-3 mb-3">
             <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-4 mt-3 mb-3">
@@ -76,6 +77,7 @@
                 </div>
             </div>
         </div>
+
         <!-- HISTORIAL ALERTAS -->
         {% if alerts %}
         {% for alert in alerts %}
@@ -94,10 +96,10 @@
                                 class="btn btn-outline-dark1 btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                         </div>
                         <div class="card-body">
-                            <p><b>{{alert.flote}}</b></p>
-                            <p><b>{{alert.limit_date}}</b></p>
-                            <p><b>{{alert.title}}</b></p>
-                            <p><b>{{alert.description}}</b></p>
+                            <h4 class="activo mb-3"><b>{{alert.title}}</b></h3>
+                            <h6 class="mb-3"><b><u>Flota:</u>  {{alert.flote}}</b></h6>
+                            <h6 class="mb-3"><b><u>Fecha límite:</u> {{alert.limit_date}}</b></h6>
+                            <h6 class="mb-3"><b><u>Descrición:</u>  {{alert.description}}</b></h6>
                         </div>
                     </div>
                 </div>

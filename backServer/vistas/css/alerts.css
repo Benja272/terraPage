@@ -93,6 +93,10 @@ nav {
 	margin: auto;
 }
 
+/* .activo {
+	margin: auto !important;
+} */
+
 .responsive {
 	display: none !important;
 }

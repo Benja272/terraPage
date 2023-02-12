@@ -9,6 +9,7 @@
 <body>
     <!-- Navegador -->
     <nav class="navbar sticky-top">
+
         <!-- Navegador NO RESPONSIVE -->
         <div class="container-fluid no-responsive">
             <a class="navbar-brand" href="/home/flotes">
@@ -24,22 +25,22 @@
                     <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
                         de {{ flote.code }}</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
-                </li> -->
-
                 <li class="nav-item">
-                    <a class="btn btn-outline-success me-2" href="/alerts/{{ flote.code }}" role="button">Agregar alerta</a>
+                    <a class="btn btn-outline-success me-2" href="/alerts/{{ flote.code }}" role="button">Agregar
+                        alerta</a>
                 </li>
-
-
                 <li class="nav-item">
-                    <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <button class="btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                         <i class="fa-sharp fa-solid fa-bell"></i>
                     </button>
-                    <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
-                        aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                            <h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Terra Ingenieria</h4>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></i></button>
+                        </div>
                         {% if notifications %}
                         {% for not in notifications %}
                         <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
@@ -59,35 +60,37 @@
                         </div>
                         {% endfor%}
                         {% endif %}
-
                     </div>
                 </li>
-
-
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>
+
         <!-- Navegador RESPONSIVE -->
         <div class="container-fluid responsive">
             <a class="navbar-brand" href="../flotes">
                 <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
                     class="d-inline-block align-text-top">
             </a>
-            <!-- NO ENTIENDO PQ NO FUNCIONA ESTO, LUEGO LO REVISO -->
             <div class="nav justify-content-end">
+
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                     <i class="fa-sharp fa-solid fa-bell"></i>
                 </button>
-                <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <!-- HACER JUNTOS ESTO -->
+                <div class="offcanvas offcanvas-end nav-item" data-bs-backdrop="static" tabindex="-1"
+                    id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+                    <div class="offcanvas-header">
+                        <h4 class="offcanvas-title fw-bold" id="staticBackdropLabel">Terra Ingenieria</h4>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></i></button>
+                    </div>
                     {% if notifications %}
                     {% for not in notifications %}
                     <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end">
-                        <div class="alert alert-danger fade show" style="padding-bottom: .1rem;" role="alert"
+                        <div class="alert alert-dark fade show" style="padding-bottom: .1rem;" role="alert"
                             aria-live="assertive" aria-atomic="true">
                             <div class="d-flex justify-content-end">
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
@@ -105,34 +108,31 @@
                 </div>
 
                 <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end nav-item" data-bs-scroll="false" tabindex="-1"
+                    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div class="offcanvas-header">
-                        <h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Terra Ingenieria</h4>
+                        <h4 class="offcanvas-title fw-bold" id="offcanvasScrollingLabel">Terra Ingenieria</h4>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                             aria-label="Close"></i></button>
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item mt-3">
-                                <a class="nav-link active" href="add_repair/{{ flote.code }}"
-                                    role="button">Mantenimiento de {{ flote.code }}</a>
+                                <!-- ARREGLAR -->
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}">Mantenimiento de {{
+                                    flote.code }}</a>
                             </li>
                             <li class="nav-item mt-3">
-                                <a class="nav-link active" href="repair/{{ flote.code }}" role="button">Historial
+                                <a class="nav-link active" href="repair/{{ flote.code }}">Historial
                                     de {{ flote.code }}</a>
                             </li>
-                            <!-- <li class="nav-item mt-3">
-                                <a class="nav-link active" href="/flotes/add">Agregar flota</a>
-                            </li> -->
-
                             <li class="nav-item mt-3">
-                                <a class="nav-link active" href="/alerts/{{ flote.code }}" role="button">Agregar alerta</a>
+                                <a class="nav-link active" href="/alerts/{{ flote.code }}">Agregar
+                                    alerta</a>
                             </li>
-
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/logout">Cerrar Sesión</a>
                             </li>
@@ -224,9 +224,6 @@
                                     </div>
                                     {% endfor %}
                                     {% endif %}
-                                </div>
-                                <div>
-
                                 </div>
                             </form>
                         </ul>

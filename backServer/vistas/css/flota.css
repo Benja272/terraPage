@@ -60,6 +60,17 @@ nav {
 	margin-left: 3px;
 }
 
+.offcanvas {
+	background: #fff;
+	background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+	background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
+}
+
+.offcanvas-title {
+	letter-spacing: .8px;
+	color: #fff;
+}
+
 .fa-xmark {
 	font-size: 17px;
 	margin-top: 3px;
@@ -76,12 +87,6 @@ nav {
 	margin: auto;
 	border: 0 !important;
 	box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
-}
-
-.offcanvas {
-	background: #fff;
-	background: -webkit-linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
-	background: linear-gradient(to top, hsl(256, 35%, 47%), hsl(284, 93%, 16%));
 }
 
 #status > option {
@@ -105,7 +110,7 @@ nav {
 	display: none !important;
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 910px) {
 	.no-responsive {
 		display: none !important;
 	}
