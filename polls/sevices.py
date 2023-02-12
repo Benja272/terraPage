@@ -2,7 +2,7 @@ import json
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from datetime import date, timedelta
+from datetime import date
 from .forms import *
 from .models import *
 
@@ -134,19 +134,25 @@ def get_alert_notifications(flote):
     res = []
     flote_alerts = Alert.objects.filter(flote=flote)
     for alert in flote_alerts:
-        if alert.limit_date >= date.today():
-            delta = abs(get_delta_days(alert.limit_date))
-            if delta <= 7:
-                res.append(generate_alert_notify(alert, delta))
-        else:
-            alert.delete()
+        delta = get_delta_days(alert.limit_date)
+        notify = generate_alert_notify(alert, delta)
+        if notify:
+            res.append(notify)
 
     return res
 
 
 def generate_alert_notify(alert, delta):
-    return {"title": alert.title,
-            "msg": f"{alert.description}. Quedan {delta} dias para la fecha limite"}
+    msg = ""
+    if delta == 0:
+        msg = "La fecha limite se cumple hoy."
+    elif delta > 0:
+        msg = f"Alerta vencida por {delta} dias."
+    elif delta >= -7 :
+        msg = f"Quedan {abs(delta)} dias para la fecha limite"
+    if msg:
+        return {"title": alert.title,
+                "msg": f"{alert.description}. " + msg}
 
 
 def get_maintenance_notifications(flote):

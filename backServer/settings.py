@@ -24,12 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8r+p8x)9b+n&(q2h%pk1)ra1@l+#g#%)img%4c3#j)ez(#g-(7'
+SECRET_KEY = env('KEY_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+USE_L10N = False
+
+ALLOWED_HOSTS = ['127.0.0.1', 'www.terraingenieriacba.ar']
 
 
 # Application definition
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'backServer.urls'
@@ -81,12 +84,12 @@ WSGI_APPLICATION = 'backServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('PASSWORD'),
         'HOST': env('HOST'),
-        'PORT': '5432',
+        'PORT': '3306',
         'ENFORCE_SCHEMA': False
     }
 }
@@ -114,9 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Cordoba'
 
 USE_I18N = True
 
@@ -165,3 +168,5 @@ MEDIA_URL = '/backServer/vistas/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'backServer/vistas')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# DATE_INPUT_FORMATS = ('%Y-%m-%d')

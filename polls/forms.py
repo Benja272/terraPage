@@ -2,7 +2,7 @@ from ast import operator
 from django.db import models
 from django.forms import fields , ModelForm , ClearableFileInput, ImageField
 from django import forms
-from django.contrib.postgres.forms import SimpleArrayField
+from django.conf import settings
 from polls.models import Alert, Flote, Maintenance, Image, STATES, FLOTE_TYPES
 
 FIELDS_FLOTE_TRANSLATE = {
@@ -51,7 +51,7 @@ CSS_FLOTE_CLASS = {
     'chassis_number': {'class': 'form-control'},
     'status': {'class': 'form-select', 'id': 'status'},
     'justifyStatus': {'class': 'form-control'},
-    'operators':{'class': 'form-control', 'placeholder' : 'Ingresar nombres separados por comas'} 
+    'operators':{'class': 'form-control'} 
 }
 
 CSS_FLOTE_CLASS2 = {
@@ -179,7 +179,7 @@ class MaintenanceForm(ModelForm):
             'type': forms.Select(attrs=CSS_MAINTENANCE_CLASS['type']),
             'mileage': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['mileage']),
             'cost': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['cost']),
-            'description': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['description']),
+            'description': forms.TextInput(attrs=CSS_MAINTENANCE_CLASS['description']),
             'oil': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['oil']),
             'filter': forms.CheckboxInput(attrs=CSS_MAINTENANCE_CLASS['filter'])
         }
@@ -189,10 +189,10 @@ class AlertForm(ModelForm):
         model = Alert
         fields = ['flote', 'limit_date', 'title', 'description']
         labels = FIELDS_ALERTS_TRANSLATE
-
+        # limit_date = forms.DateField(input_formats= '%Y-%m-%d' , widget=forms.DateInput(format='%Y-%m-%d' ,attrs=CSS_ALERT_CLASS['limit_date']))
         widgets = {
             'flote' : forms.Select(attrs=CSS_ALERT_CLASS['flote']),
-            'limit_date': forms.DateInput(attrs=CSS_ALERT_CLASS['limit_date']),
-            'description': forms.DateInput(attrs=CSS_ALERT_CLASS['description']),
+            'limit_date': forms.DateInput(format='%d %B, %Y', attrs=CSS_ALERT_CLASS['limit_date']),
+            'description': forms.TextInput(attrs=CSS_ALERT_CLASS['description']),
             'title': forms.DateInput(attrs=CSS_ALERT_CLASS['title'])
         }

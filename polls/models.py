@@ -32,7 +32,7 @@ class Flote(models.Model):
     chassis_number = models.IntegerField(null=True, blank=True)
     status = models.CharField(choices=STATES, max_length=30)
     justifyStatus = models.CharField(max_length=600, blank=True, default="")
-    operators = ArrayField(models.CharField(max_length=50, blank=True), blank=True, default=list)
+    operators = models.CharField(max_length=50, blank=True, default="")
 
     def __str__(self):
         return "%s %s" % (self.code, self.brand)
