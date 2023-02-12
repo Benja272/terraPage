@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('KEY_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 USE_L10N = False
 
@@ -167,6 +167,6 @@ MEDIA_URL = '/backServer/vistas/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'backServer/vistas')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATIC_ROOT = '/backServer/vistas/'
+STATIC_URL = 'vistas/'
 # DATE_INPUT_FORMATS = ('%Y-%m-%d')
