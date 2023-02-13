@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('KEY_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 USE_L10N = False
 
@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'backServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('PASSWORD'),
         'HOST': env('HOST'),
-        'PORT': '3306',
+        'PORT': '5432',
         'ENFORCE_SCHEMA': False
     }
 }

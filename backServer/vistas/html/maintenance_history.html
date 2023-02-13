@@ -88,14 +88,13 @@
                             class="btn btn-outline-dark btn-lg"> <i class="fa-sharp fa-solid fa-xmark"></i></a>
                     </div>
                     <div class="card-body">
-                        <h3 class="mb-3"><b>{{ repair.type }}</b></h3>
-                        <h5 class="mb-3"><b><u>Fecha de creación:</u> {{ repair.date }}</b></h5>
-                        <h5 class="mb-3"><b><u>Kilometraje:</u>  {{ repair.mileage }}</b></h5>
-                        <!-- LA DESCRIPCION TIENE UN LIMITE PARA ESCRIBIR, PONER UN LIMITE MAS ALTO DE LETRAS -->
-                        <h5 class="mb-3"><b><u>Descripción:</u>  {{ repair.description }}</b></h5> 
-                        <h5 class="mb-3"><b><u>Costo:</u>  {{ repair.cost }}</b></h5>
-                        <h5 class="mb-3"><b>{{ repair.oil }}</b></h5>
-                        <h5 class="mb-3"><b>{{ repair.filter }}</b></h5>
+                        <h4 class="mb-3"><b>{{ repair.type }}</b></h4>
+                        <h6 class="mb-3"><b><u>Fecha:</u> {{ repair.date }}</b></h6>
+                        <h6 class="mb-3"><b><u>Costo:</u>  {{ repair.cost }}</b></h6>
+                        <h6 class="mb-3"><b><u>Kilometraje:</u>  {{ repair.mileage }}</b></h6>
+                        <h6 class="mb-3"><b><u>Descripción:</u>  {{ repair.description }}</b></h6> 
+                        <h6 class="mb-3"><b>{{ repair.oil }}</b></h6>
+                        <h6 class="mb-3"><b>{{ repair.filter }}</b></h6>
                     </div>
                 </div>
             </div>
