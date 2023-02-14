@@ -3,6 +3,7 @@ asttokens==2.0.8
 autopep8==1.7.0
 backcall==0.2.0
 decorator==5.1.1
+dj-database-url==1.2.0
 Django==4.0
 django-environ==0.9.0
 django-reset-migrations==0.4.0
@@ -34,3 +35,4 @@ stack-data==0.5.0
 toml==0.10.2
 traitlets==5.4.0
 wcwidth==0.2.5
+whitenoise==6.3.0
