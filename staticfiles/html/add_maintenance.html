@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href={% static 'css/add_maintenance.css' %}?{% now "U" %}>
+</head>
+
+<body>
+    <!-- Navegador -->
+    <nav class="navbar sticky-top">
+        <div class="container-fluid no-responsive">
+            <a class="navbar-brand" href="/home/flotes">
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
+                    class="d-inline-block align-text-top">
+            </a>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                        <i class="fa-solid fa-arrow-left"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="../repair/{{ code }}" role="button">Historial
+                        de {{ code }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid responsive">
+            <div class="navbar-brand">
+                <img src={% static 'images/logo-nav.png' %} alt="Logo" width="120" height="50"
+                    class="d-inline-block align-text-top">
+            </div>
+            <div class="nav justify-content-end">
+                <a class="nav-item btn btn-outline-success me-2" href="../{{ code }}" role="button">
+                    <i class="fa-solid fa-arrow-left"></i></a>
+                <button class="nav-item btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="offcanvas offcanvas-end nav-item" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h4 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Terra Ingenieria</h4>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></i></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="add_repair/{{ flote.code }}" role="button">Historial de
+                                    {{ flote.code }}</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="/flotes/add">Agregar flota</a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link active" href="/logout">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Creacion de mantenimientos -->
+    <div class="container">
+        <div class="d-flex justify-content-center mt-3 mb-3">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-6 col-xl-5 col-xxl-5 mt-3 mb-3">
+                <div class="card h-100">
+                    {% if image_url %}
+                    <img src="{{ image_url}}" class="card-img-top" alt="...">
+                    {% endif %}
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            {% if field.label in avoid_fields.array %}
+                            <label class="col-sm-6 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+                            <div class="col-sm-10">
+                                {{ field }}
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                            <button type="submit" class="btn btn-outline-dark mt-3 float-end">Crear</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock content %}

@@ -63,7 +63,7 @@ class Maintenance(models.Model):
 
 class Image(models.Model):
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
 
 class Alert(models.Model):
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
