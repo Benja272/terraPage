@@ -31,7 +31,7 @@ DEBUG = False
 
 USE_L10N = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.terraingenieriacba.ar']
+ALLOWED_HOSTS = ['127.0.0.1', 'www.terraingenieriacba.ar', 'terrapage-production.up.railway.app']
 
 
 # Application definition
