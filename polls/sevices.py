@@ -91,23 +91,29 @@ def login_service(request, username, password):
 
 
 def maintenances(code):
+    res = []
     query = list(Maintenance.objects.filter(flote__code=code))
     query.sort(key=lambda x: x.date, reverse=True)
+    query = to_json(query)
     for maintenance in query:
-        if maintenance.type == "REP":
-            maintenance.type = "Reparación"
+        pk = maintenance["pk"]
+        maintenance = maintenance["fields"]
+        maintenance["pk"] = pk
+        if maintenance["type"] == "REP":
+            maintenance["type"] = "Reparación"
         else:
-            maintenance.type = "Mantenimiento"
-        if maintenance.oil:
-            maintenance.oil = "Se cambio el aceite"
+            maintenance["type"] = "Mantenimiento"
+        if maintenance["oil"]:
+            maintenance["oil"] = "Se cambio el aceite"
         else:
-            maintenance.oil = ""
-        if maintenance.filter:
-            maintenance.filter = "Se cambio el filtro"
+            maintenance["oil"] = ""
+        if maintenance["filter"]:
+            maintenance["filter"] = "Se cambio el filtro"
         else:
-            maintenance.filter = ""
+            maintenance["filter"] = ""
+        res.append(maintenance)
 
-    return query
+    return res
 
 
 def create_images(flote, files):

@@ -175,7 +175,7 @@ class MaintenanceForm(ModelForm):
         labels = FIELDS_MAINTENANCE_TRANSLATE
         widgets = {
             'flote': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['flote']),
-            'date': forms.DateInput(attrs=CSS_MAINTENANCE_CLASS['date']),
+            'date': forms.DateInput(format='%d %B, %Y', attrs=CSS_MAINTENANCE_CLASS['date']),
             'type': forms.Select(attrs=CSS_MAINTENANCE_CLASS['type']),
             'mileage': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['mileage']),
             'cost': forms.NumberInput(attrs=CSS_MAINTENANCE_CLASS['cost']),

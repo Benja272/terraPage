@@ -55,10 +55,7 @@ def get_flotes_page(request):
     if request.method == 'POST':
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
-    st = time.time()
     json_flotes = flotes()
-    et = time.time()
-    print("time of execution : " + str(et - st))
     return render(request, 'ti_vista-flota.html', {'info': json_flotes})
 
 
@@ -114,7 +111,7 @@ def add_repair(request, code):
             return redirect("/home/flotes/" + flote.code)
         else:
             errors = ".".join(err[0] for err in form.errors.values())
-            messages.success(request, errors)
+            messages.error(request, errors)
             return redirect("/home/flotes/add_repair/" + code)
     else:
         images = Image.objects.filter(flote__code=code)

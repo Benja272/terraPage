@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 
-STATES = [ # se puede modificar desde aca el css de STATES?
+STATES = [
     ('GRE', 'VERDE'),
     ('YEL', 'AMARILLO'),
     ('RED', 'ROJO')
@@ -69,4 +69,4 @@ class Alert(models.Model):
     flote = models.ForeignKey(Flote, on_delete=models.CASCADE)
     limit_date = models.DateField(null=True, blank=True)
     title = models.CharField(max_length=30)
-    description = models.CharField(max_length=30)
+    description = models.CharField(max_length=600)
