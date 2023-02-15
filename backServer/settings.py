@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import dj_database_url
 import environ
 from pathlib import Path
+import pymysql
 import os
 
 env = environ.Env()
@@ -106,6 +107,8 @@ DATABASES = {
         'ENFORCE_SCHEMA': False
     }
 }
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
 # DATABASES = {
 #     "default": dj_database_url.config(default=env("DATABASE_URL"), conn_max_age=1800),
 # }
