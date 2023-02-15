@@ -31,13 +31,19 @@ DEBUG = False
 
 USE_L10N = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'www.terraingenieriacba.ar', 'terrapage-production.up.railway.app']
+ALLOWED_HOSTS = ['127.0.0.1',
+                  'www.terraingenieriacba.ar',
+                  'terraingenieriacba.ar',
+                  'terrapage-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000', 'https://terrapage-production.up.railway.app',
+    'http://www.terraingenieriacba.ar/'
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000', 'https://terrapage-production.up.railway.app'
+    'http://localhost:8000', 'https://terrapage-production.up.railway.app',
+    'http://www.terraingenieriacba.ar/'
+
 ]
 
 # Application definition
@@ -90,8 +96,19 @@ WSGI_APPLICATION = 'backServer.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.config(default=env("DATABASE_URL"), conn_max_age=1800),
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME_HOST'),
+        'USER': env('DB_USER_HOST'),
+        'PASSWORD': env('DB_PASS_HOST'),
+        'HOST': env('DB_HOST_HOST'),
+        'PORT': '3306',
+        'ENFORCE_SCHEMA': False
+    }
 }
+# DATABASES = {
+#     "default": dj_database_url.config(default=env("DATABASE_URL"), conn_max_age=1800),
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
