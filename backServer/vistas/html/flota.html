@@ -257,7 +257,9 @@
                                 }
                             })
                             childrens = childrens.filter(child => child.tagName == "DIV")
-                            childrens[0].hidden = false
+                            if (childrens.length){
+                                childrens[0].hidden = false
+                            }
 
                             edit_button.addEventListener("click", function () {
                                 form_elements.forEach(function (elem) {
