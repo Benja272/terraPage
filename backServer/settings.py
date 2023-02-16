@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-# import dj_database_url
+import dj_database_url
 import environ
 from pathlib import Path
-# import pymysql
+import pymysql
 import os
 
 env = environ.Env()
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env('KEY_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 USE_L10N = False
 
@@ -62,7 +62,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -98,17 +98,17 @@ WSGI_APPLICATION = 'backServer.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER'),
-        'PASSWORD': env('PASSWORD'),
-        'HOST': env('HOST'),
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME_HOST'),
+        'USER': env('DB_USER_HOST'),
+        'PASSWORD': env('DB_PASS_HOST'),
+        'HOST': env('DB_HOST_HOST'),
+        'PORT': '3306',
         'ENFORCE_SCHEMA': False
     }
 }
-# pymysql.version_info = (1, 4, 2, "final", 0)
-# pymysql.install_as_MySQLdb()
+pymysql.version_info = (1, 4, 2, "final", 0)
+pymysql.install_as_MySQLdb()
 # DATABASES = {
 #     "default": dj_database_url.config(default=env("DATABASE_URL"), conn_max_age=1800),
 # }
@@ -191,9 +191,9 @@ LOGGING = {
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"backServer/vistas")
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = '/home/terraing/public_html/static'
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'backServer/flote_images')
+MEDIA_URL = '/flote_images/'
+MEDIA_ROOT = '/home/terraing/public_html/flote_images/'
 
