@@ -17,18 +17,22 @@
                     class="d-inline-block align-text-top">
             </a>
             <ul class="nav justify-content-end">
+                {% if correct_group %}
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="add_repair/{{ flote.code }}"
                         role="button">Mantenimiento de {{ flote.code }}</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="repair/{{ flote.code }}" role="button">Historial
                         de {{ flote.code }}</a>
                 </li>
+                {% if correct_group %}
                 <li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/alerts/{{ flote.code }}" role="button">Agregar
                         alerta</a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <button class="btn btn-outline-success me-2" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -119,19 +123,22 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            {% if correct_group %}
                             <li class="nav-item mt-3">
-                                <!-- ARREGLAR -->
                                 <a class="nav-link active" href="add_repair/{{ flote.code }}">Mantenimiento 
                                     de {{ flote.code }}</a>
                             </li>
+                            {% endif %}
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="repair/{{ flote.code }}">Historial
                                     de {{ flote.code }}</a>
                             </li>
+                            {% if correct_group %}
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/alerts/{{ flote.code }}">Agregar
                                     alerta</a>
                             </li>
+                            {% endif %}
                             <li class="nav-item mt-3">
                                 <a class="nav-link active" href="/logout">Cerrar Sesión</a>
                             </li>
@@ -300,5 +307,8 @@
             </div>
         </div>
     </div>
+    <!-- <footer>
+        <p>&copy; 2023 Terra Ingenieria</p>
+    </footer> -->
 </body>
 {% endblock content %}

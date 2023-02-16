@@ -25,12 +25,14 @@
 						</button>
 					</form>
 				</li>
+				{% if correct_group %}
 				<li class="nav-item">
 					<a class="btn btn-outline-success me-2" href="/flotes/add" role="button">Agregar flota</a>
 				</li>
 				<li class="nav-item">
                     <a class="btn btn-outline-success me-2" href="/alerts/null" role="button">Agregar alerta</a>
                 </li>
+				{% endif %}
 				<li class="nav-item">
 					<a class="btn btn-outline-success me-2" type="button" href="/logout" role="button">Cerrar Sesión</a>
 				</li>
@@ -65,12 +67,14 @@
 								</button>
 							</form>
 						</li>
+						{% if correct_group %}
 						<li class="nav-item mt-3">
 							<a class="nav-link active" href="/flotes/add">Agregar flota</a>
 						</li>
 						<li class="nav-item mt-3">
 							<a class="nav-link active" href="/alerts/null" role="button">Agregar alerta</a>
 						</li>
+						{% endif %}
 						<li class="nav-item mt-3">
 							<a class="nav-link active" href="/logout">Cerrar Sesión</a>
 						</li>
@@ -118,6 +122,9 @@
 			</div>
 		</div>
 	</section>
+	<!-- <footer>
+        <p>&copy; 2023 Terra Ingenieria</p>    
+    </footer> -->
 </body>
 
 {% endblock %}

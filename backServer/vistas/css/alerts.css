@@ -93,6 +93,12 @@ nav {
 	margin: auto;
 }
 
+footer {
+	text-align: center;
+	padding: 3px;
+	color: white;
+	}
+
 /* .activo {
 	margin: auto !important;
 } */

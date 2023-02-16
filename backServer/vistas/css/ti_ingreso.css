@@ -46,3 +46,10 @@ body {
 	--bs-btn-disabled-border-color: #ced4da;
 	--bs-gradient: none;
 }
+
+footer {
+	text-align: center;
+	padding: 3px;
+	color: white;
+	z-index: 1000;
+	}

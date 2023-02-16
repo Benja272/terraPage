@@ -58,6 +58,12 @@ nav {
 	--bs-gradient: none;
 }
 
+footer {
+	text-align: center;
+	padding: 3px;
+	color: white;
+	}
+
 .responsive {
 	display: none !important;
 }
