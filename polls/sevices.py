@@ -2,6 +2,7 @@ import json
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from datetime import datetime
 from datetime import date
 from .forms import *
 from .models import *
@@ -10,13 +11,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 FLOTES_IMAGES = {
-    'RETROESCAVADORA': "images/retro.png",
-    'CAMIONETA': "images/cam.png",
-    'CARRETÓN': "images/carre.png",
-    'TANQUE REGADOR': "images/tar.png",
-    'TANQUE DE COMBUSTIBLE': "images/tac.png",
-    'MOTONIVELADORA': "images/motn.png",
-    'CAMIÓN': "images/can.png",
+    'RETROESCAVADORA': "images/retro.jpg",
+    'CAMIONETA': "images/cam.jpg",
+    'CARRETÓN': "images/carre.jpg",
+    'TANQUE REGADOR': "images/tar.jpg",
+    'TANQUE DE COMBUSTIBLE': "images/tac.jpg",
+    'MOTONIVELADORA': "images/motn.jpg",
+    'CAMIÓN': "images/can.jpg",
 }
 
 FLOTE_CODES = ["RET01", "RET02", "RET03", "CON01", "CAM01", "CAM02", "CAM03",
@@ -209,13 +210,15 @@ def generate_maintenance_notify(last_main, code, of_what):
 
 
 def get_alerts():
-    alerts = Alert.objects.all()
+    alerts = list(Alert.objects.all())
+    alerts.sort(key=lambda x: x.limit_date)
     alerts = to_json(alerts)
     return format_alerts(alerts)
 
 
 def get_alerts_by_flote(code):
-    alerts = Alert.objects.filter(flote__code=code)
+    alerts = list(Alert.objects.filter(flote__code=code))
+    alerts.sort(key=lambda x: x.limit_date)
     alerts = to_json(alerts)
     return format_alerts(alerts)
 

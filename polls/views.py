@@ -56,7 +56,10 @@ def get_flotes_page(request):
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
     json_flotes = flotes()
-    return render(request, 'ti_vista-flota.html', {'info': json_flotes})
+    correct_group = False
+    if request.user.groups.all()[0].name == 'admin':
+        correct_group = True
+    return render(request, 'ti_vista-flota.html', {'info': json_flotes, 'correct_group': correct_group})
 
 
 # auth

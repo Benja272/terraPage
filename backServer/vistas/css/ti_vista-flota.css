@@ -124,6 +124,12 @@ header {
 	transform: scale(1);
 }
 
+footer {
+	text-align: center;
+	padding: 3px;
+	color: white;
+	}
+
 .dropdown-menu {
 	background-color: #272727e6;
 	max-height: 40%;
