@@ -2,6 +2,7 @@ import json
 from django.core import serializers
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from datetime import datetime
 from datetime import date
 from .forms import *
 from .models import *
@@ -209,13 +210,15 @@ def generate_maintenance_notify(last_main, code, of_what):
 
 
 def get_alerts():
-    alerts = Alert.objects.all()
+    alerts = list(Alert.objects.all())
+    alerts.sort(key=lambda x: x.limit_date)
     alerts = to_json(alerts)
     return format_alerts(alerts)
 
 
 def get_alerts_by_flote(code):
-    alerts = Alert.objects.filter(flote__code=code)
+    alerts = list(Alert.objects.filter(flote__code=code))
+    alerts.sort(key=lambda x: x.limit_date)
     alerts = to_json(alerts)
     return format_alerts(alerts)
 
