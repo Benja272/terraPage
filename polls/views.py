@@ -160,7 +160,6 @@ def delete_repair(request, pk):
         repair = repairs.first()
         code = repair.flote.code
         repair.delete()
-        messages.error(request, "Se elimino correctamente!")
         return redirect("/home/flotes/repair/" + code)
     else:
         messages.error(request, "No existe!")
