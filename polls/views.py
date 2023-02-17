@@ -136,7 +136,10 @@ def control_date(request, post):
 @login_required(login_url='/home/')
 def list_repair(request, code):
     xs = maintenances(code)
-    return render(request, 'maintenance_history.html', {'list': xs, 'code': code})
+    correct_group = False
+    if request.user.groups.all()[0].name == 'admin':
+        correct_group = True
+    return render(request, 'maintenance_history.html', {'list': xs, 'code': code, 'correct_group': correct_group})
 
 
 @allowed_users(allowed_roles=['admin'])
@@ -157,7 +160,7 @@ def delete_repair(request, pk):
         repair = repairs.first()
         code = repair.flote.code
         repair.delete()
-        messages.success(request, "Se elimino correctamente!")
+        messages.error(request, "Se elimino correctamente!")
         return redirect("/home/flotes/repair/" + code)
     else:
         messages.error(request, "No existe!")
