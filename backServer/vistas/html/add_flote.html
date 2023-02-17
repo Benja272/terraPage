@@ -95,6 +95,29 @@
                             </div>
                             <button type="submit" class="btn btn-outline-dark mt-3 float-end">Crear</button>
                         </form>
+                        <script>
+                            const status_elem = document.getElementById("status")
+                            var index = 0
+                            status_elem.childNodes.forEach(function (elem) {
+                                if (elem.tagName == "OPTION") {
+                                    switch (index) {
+                                        case 0:
+                                            index = index + 1
+                                            break;
+                                        case 1:
+                                            elem.classList.add("green")
+                                            index = index + 1
+                                            break;
+                                        case 2:
+                                            elem.classList.add("yellow")
+                                            index = index + 1
+                                            break;
+                                        default:
+                                            elem.classList.add("red")
+                                    }
+                                }
+                            })
+                        </script>
                     </div>
                 </div>
             </div>

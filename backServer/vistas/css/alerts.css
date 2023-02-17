@@ -107,22 +107,6 @@ footer {
 	display: none !important;
 }
 
-#status > option {
-	user-select: none;
-}
-
-#status > .green {
-	color: transparent;
-	background-color: green;
-}
-#status > .yellow {
-	color: transparent;
-	background-color: yellow;
-}
-#status > .red {
-	color: transparent;
-	background-color: red;
-}
 
 @media only screen and (max-width: 360px) {
 	.no-responsive {
