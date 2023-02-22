@@ -26,13 +26,13 @@ class Flote(models.Model):
     brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
     characteristics = models.CharField(max_length=600, blank=True)
-    patent = models.CharField(max_length=20, blank=True)
+    patent = models.CharField(max_length=50, blank=True)
     production_year = models.IntegerField(null=True, blank=True)
-    engine_number = models.IntegerField(null=True, blank=True)
-    chassis_number = models.IntegerField(null=True, blank=True)
+    engine_number = models.CharField(max_length=50, null=True, blank=True)
+    chassis_number = models.CharField(max_length=50, null=True, blank=True)
     status = models.CharField(choices=STATES, max_length=30)
     justifyStatus = models.CharField(max_length=600, blank=True, default="")
-    operators = models.CharField(max_length=50, blank=True, default="")
+    operators = models.CharField(max_length=100, blank=True, default="")
 
     def __str__(self):
         return "%s %s" % (self.code, self.brand)

@@ -109,8 +109,8 @@ class FloteForm(ModelForm):
             'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS['characteristics']),
             'patent': forms.TextInput(attrs=CSS_FLOTE_CLASS['patent']),
             'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS['production_year']),
-            'engine_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS['engine_number']),
-            'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS['chassis_number']),
+            'engine_number': forms.TextInput(attrs=CSS_FLOTE_CLASS['engine_number']),
+            'chassis_number': forms.TextInput(attrs=CSS_FLOTE_CLASS['chassis_number']),
             'status': forms.Select(attrs=CSS_FLOTE_CLASS['status']),
             'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS['justifyStatus']),
             'operators' : forms.TextInput(attrs=CSS_FLOTE_CLASS['operators'])
@@ -133,8 +133,8 @@ class FloteForm2(ModelForm):
             'characteristics': forms.TextInput(attrs=CSS_FLOTE_CLASS2['characteristics']),
             'patent': forms.TextInput(attrs=CSS_FLOTE_CLASS2['patent']),
             'production_year': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['production_year']),
-            'engine_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['engine_number']),
-            'chassis_number': forms.NumberInput(attrs=CSS_FLOTE_CLASS2['chassis_number']),
+            'engine_number': forms.TextInput(attrs=CSS_FLOTE_CLASS2['engine_number']),
+            'chassis_number': forms.TextInput(attrs=CSS_FLOTE_CLASS2['chassis_number']),
             'status': forms.Select(attrs=CSS_FLOTE_CLASS2['status']),
             'justifyStatus': forms.TextInput(attrs=CSS_FLOTE_CLASS2['justifyStatus']),
             'operators': forms.TextInput(attrs=CSS_FLOTE_CLASS2['operators'])
