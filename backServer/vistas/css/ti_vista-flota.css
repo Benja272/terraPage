@@ -141,13 +141,13 @@ footer {
 
 .box {
 	float: right;
-	width: 50%;
+	width: 20%;
 }
 
 .state-color {
 	display: block;
 	float: right;
-	padding: 12%; /* Currently being used to control radius. */
+	padding: 30%; /* Currently being used to control radius. */
 	width: auto;
 	height: auto;
 	border-radius: 50%;
