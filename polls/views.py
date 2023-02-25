@@ -56,6 +56,7 @@ def get_flotes_page(request):
         print("/home/flotes/" + request.POST['code'])
         return redirect("/home/flotes/" + request.POST['code'])
     json_flotes = flotes()
+    print(json_flotes)
     correct_group = False
     if request.user.groups.all()[0].name == 'admin':
         correct_group = True
