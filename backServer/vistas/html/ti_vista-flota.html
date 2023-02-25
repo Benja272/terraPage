@@ -113,9 +113,21 @@
 								{% for flote in value.flotes %}
 								<li class="d-flex justify-content-between">
 									<a class="dropdown-item" href={{ flote.code }}>{{ flote.code }}</a>
+									{% if flote.yel %}
 									<div class="box">
-										<div class="state-color mt-2"></div>
+										<div class="state-color yellow mt-2"></div>
 									</div>
+									{% endif %}
+									{% if flote.red %}
+									<div class="box">
+										<div class="state-color red mt-2"></div>
+									</div>
+									{% endif %}
+									{% if flote.gre %}
+									<div class="box">
+										<div class="state-color green mt-2"></div>
+									</div>
+									{% endif %}
 								</li>
 								{% endfor %}
 							</ul>

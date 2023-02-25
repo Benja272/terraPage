@@ -31,15 +31,15 @@ def get_type_name(type):
 
 
 def flotes():
-    flotes = Flote.objects.values_list('pk', 'type')
-    # flotes = to_json(flotes)
+    flotes = Flote.objects.values_list('pk', 'type', 'status')
     res = {}
     for type in FLOTE_TYPES:
         res[type[1]] = {'flotes': []}
         res[type[1]]['image_file'] = FLOTES_IMAGES[type[1]]
     for flote in flotes:
         flote_type = get_type_name(flote[1])
-        attrs = {'code': flote[0]}
+        attrs = {'code': flote[0],
+                'yel': flote[2]=='YEL', 'red': flote[2]=='RED', 'gre': flote[2]=='GRE'}
         res[flote_type]['flotes'].append(attrs)
     return res
 
