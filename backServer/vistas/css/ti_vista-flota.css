@@ -141,14 +141,13 @@ footer {
 
 .box {
 	float: right;
-	width: 100%;
+	width: 50%;
 }
 
 .state-color {
 	display: block;
 	float: right;
-	padding: 10%; /* Currently being used to control radius. */
-	margin-right: 5px;
+	padding: 12%; /* Currently being used to control radius. */
 	width: auto;
 	height: auto;
 	border-radius: 50%;
@@ -169,6 +168,7 @@ footer {
 .yellow {
 	background: yellow;
 }
+
 
 footer {
 	text-align: center;
