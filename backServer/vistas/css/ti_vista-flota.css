@@ -128,7 +128,7 @@ footer {
 	text-align: center;
 	padding: 3px;
 	color: white;
-	}
+}
 
 .dropdown-menu {
 	background-color: #272727e6;
@@ -137,6 +137,43 @@ footer {
 
 .dropdown-item {
 	color: #fff;
+}
+
+.box {
+	float: right;
+	width: 20%;
+}
+
+.state-color {
+	display: block;
+	float: right;
+	padding: 30%; /* Currently being used to control radius. */
+	width: auto;
+	height: auto;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+	background: #eee;
+}
+
+.red {
+	background: red;
+}
+
+.green{
+	background: green;
+}
+
+.yellow {
+	background: yellow;
+}
+
+
+footer {
+	text-align: center;
+	padding: 3px;
+	color: white;
 }
 
 .responsive {
